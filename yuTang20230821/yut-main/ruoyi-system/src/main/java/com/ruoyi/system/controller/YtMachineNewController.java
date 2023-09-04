@@ -10,6 +10,7 @@ import com.ruoyi.system.domain.DeviceThreshold;
 import com.ruoyi.system.domain.YtMachineNew;
 import com.ruoyi.system.mapper.DeviceThresholdMapper;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
+import com.ruoyi.system.mqtt.MqttPushClient;
 import com.ruoyi.system.service.IYtMachineNewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -36,6 +37,10 @@ public class YtMachineNewController extends BaseController
 
     @Autowired
     private YtMachineNewMapper ytMachineNewMapper;
+
+
+    @Autowired
+    private MqttPushClient mqttPushClient;
 
 
     /**
@@ -106,17 +111,20 @@ public class YtMachineNewController extends BaseController
         return toAjax(ytMachineNewService.deleteYtMachineNewByIds(ids));
     }
 
+
     @GetMapping("/device4g")
     public AjaxResult findAllDevice4g() {
 //        System.out.println(ytMachineNewMapper.findAllDevice4g());
         return success(ytMachineNewMapper.findAllDevice4g());
     }
 
+    // 设备详情
     @GetMapping("/machine/{code}")
     public AjaxResult findMachineByMachineCode(@PathVariable String code){
         return success(ytMachineNewMapper.findMachineByMachineCode(code));
     }
 
+    // 设备报警状态
     @GetMapping("/warning/{machine_code}")
     public AjaxResult isWarning(@PathVariable String machine_code) {
         // 取最新数据信息
@@ -149,6 +157,16 @@ public class YtMachineNewController extends BaseController
         }
 
         return success(flag);
+    }
+
+    // 根据参数 设置 设备 的开关机状态，发布mqtt消息，记录日志
+    @PostMapping("machine/aerator/switch")
+    public AjaxResult switchAerator(@RequestParam String machineCode, @RequestParam Integer num){
+
+        String topic = "/home";
+        String msg = "1";
+        mqttPushClient.publish(0,true,topic,msg);
+        return success();
     }
 
 }

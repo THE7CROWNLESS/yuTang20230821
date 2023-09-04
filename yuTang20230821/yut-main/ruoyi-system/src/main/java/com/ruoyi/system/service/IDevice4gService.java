@@ -2,6 +2,8 @@ package com.ruoyi.system.service;
 
 import java.util.List;
 import com.ruoyi.system.domain.Device4g;
+import com.ruoyi.system.domain.vo.Device4gNameVo;
+import com.ruoyi.system.domain.vo.Device4gVo;
 
 /**
  * 【请填写功能名称】Service接口
@@ -58,4 +60,16 @@ public interface IDevice4gService
      * @return 结果
      */
     public int deleteDevice4gById(Integer id);
+
+    /**
+     * 统计 某养殖场 设备状态
+     *
+     * @param fishPond
+     * @return （总数、在线、离线、故障）列表
+     */
+    public Device4gVo countStatus(String fishPond);
+
+    List<Device4gNameVo> selectStatusList(Integer status,String fish_pond);
+
+    List<Device4gNameVo> selectAllStatusList(String fishPond);
 }

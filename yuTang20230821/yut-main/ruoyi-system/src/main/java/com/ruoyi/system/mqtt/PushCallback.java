@@ -15,8 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Component
 public class PushCallback implements MqttCallback {
     private static final Logger logger = LoggerFactory.getLogger(MqttPushClient.class);
@@ -126,6 +124,7 @@ public class PushCallback implements MqttCallback {
             // 养殖场、状态 暂时 为 静态数据
             device4g.setFishPond("1号养殖场");
             device4g.setMachineStatus(0);
+            device4g.setCSQ(CSQ);
             device4gMapper.insertDevice4g(device4g);
         }
         return ytMachineNew;

@@ -1,9 +1,10 @@
 package com.ruoyi.system.mapper;
 
-import java.util.List;
+import com.ruoyi.system.domain.Device4g;
 import com.ruoyi.system.domain.YtMachineNew;
-import com.ruoyi.system.domain.Device_4g;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 设备Mapper接口
@@ -63,7 +64,7 @@ public interface YtMachineNewMapper
     public int deleteYtMachineNewByIds(Integer[] ids);
 
 
-    public List<Device_4g> findAllDevice4g();
+    public List<Device4g> findAllDevice4g();
 
     public YtMachineNew findMachineByMachineCode(String code);
 

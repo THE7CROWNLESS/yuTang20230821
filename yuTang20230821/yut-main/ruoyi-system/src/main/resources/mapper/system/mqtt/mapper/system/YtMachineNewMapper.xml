@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectYtMachineNewVo"/>
         where id = #{id}
     </select>
-    <select id="findAllDevice4g" resultType="com.ruoyi.system.domain.Device_4g">
+    <select id="findAllDevice4g" resultType="com.ruoyi.system.domain.Device4g">
         select * from device4g
     </select>
     <select id="findMachineByMachineCode" resultType="com.ruoyi.system.domain.YtMachineNew">

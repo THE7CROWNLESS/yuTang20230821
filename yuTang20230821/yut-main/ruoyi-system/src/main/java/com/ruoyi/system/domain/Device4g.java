@@ -1,5 +1,6 @@
 package com.ruoyi.system.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
@@ -11,6 +12,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * @author ruoyi
  * @date 2023-09-04
  */
+@Data
 public class Device4g extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -46,78 +48,10 @@ public class Device4g extends BaseEntity
     @Excel(name = "ICCID")
     private String ICCID;
 
-    public void setId(Integer id) 
-    {
-        this.id = id;
-    }
+    /** 信号强度 */
+    @Excel(name = "CSQ")
+    private String CSQ;
 
-    public Integer getId() 
-    {
-        return id;
-    }
-    public void setMachineCode(String machineCode) 
-    {
-        this.machineCode = machineCode;
-    }
-
-    public String getMachineCode() 
-    {
-        return machineCode;
-    }
-    public void setMachineName(String machineName) 
-    {
-        this.machineName = machineName;
-    }
-
-    public String getMachineName() 
-    {
-        return machineName;
-    }
-    public void setMachineType(String machineType) 
-    {
-        this.machineType = machineType;
-    }
-
-    public String getMachineType() 
-    {
-        return machineType;
-    }
-    public void setFishPond(String fishPond) 
-    {
-        this.fishPond = fishPond;
-    }
-
-    public String getFishPond() 
-    {
-        return fishPond;
-    }
-    public void setMachineStatus(Integer machineStatus) 
-    {
-        this.machineStatus = machineStatus;
-    }
-
-    public Integer getMachineStatus() 
-    {
-        return machineStatus;
-    }
-    public void setIMEI(String IMEI) 
-    {
-        this.IMEI = IMEI;
-    }
-
-    public String getIMEI() 
-    {
-        return IMEI;
-    }
-    public void setICCID(String ICCID) 
-    {
-        this.ICCID = ICCID;
-    }
-
-    public String getICCID() 
-    {
-        return ICCID;
-    }
 
     @Override
     public String toString() {
@@ -130,6 +64,7 @@ public class Device4g extends BaseEntity
             .append("machineStatus", getMachineStatus())
             .append("IMEI", getIMEI())
             .append("ICCID", getICCID())
+            .append("CSQ",getCSQ())
             .toString();
     }
 }

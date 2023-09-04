@@ -2,16 +2,11 @@ package com.ruoyi.system.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -35,7 +30,7 @@ public class Device4gController extends BaseController
     private IDevice4gService device4gService;
 
     /**
-     * 查询【请填写功能名称】列表
+     * 查询【4g模块】列表
      */
     //@PreAuthorize("@ss.hasPermi('system:4g:list')")
     @GetMapping("/list")
@@ -101,4 +96,33 @@ public class Device4gController extends BaseController
     {
         return toAjax(device4gService.deleteDevice4gByIds(ids));
     }
+
+    /**
+     * 设备 状态统计
+     * @Param fish_pond
+     */
+    @GetMapping("/status")
+    public AjaxResult countStatus(@RequestParam String fish_pond){
+        //logger.info(device4gService.countStatus(fish_pond).toString());
+        return success(device4gService.countStatus(fish_pond));
+    }
+
+    /**
+     * 设备 全部状态下 列表
+     * @Param status，fishPond
+     */
+    @GetMapping("/allStatus/list")
+    public AjaxResult selectAllStatusList( @RequestParam String fishPond){
+        return success(device4gService.selectAllStatusList(fishPond));
+    }
+
+    /**
+     * 设备 某状态下 列表
+     * @Param status，fishPond
+     */
+    @GetMapping("/status/list")
+    public AjaxResult selectStatusList(@RequestParam Integer status, @RequestParam String fish_pond){
+        return success(device4gService.selectStatusList(status,fish_pond));
+    }
+
 }

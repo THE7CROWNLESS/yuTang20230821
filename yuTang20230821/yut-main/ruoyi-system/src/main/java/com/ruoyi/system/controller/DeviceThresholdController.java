@@ -110,12 +110,12 @@ public class DeviceThresholdController extends BaseController
     }
 
     /**
-     * 更新阈值
+     * 更新阈值，需补充日志消息
      */
     @Log(title = "【更新阈值】", businessType = BusinessType.DELETE)
     @PostMapping("/machine_code")
     public AjaxResult insert_by_machine_code(@RequestBody DeviceThreshold deviceThreshold){
-        System.out.println(deviceThreshold);
+        //System.out.println(deviceThreshold);
         return success(deviceThresholdMapper.updateDeviceThreshold(deviceThreshold));
     }
 }

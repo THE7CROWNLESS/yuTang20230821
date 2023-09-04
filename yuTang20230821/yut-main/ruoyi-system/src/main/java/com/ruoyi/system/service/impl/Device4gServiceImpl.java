@@ -1,6 +1,9 @@
 package com.ruoyi.system.service.impl;
 
 import java.util.List;
+
+import com.ruoyi.system.domain.vo.Device4gNameVo;
+import com.ruoyi.system.domain.vo.Device4gVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.Device4gMapper;
@@ -89,5 +92,20 @@ public class Device4gServiceImpl implements IDevice4gService
     public int deleteDevice4gById(Integer id)
     {
         return device4gMapper.deleteDevice4gById(id);
+    }
+
+    @Override
+    public Device4gVo countStatus(String fishPond) {
+        return device4gMapper.countStatus(fishPond);
+    }
+
+    @Override
+    public List<Device4gNameVo> selectStatusList(Integer status,String fish_pond) {
+        return device4gMapper.selectStatusList(status,fish_pond);
+    }
+
+    @Override
+    public List<Device4gNameVo> selectAllStatusList(String fishPpond) {
+        return device4gMapper.selectAllStatusList(fishPpond);
     }
 }

@@ -2,6 +2,9 @@ package com.ruoyi.system.mapper;
 
 import java.util.List;
 import com.ruoyi.system.domain.Device4g;
+import com.ruoyi.system.domain.vo.Device4gNameVo;
+import com.ruoyi.system.domain.vo.Device4gVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -63,4 +66,10 @@ public interface Device4gMapper
 
 
     public String selectDevice4gByImei(String imei);
+
+    public Device4gVo countStatus(String fishPond);
+
+    List<Device4gNameVo> selectStatusList(@Param("status")Integer status, @Param("fishPond")String fish_pond);
+
+    List<Device4gNameVo> selectAllStatusList(@Param("fishPond")String fishPond);
 }
