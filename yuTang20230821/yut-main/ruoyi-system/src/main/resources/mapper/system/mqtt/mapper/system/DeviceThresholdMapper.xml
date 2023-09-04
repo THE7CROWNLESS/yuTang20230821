@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.DeviceThresholdMapper">
+    
+    <resultMap type="DeviceThreshold" id="DeviceThresholdResult">
+        <result property="id"    column="id"    />
+        <result property="machineCode"    column="machine_code"    />
+        <result property="voltageMax"    column="voltage_max"    />
+        <result property="voltageMin"    column="voltage_min"    />
+        <result property="current"    column="current"    />
+        <result property="oxygenMax"    column="oxygen_max"    />
+        <result property="oxygenMin"    column="oxygen_min"    />
+        <result property="temperatureMax"    column="temperature_max"    />
+        <result property="temperatureMin"    column="temperature_min"    />
+    </resultMap>
+
+    <sql id="selectDeviceThresholdVo">
+        select id, machine_code, voltage_max, voltage_min, current, oxygen_max, oxygen_min, temperature_max, temperature_min from device_threshold
+    </sql>
+
+    <select id="selectDeviceThresholdList" parameterType="DeviceThreshold" resultMap="DeviceThresholdResult">
+        <include refid="selectDeviceThresholdVo"/>
+        <where>  
+            <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
+            <if test="voltageMax != null "> and voltage_max = #{voltageMax}</if>
+            <if test="voltageMin != null "> and voltage_min = #{voltageMin}</if>
+            <if test="current != null "> and current = #{current}</if>
+            <if test="oxygenMax != null "> and oxygen_max = #{oxygenMax}</if>
+            <if test="oxygenMin != null "> and oxygen_min = #{oxygenMin}</if>
+            <if test="temperatureMax != null "> and temperature_max = #{temperatureMax}</if>
+            <if test="temperatureMin != null "> and temperature_min = #{temperatureMin}</if>
+        </where>
+    </select>
+    
+    <select id="selectDeviceThresholdById" parameterType="Integer" resultMap="DeviceThresholdResult">
+        <include refid="selectDeviceThresholdVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="find_by_machine_code" resultType="com.ruoyi.system.domain.DeviceThreshold">
+        select id,
+               machine_code,
+               voltage_max,
+               voltage_min, current, oxygen_max, oxygen_min, temperature_max, temperature_min
+        from device_threshold
+        where machine_code = #{machine_code}
+    </select>
+
+    <insert id="insertDeviceThreshold" parameterType="DeviceThreshold">
+        insert into device_threshold
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="machineCode != null and machineCode != ''">machine_code,</if>
+            <if test="voltageMax != null">voltage_max,</if>
+            <if test="voltageMin != null">voltage_min,</if>
+            <if test="current != null">current,</if>
+            <if test="oxygenMax != null">oxygen_max,</if>
+            <if test="oxygenMin != null">oxygen_min,</if>
+            <if test="temperatureMax != null">temperature_max,</if>
+            <if test="temperatureMin != null">temperature_min,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
+            <if test="voltageMax != null">#{voltageMax},</if>
+            <if test="voltageMin != null">#{voltageMin},</if>
+            <if test="current != null">#{current},</if>
+            <if test="oxygenMax != null">#{oxygenMax},</if>
+            <if test="oxygenMin != null">#{oxygenMin},</if>
+            <if test="temperatureMax != null">#{temperatureMax},</if>
+            <if test="temperatureMin != null">#{temperatureMin},</if>
+         </trim>
+
+
+    </insert>
+
+    <update id="updateDeviceThreshold" parameterType="DeviceThreshold">
+        update device_threshold
+        <trim prefix="SET" suffixOverrides=",">
+<!--&#45;&#45;             <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>-->
+            <if test="voltageMax != null">voltage_max = #{voltageMax},</if>
+            <if test="voltageMin != null">voltage_min = #{voltageMin},</if>
+            <if test="current != null">current = #{current},</if>
+            <if test="oxygenMax != null">oxygen_max = #{oxygenMax},</if>
+            <if test="oxygenMin != null">oxygen_min = #{oxygenMin},</if>
+            <if test="temperatureMax != null">temperature_max = #{temperatureMax},</if>
+            <if test="temperatureMin != null">temperature_min = #{temperatureMin},</if>
+        </trim>
+            <where>
+                machine_code = #{machineCode}
+            </where>
+    </update>
+
+    <delete id="deleteDeviceThresholdById" parameterType="Integer">
+        delete from device_threshold where id = #{id}
+    </delete>
+
+    <delete id="deleteDeviceThresholdByIds" parameterType="String">
+        delete from device_threshold where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

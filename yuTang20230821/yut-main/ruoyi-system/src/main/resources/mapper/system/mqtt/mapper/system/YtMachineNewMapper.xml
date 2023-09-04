@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.YtMachineNewMapper">
+
+    <resultMap type="YtMachineNew" id="YtMachineNewResult">
+        <result property="id"    column="id"    />
+        <result property="machineCode"    column="machine_code"    />
+        <result property="IMEI"    column="IMEI"    />
+        <result property="ICCID"    column="ICCID"    />
+        <result property="voltage"    column="voltage"    />
+        <result property="phase"    column="phase"    />
+        <result property="power"    column="power"    />
+        <result property="current"    column="current"    />
+        <result property="energy"    column="energy"    />
+        <result property="x1Model"    column="x1_model"    />
+        <result property="x2Model"    column="x2_model"    />
+        <result property="x4Model"    column="x4_model"    />
+        <result property="x3Model"    column="x3_model"    />
+        <result property="aerator1Speed"    column="aerator_1_speed"    />
+        <result property="aerator1Status"    column="aerator_1_status"    />
+        <result property="aerator2Speed"    column="aerator_2_speed"    />
+        <result property="aerator2Status"    column="aerator_2_status"    />
+        <result property="aerator3Speed"    column="aerator_3_speed"    />
+        <result property="aerator3Status"    column="aerator_3_status"    />
+        <result property="aerator4Speed"    column="aerator_4_speed"    />
+        <result property="aerator4Status"    column="aerator_4_status"    />
+        <result property="connectTime"    column="connect_time"    />
+        <result property="oxMachineId"    column="ox_machine_id"    />
+        <result property="oxygen"    column="oxygen"    />
+        <result property="oxyCritical"    column="oxy_critical"    />
+        <result property="temperature"    column="temperature"    />
+        <result property="remark"    column="remark"    />
+        <result property="userid"    column="userid"    />
+        <result property="username"    column="username"    />
+        <result property="locationX"    column="location_x"    />
+        <result property="locationY"    column="location_y"    />
+        <result property="ph"    column="ph"    />
+    </resultMap>
+
+    <sql id="selectYtMachineNewVo">
+        select id, machine_code, IMEI, ICCID, voltage, phase, power, current, energy, x1_model, x2_model, x4_model, x3_model, aerator_1_speed, aerator_1_status, aerator_2_speed, aerator_2_status, aerator_3_speed, aerator_3_status, aerator_4_speed, aerator_4_status, connect_time, ox_machine_id, oxygen, oxy_critical, temperature, remark, userid, username, location_x, location_y, ph from yt_machine_new
+    </sql>
+
+    <select id="selectYtMachineNewList" parameterType="YtMachineNew" resultMap="YtMachineNewResult">
+        <include refid="selectYtMachineNewVo"/>
+        <where>
+            <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
+            <if test="IMEI != null  and IMEI != ''"> and IMEI = #{IMEI}</if>
+            <if test="ICCID != null  and ICCID != ''"> and ICCID = #{ICCID}</if>
+            <if test="voltage != null "> and voltage = #{voltage}</if>
+            <if test="phase != null "> and phase = #{phase}</if>
+            <if test="power != null  and power != ''"> and power = #{power}</if>
+            <if test="current != null "> and current = #{current}</if>
+            <if test="energy != null "> and energy = #{energy}</if>
+            <if test="x1Model != null "> and x1_model = #{x1Model}</if>
+            <if test="x2Model != null "> and x2_model = #{x2Model}</if>
+            <if test="x4Model != null "> and x4_model = #{x4Model}</if>
+            <if test="x3Model != null "> and x3_model = #{x3Model}</if>
+            <if test="aerator1Speed != null "> and aerator_1_speed = #{aerator1Speed}</if>
+            <if test="aerator1Status != null "> and aerator_1_status = #{aerator1Status}</if>
+            <if test="aerator2Speed != null "> and aerator_2_speed = #{aerator2Speed}</if>
+            <if test="aerator2Status != null "> and aerator_2_status = #{aerator2Status}</if>
+            <if test="aerator3Speed != null "> and aerator_3_speed = #{aerator3Speed}</if>
+            <if test="aerator3Status != null "> and aerator_3_status = #{aerator3Status}</if>
+            <if test="aerator4Speed != null "> and aerator_4_speed = #{aerator4Speed}</if>
+            <if test="aerator4Status != null "> and aerator_4_status = #{aerator4Status}</if>
+            <if test="connectTime != null "> and connect_time = #{connectTime}</if>
+            <if test="oxygen != null "> and oxygen = #{oxygen}</if>
+            <if test="oxyCritical != null "> and oxy_critical = #{oxyCritical}</if>
+            <if test="temperature != null "> and temperature = #{temperature}</if>
+            <if test="userid != null "> and userid = #{userid}</if>
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="locationX != null  and locationX != ''"> and location_x = #{locationX}</if>
+            <if test="locationY != null  and locationY != ''"> and location_y = #{locationY}</if>
+            <if test="ph != null "> and ph = #{ph}</if>
+        </where>
+    </select>
+
+    <select id="selectYtMachineNewById" parameterType="Integer" resultMap="YtMachineNewResult">
+        <include refid="selectYtMachineNewVo"/>
+        where id = #{id}
+    </select>
+    <select id="findAllDevice4g" resultType="com.ruoyi.system.domain.Device_4g">
+        select * from device4g
+    </select>
+    <select id="findMachineByMachineCode" resultType="com.ruoyi.system.domain.YtMachineNew">
+        select * from yt_machine_new
+        where  machine_code = #{machineCode}
+    </select>
+    <select id="findMaxMachineCode" resultType="java.lang.String">
+        SELECT MAX(right(machine_code,6))
+        FROM yt_machine_new
+    </select>
+
+    <insert id="insertYtMachineNew" parameterType="YtMachineNew" useGeneratedKeys="true" keyProperty="id">
+        insert into yt_machine_new
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">machine_code,</if>
+            <if test="IMEI != null and IMEI != ''">IMEI,</if>
+            <if test="ICCID != null and ICCID != ''">ICCID,</if>
+            <if test="voltage != null">voltage,</if>
+            <if test="phase != null">phase,</if>
+            <if test="power != null">power,</if>
+            <if test="current != null">current,</if>
+            <if test="energy != null">energy,</if>
+            <if test="x1Model != null">x1_model,</if>
+            <if test="x2Model != null">x2_model,</if>
+            <if test="x4Model != null">x4_model,</if>
+            <if test="x3Model != null">x3_model,</if>
+            <if test="aerator1Speed != null">aerator_1_speed,</if>
+            <if test="aerator1Status != null">aerator_1_status,</if>
+            <if test="aerator2Speed != null">aerator_2_speed,</if>
+            <if test="aerator2Status != null">aerator_2_status,</if>
+            <if test="aerator3Speed != null">aerator_3_speed,</if>
+            <if test="aerator3Status != null">aerator_3_status,</if>
+            <if test="aerator4Speed != null">aerator_4_speed,</if>
+            <if test="aerator4Status != null">aerator_4_status,</if>
+            <if test="connectTime != null">connect_time,</if>
+            <if test="oxMachineId != null">ox_machine_id,</if>
+            <if test="oxygen != null">oxygen,</if>
+            <if test="oxyCritical != null">oxy_critical,</if>
+            <if test="temperature != null">temperature,</if>
+            <if test="remark != null">remark,</if>
+            <if test="userid != null">userid,</if>
+            <if test="username != null">username,</if>
+            <if test="locationX != null">location_x,</if>
+            <if test="locationY != null">location_y,</if>
+            <if test="ph != null">ph,</if>
+            <if test="atmosphere != null">atmosphere,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
+            <if test="IMEI != null and IMEI != ''">#{IMEI},</if>
+            <if test="ICCID != null and ICCID != ''">#{ICCID},</if>
+            <if test="voltage != null">#{voltage},</if>
+            <if test="phase != null">#{phase},</if>
+            <if test="power != null">#{power},</if>
+            <if test="current != null">#{current},</if>
+            <if test="energy != null">#{energy},</if>
+            <if test="x1Model != null">#{x1Model},</if>
+            <if test="x2Model != null">#{x2Model},</if>
+            <if test="x4Model != null">#{x4Model},</if>
+            <if test="x3Model != null">#{x3Model},</if>
+            <if test="aerator1Speed != null">#{aerator1Speed},</if>
+            <if test="aerator1Status != null">#{aerator1Status},</if>
+            <if test="aerator2Speed != null">#{aerator2Speed},</if>
+            <if test="aerator2Status != null">#{aerator2Status},</if>
+            <if test="aerator3Speed != null">#{aerator3Speed},</if>
+            <if test="aerator3Status != null">#{aerator3Status},</if>
+            <if test="aerator4Speed != null">#{aerator4Speed},</if>
+            <if test="aerator4Status != null">#{aerator4Status},</if>
+            <if test="connectTime != null">#{connectTime},</if>
+            <if test="oxMachineId != null">#{oxMachineId},</if>
+            <if test="oxygen != null">#{oxygen},</if>
+            <if test="oxyCritical != null">#{oxyCritical},</if>
+            <if test="temperature != null">#{temperature},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="userid != null">#{userid},</if>
+            <if test="username != null">#{username},</if>
+            <if test="locationX != null">#{locationX},</if>
+            <if test="locationY != null">#{locationY},</if>
+            <if test="ph != null">#{ph},</if>
+            <if test="atmosphere != null">#{atmosphere},</if>
+         </trim>
+    </insert>
+
+
+    <insert id="insertNew">
+        insert into yt_machine_new(id,machine_code,IMEI,ICCID,voltage,phase,power,current,energy,x1_model,x2_model,x4_model,x3_model,
+                                   aerator_1_speed,aerator_1_status,aerator_2_speed,aerator_2_status,aerator_3_speed,aerator_3_status,
+                                   aerator_4_speed,aerator_4_status,connect_time,ox_machine_id,oxygen,oxy_critical,temperature,remark,
+                                   userid,username,location_x,location_y,ph,atmosphere)
+        values(#{id}, #{machineCode},#{IMEI},#{ICCID},#{voltage},#{phase},#{power},#{current},#{energy},#{x1Model},#{x2Model},
+               #{x4Model},#{x3Model},#{aerator1Speed},#{aerator1Status},#{aerator2Speed},#{aerator2Status},#{aerator3Speed},
+               #{aerator3Status},#{aerator4Speed},#{aerator4Status},#{connectTime},#{oxMachineId},#{oxygen},#{oxyCritical},
+               #{temperature},#{remark},#{userid},#{username},#{locationX},#{locationY},#{ph},#{atmosphere})
+    </insert>
+    <update id="updateYtMachineNew" parameterType="YtMachineNew">
+        update yt_machine_new
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>
+            <if test="IMEI != null and IMEI != ''">IMEI = #{IMEI},</if>
+            <if test="ICCID != null and ICCID != ''">ICCID = #{ICCID},</if>
+            <if test="voltage != null">voltage = #{voltage},</if>
+            <if test="phase != null">phase = #{phase},</if>
+            <if test="power != null">power = #{power},</if>
+            <if test="current != null">current = #{current},</if>
+            <if test="energy != null">energy = #{energy},</if>
+            <if test="x1Model != null">x1_model = #{x1Model},</if>
+            <if test="x2Model != null">x2_model = #{x2Model},</if>
+            <if test="x4Model != null">x4_model = #{x4Model},</if>
+            <if test="x3Model != null">x3_model = #{x3Model},</if>
+            <if test="aerator1Speed != null">aerator_1_speed = #{aerator1Speed},</if>
+            <if test="aerator1Status != null">aerator_1_status = #{aerator1Status},</if>
+            <if test="aerator2Speed != null">aerator_2_speed = #{aerator2Speed},</if>
+            <if test="aerator2Status != null">aerator_2_status = #{aerator2Status},</if>
+            <if test="aerator3Speed != null">aerator_3_speed = #{aerator3Speed},</if>
+            <if test="aerator3Status != null">aerator_3_status = #{aerator3Status},</if>
+            <if test="aerator4Speed != null">aerator_4_speed = #{aerator4Speed},</if>
+            <if test="aerator4Status != null">aerator_4_status = #{aerator4Status},</if>
+            <if test="connectTime != null">connect_time = #{connectTime},</if>
+            <if test="oxMachineId != null">ox_machine_id = #{oxMachineId},</if>
+            <if test="oxygen != null">oxygen = #{oxygen},</if>
+            <if test="oxyCritical != null">oxy_critical = #{oxyCritical},</if>
+            <if test="temperature != null">temperature = #{temperature},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="userid != null">userid = #{userid},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="locationX != null">location_x = #{locationX},</if>
+            <if test="locationY != null">location_y = #{locationY},</if>
+            <if test="ph != null">ph = #{ph},</if>
+            <if test="atmosphere != null">atmosphere = #{atmosphere},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteYtMachineNewById" parameterType="Integer">
+        delete from yt_machine_new where id = #{id}
+    </delete>
+
+    <delete id="deleteYtMachineNewByIds" parameterType="String">
+        delete from yt_machine_new where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

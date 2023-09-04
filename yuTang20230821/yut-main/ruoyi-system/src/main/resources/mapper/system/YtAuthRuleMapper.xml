@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.YtAuthRuleMapper">
+
+    <resultMap type="YtAuthRule" id="YtAuthRuleResult">
+        <result property="id"    column="id"    />
+        <result property="href"    column="href"    />
+        <result property="title"    column="title"    />
+        <result property="type"    column="type"    />
+        <result property="status"    column="status"    />
+        <result property="pid"    column="pid"    />
+        <result property="icon"    column="icon"    />
+        <result property="sort"    column="sort"    />
+        <result property="condition"    column="condition"    />
+    </resultMap>
+
+    <sql id="selectYtAuthRuleVo">
+        select id, name as href, title, type, status, pid, icon, sort, `condition` from yt_auth_rule
+    </sql>
+
+    <select id="selectYtAuthRuleList" parameterType="YtAuthRule" resultMap="YtAuthRuleResult">
+        <include refid="selectYtAuthRuleVo"/>
+        <where>
+            <if test="href != null  and href != ''"> and name like concat('%', #{href}, '%')</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="type != null "> and type = #{type}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="pid != null "> and pid = #{pid}</if>
+            <if test="icon != null  and icon != ''"> and icon = #{icon}</if>
+            <if test="sort != null "> and sort = #{sort}</if>
+            <if test="condition != null  and condition != ''"> and condition = #{condition}</if>
+        </where>
+    </select>
+
+    <select id="selectYtAuthRuleById" parameterType="Integer" resultMap="YtAuthRuleResult">
+        <include refid="selectYtAuthRuleVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectYtAuthRuleByIds" parameterType="java.util.List" resultType="com.ruoyi.common.core.domain.entity.YtAuthRule">
+        <include refid="selectYtAuthRuleVo"/>
+        where id in
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <!--    <select id="selectYtAuthRuleByIds" parameterType="java.util.List" resultType="com.ruoyi.common.core.domain.entity.YtAuthRule">-->
+<!--        <include refid="selectYtAuthRuleVo"/>-->
+<!--        where id in #{ids}-->
+<!--    </select>-->
+
+    <insert id="insertYtAuthRule" parameterType="YtAuthRule" useGeneratedKeys="true" keyProperty="id">
+        insert into yt_auth_rule
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="href != null">name,</if>
+            <if test="title != null">title,</if>
+            <if test="type != null">type,</if>
+            <if test="status != null">status,</if>
+            <if test="pid != null">pid,</if>
+            <if test="icon != null">icon,</if>
+            <if test="sort != null">sort,</if>
+            <if test="condition != null">condition,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="href != null">#{name},</if>
+            <if test="title != null">#{title},</if>
+            <if test="type != null">#{type},</if>
+            <if test="status != null">#{status},</if>
+            <if test="pid != null">#{pid},</if>
+            <if test="icon != null">#{icon},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="condition != null">#{condition},</if>
+        </trim>
+    </insert>
+
+    <update id="updateYtAuthRule" parameterType="YtAuthRule">
+        update yt_auth_rule
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="href != null">name = #{name},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="pid != null">pid = #{pid},</if>
+            <if test="icon != null">icon = #{icon},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="condition != null">`condition` = #{condition},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteYtAuthRuleById" parameterType="Integer">
+        delete from yt_auth_rule where id = #{id}
+    </delete>
+
+    <delete id="deleteYtAuthRuleByIds" parameterType="String">
+        delete from yt_auth_rule where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

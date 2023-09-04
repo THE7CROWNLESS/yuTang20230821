@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.yt.YtUserRechangeOrderMapper">
+    
+<!--    <resultMap id="YtUserRechangeOrderResult" type="com.ruoyi.system.domain.yt.YtUserRechangeOrder" >-->
+<!--        <result property="id"    column="id"    />-->
+<!--        <result property="out_trade_no"    column="out_trade_no"    />-->
+<!--        <result property="user_id"    column="user_id"    />-->
+<!--        <result property="user_machine_id"    column="user_machine_id"    />-->
+<!--        <result property="machine_id"    column="machine_id"    />-->
+<!--        <result property="machine_code"    column="machine_code"    />-->
+<!--        <result property="price"    column="price"    />-->
+<!--        <result property="package_id"    column="package_id"    />-->
+<!--        <result property="pay_time"    column="pay_time"    />-->
+<!--        <result property="valid_day"    column="valid_day"    />-->
+<!--        <result property="status"    column="status"    />-->
+<!--        <result property="create_time"    column="create_time"  typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"  />-->
+
+<!--        <association property="ytUserRechangeOrderVo" javaType="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderVo">-->
+<!--            <result property="id"    column="id"    />-->
+<!--            <result property="username"    column="username"    />-->
+<!--            <result property="phone"    column="phone"    />-->
+<!--            <result property="openid"    column="openid"    />-->
+<!--        </association>-->
+
+<!--        <association property="ytMachineRechangeOrderVo" javaType="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderYtMachineVo">-->
+<!--            <result property="id"    column="id"    />-->
+<!--            <result property="machine_code"    column="machine_code"    />-->
+<!--            <result property="machine_name"    column="machine_name"    />-->
+<!--        </association>-->
+
+<!--    </resultMap>-->
+
+
+    <resultMap id="YtUserRechangeOrderVo" type="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderVo" >
+        <result property="id"    column="id"    />
+        <result property="out_trade_no"    column="out_trade_no"    />
+        <result property="user_id"    column="user_id"    />
+        <result property="machine_id"    column="machine_id"    />
+        <result property="price"    column="price"    />
+        <result property="valid_day"    column="valid_day"    />
+        <result property="create_time"    column="create_time"  typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"  />
+
+        <association property="user" javaType="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderYtUserVo">
+            <result property="id"    column="id"    />
+            <result property="username"    column="username"    />
+            <result property="phone"    column="phone"    />
+            <result property="openid"    column="openid"    />
+        </association>
+
+        <association property="machine" javaType="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderYtMachineVo">
+            <result property="id"    column="id"    />
+            <result property="machine_code"    column="machine_code"    />
+            <result property="machine_name"    column="machine_name"    />
+            <result property="is_online" column="is_online"/>
+        </association>
+
+    </resultMap>
+
+    <select id="selectYtUserRechangeOrderList" parameterType="com.ruoyi.system.domain.yt.vo.YtUserRechangeOrderVo" resultMap="YtUserRechangeOrderVo">
+        select yt_user_rechange_order.id, out_trade_no, user_id, machine_id, price, valid_day, yt_user_rechange_order.create_time,
+               yt_user.id,yt_user.username,yt_user.openid,yt_user.phone,
+               yt_machine.id,yt_machine.machine_code,yt_machine.machine_name
+        from
+            yt_user_rechange_order
+            JOIN yt_user ON yt_user_rechange_order.user_id = yt_user.id
+            JOIN yt_machine ON yt_user_rechange_order.machine_id
+    </select>
+
+</mapper>

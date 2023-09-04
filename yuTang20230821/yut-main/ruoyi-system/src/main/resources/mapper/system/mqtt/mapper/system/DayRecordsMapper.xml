@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.DayRecordsMapper">
+    
+    <resultMap type="DayRecords" id="DayRecordsResult">
+        <result property="id"    column="id"    />
+        <result property="machineCode"    column="machine_code"    />
+        <result property="energy"    column="energy"    />
+        <result property="operateNums"    column="operate_nums"    />
+        <result property="warningNums"    column="warning_nums"    />
+        <result property="msgDetails"    column="msg_details"    />
+    </resultMap>
+
+    <sql id="selectDayRecordsVo">
+        select id, machine_code, energy, operate_nums, warning_nums, msg_details from day_records
+    </sql>
+
+    <select id="selectDayRecordsList" parameterType="DayRecords" resultMap="DayRecordsResult">
+        <include refid="selectDayRecordsVo"/>
+        <where>  
+            <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
+            <if test="energy != null "> and energy = #{energy}</if>
+            <if test="operateNums != null "> and operate_nums = #{operateNums}</if>
+            <if test="warningNums != null "> and warning_nums = #{warningNums}</if>
+            <if test="msgDetails != null  and msgDetails != ''"> and msg_details = #{msgDetails}</if>
+        </where>
+    </select>
+    
+    <select id="selectDayRecordsById" parameterType="Integer" resultMap="DayRecordsResult">
+        <include refid="selectDayRecordsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDayRecords" parameterType="DayRecords">
+        insert into day_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="machineCode != null and machineCode != ''">machine_code,</if>
+            <if test="energy != null">energy,</if>
+            <if test="operateNums != null">operate_nums,</if>
+            <if test="warningNums != null">warning_nums,</if>
+            <if test="msgDetails != null">msg_details,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
+            <if test="energy != null">#{energy},</if>
+            <if test="operateNums != null">#{operateNums},</if>
+            <if test="warningNums != null">#{warningNums},</if>
+            <if test="msgDetails != null">#{msgDetails},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDayRecords" parameterType="DayRecords">
+        update day_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>
+            <if test="energy != null">energy = #{energy},</if>
+            <if test="operateNums != null">operate_nums = #{operateNums},</if>
+            <if test="warningNums != null">warning_nums = #{warningNums},</if>
+            <if test="msgDetails != null">msg_details = #{msgDetails},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDayRecordsById" parameterType="Integer">
+        delete from day_records where id = #{id}
+    </delete>
+
+    <delete id="deleteDayRecordsByIds" parameterType="String">
+        delete from day_records where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
