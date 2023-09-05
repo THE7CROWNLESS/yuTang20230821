@@ -81,6 +81,8 @@ public class MqttPushClient {
         try {
             token = mTopic.publish(message);
             token.waitForCompletion();
+            logger.info("发布消息主题 : " + topic);
+            logger.info("发布消息内容 : " + message);
             return success();
         } catch (MqttPersistenceException e) {
             e.printStackTrace();

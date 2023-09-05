@@ -72,4 +72,8 @@ public interface Device4gMapper
     List<Device4gNameVo> selectStatusList(@Param("status")Integer status, @Param("fishPond")String fish_pond);
 
     List<Device4gNameVo> selectAllStatusList(@Param("fishPond")String fishPond);
+
+    List<Device4g> pondList();
+
+    Device4g selectByMachineCode(String machineCode);
 }

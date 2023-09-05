@@ -1,5 +1,6 @@
 package com.ruoyi.system.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ruoyi.system.domain.vo.Device4gNameVo;
@@ -12,19 +13,19 @@ import com.ruoyi.system.service.IDevice4gService;
 
 /**
  * 【请填写功能名称】Service业务层处理
- * 
+ *
  * @author ruoyi
  * @date 2023-09-04
  */
 @Service
-public class Device4gServiceImpl implements IDevice4gService 
+public class Device4gServiceImpl implements IDevice4gService
 {
     @Autowired
     private Device4gMapper device4gMapper;
 
     /**
      * 查询【请填写功能名称】
-     * 
+     *
      * @param id 【请填写功能名称】主键
      * @return 【请填写功能名称】
      */
@@ -36,7 +37,7 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 查询【请填写功能名称】列表
-     * 
+     *
      * @param device4g 【请填写功能名称】
      * @return 【请填写功能名称】
      */
@@ -48,7 +49,7 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 新增【请填写功能名称】
-     * 
+     *
      * @param device4g 【请填写功能名称】
      * @return 结果
      */
@@ -60,7 +61,7 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 修改【请填写功能名称】
-     * 
+     *
      * @param device4g 【请填写功能名称】
      * @return 结果
      */
@@ -72,7 +73,7 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 批量删除【请填写功能名称】
-     * 
+     *
      * @param ids 需要删除的【请填写功能名称】主键
      * @return 结果
      */
@@ -84,7 +85,7 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 删除【请填写功能名称】信息
-     * 
+     *
      * @param id 【请填写功能名称】主键
      * @return 结果
      */
@@ -96,7 +97,9 @@ public class Device4gServiceImpl implements IDevice4gService
 
     @Override
     public Device4gVo countStatus(String fishPond) {
-        return device4gMapper.countStatus(fishPond);
+        Device4gVo device4gVo = device4gMapper.countStatus(fishPond);
+        device4gVo.setFishPond(fishPond);
+        return device4gVo;
     }
 
     @Override
@@ -107,5 +110,15 @@ public class Device4gServiceImpl implements IDevice4gService
     @Override
     public List<Device4gNameVo> selectAllStatusList(String fishPpond) {
         return device4gMapper.selectAllStatusList(fishPpond);
+    }
+
+    @Override
+    public List<String> pondList() {
+        List<String> res = new ArrayList<>();
+        List<Device4g> device4gs = device4gMapper.pondList();
+        for (Device4g device4g : device4gs) {
+            res.add(device4g.getFishPond());
+        }
+        return res;
     }
 }

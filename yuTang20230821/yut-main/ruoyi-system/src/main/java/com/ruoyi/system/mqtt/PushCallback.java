@@ -2,23 +2,32 @@ package com.ruoyi.system.mqtt;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import com.ruoyi.system.domain.DayLog;
 import com.ruoyi.system.domain.Device4g;
 import com.ruoyi.system.domain.YtMachineNew;
+import com.ruoyi.system.mapper.DayLogMapper;
 import com.ruoyi.system.mapper.Device4gMapper;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
+import com.ruoyi.system.utils.WarningUtils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class PushCallback implements MqttCallback {
     private static final Logger logger = LoggerFactory.getLogger(MqttPushClient.class);
-
+    @Autowired
+    private WarningUtils warningUtils;
+    @Autowired
+    private DayLogMapper dayLogMapper;
     @Autowired
     private YtMachineNewMapper ytMachineNewMapper;
 
@@ -56,7 +65,6 @@ public class PushCallback implements MqttCallback {
 
         //消息处理，topic、payload拆分
         YtMachineNew ytMachineNew = dealMachineNewMsg(topic, mqttMessage);
-        logger.info(ytMachineNew.toString());
         //持久化操作，进行保存(日志表、数据表
         ytMachineNewMapper.insertYtMachineNew(ytMachineNew);
 
@@ -102,14 +110,14 @@ public class PushCallback implements MqttCallback {
         }else {
             // 第一次接入mqtt服务器，需新建设备，生成设备编码
             // 计算（自增
-            Integer machine_num_code= Integer.parseInt(ytMachineNewMapper.findMaxMachineCode()) + 1;
+            int machine_num_code= Integer.parseInt(ytMachineNewMapper.findMaxMachineCode()) + 1;
             // 计算类型(有ph值是浮漂sensor：1开头；无则为控制器：2开头
             if (ytMachineNew.getPh() == null) {
-                ytMachineNew.setMachineCode("24" + machine_num_code.toString());
+                ytMachineNew.setMachineCode("24" + Integer.toString(machine_num_code));
                 machine_name = "控制器";
                 machine_type = "2";
             }else {
-                ytMachineNew.setMachineCode("14" + machine_num_code.toString());
+                ytMachineNew.setMachineCode("14" + Integer.toString(machine_num_code));
                 machine_name = "浮漂式传感器";
                 machine_type = "1";
             }
@@ -122,11 +130,36 @@ public class PushCallback implements MqttCallback {
             device4g.setMachineName(machine_name);
             device4g.setMachineType(machine_type);
             // 养殖场、状态 暂时 为 静态数据
-            device4g.setFishPond("1号养殖场");
+            device4g.setFishPond("一号养殖场");
             device4g.setMachineStatus(0);
             device4g.setCSQ(CSQ);
             device4gMapper.insertDevice4g(device4g);
         }
+
+        // 防止mqtt数据格式出错导致bug，先暂时赋值避免，后续做校验
+        if (ytMachineNew.getPhase() == null) {
+            ytMachineNew.setPhase(0);
+        }
+        if (ytMachineNew.getPower() == null) {
+            ytMachineNew.setPower("0");
+        }
+
+        // 判断 设备状态 是否需要报警 存日志
+        if (ytMachineNew.getPhase() != 0) {
+            DayLog dayLog = new DayLog();
+            Device4g device4g = device4gMapper.selectByMachineCode(machine_coe);
+            BeanUtils.copyProperties(device4g,dayLog);
+            dayLog.setId(null);
+            dayLog.setCreateTime(new Date());
+            String machineName = device4g.getMachineName();
+            String warningMsg = machineName + warningUtils.parseType(ytMachineNew.getPhase());
+            dayLog.setMsg(warningMsg);
+            dayLog.setMsgType(1);
+            dayLog.setPower(Float.valueOf(ytMachineNew.getPower()));
+            logger.info((dayLog.toString()));
+            dayLogMapper.insert(dayLog);
+        }
+
         return ytMachineNew;
     }
 

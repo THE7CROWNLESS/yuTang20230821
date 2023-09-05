@@ -58,4 +58,7 @@ public interface IYtMachineNewService
      * @return 结果
      */
     public int deleteYtMachineNewById(Integer id);
+
+    String updateMqttAerator(YtMachineNew machineData,String num,Integer old, Integer change);
+
 }

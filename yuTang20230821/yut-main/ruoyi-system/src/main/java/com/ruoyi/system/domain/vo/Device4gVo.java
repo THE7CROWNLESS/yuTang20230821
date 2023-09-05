@@ -8,6 +8,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Device4gVo {
+    private String fishPond;
     private Integer deviceSum;
     private Integer deviceOn;
     private Integer deviceOff;

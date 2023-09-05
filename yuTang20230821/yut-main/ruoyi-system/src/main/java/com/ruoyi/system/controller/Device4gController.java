@@ -112,8 +112,8 @@ public class Device4gController extends BaseController
      * @Param status，fishPond
      */
     @GetMapping("/allStatus/list")
-    public AjaxResult selectAllStatusList( @RequestParam String fishPond){
-        return success(device4gService.selectAllStatusList(fishPond));
+    public AjaxResult selectAllStatusList( @RequestParam String fish_pond){
+        return success(device4gService.selectAllStatusList(fish_pond));
     }
 
     /**
@@ -123,6 +123,16 @@ public class Device4gController extends BaseController
     @GetMapping("/status/list")
     public AjaxResult selectStatusList(@RequestParam Integer status, @RequestParam String fish_pond){
         return success(device4gService.selectStatusList(status,fish_pond));
+    }
+
+
+    /**
+     * 养殖场 列表
+     * @Param
+     */
+    @GetMapping("/pond")
+    public AjaxResult pondList(){
+        return success(device4gService.pondList());
     }
 
 }

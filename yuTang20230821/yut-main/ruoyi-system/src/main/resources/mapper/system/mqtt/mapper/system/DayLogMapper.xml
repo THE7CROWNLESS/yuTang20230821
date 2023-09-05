@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.DayLogMapper">
+    <resultMap type="DayLog" id="DayRecordsResult">
+        <result property="id"    column="id"    />
+        <result property="fishPond"    column="fish_pond"    />
+        <result property="machineCode"    column="machine_code"    />
+        <result property="machineName"    column="machine_name"    />
+        <result property="aerator"    column="aerator"    />
+        <result property="msg"    column="msg"    />
+        <result property="power"    column="power"    />
+        <result property="msgType"    column="msg_type"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="field1"    column="field1"    />
+        <result property="field2"    column="field2"    />
+        <result property="field3"    column="field3"    />
+    </resultMap>
+
+    <insert id="insert" parameterType="DayLog" useGeneratedKeys="true" keyProperty="id">
+        insert into day_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fishPond != null and fishPond != ''">fish_pond,</if>
+            <if test="machineCode != null and machineCode != ''">machine_code,</if>
+            <if test="machineName != null and machineName != ''">machine_name,</if>
+            <if test="aerator != null and aerator != ''">aerator,</if>
+            <if test="msg != null and msg != ''">msg,</if>
+            <if test="power != null and power != ''">power,</if>
+            <if test="msgType != null and msgType != ''">msg_type,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="fishPond != null and fishPond != ''">#{fishPond},</if>
+            <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
+            <if test="machineName != null and machineName != ''">#{machineName},</if>
+            <if test="aerator != null and aerator != ''">#{aerator},</if>
+            <if test="msg != null and msg != ''">#{msg},</if>
+            <if test="power != null and power != ''">#{power},</if>
+            <if test="msgType != null and msgType != ''">#{msgType},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </insert>
+
+
+    <select id="getDaysList" resultType="com.ruoyi.system.domain.DayLog">
+        SELECT * FROM day_log
+    </select>
+    <select id="getMonthsList" resultType="com.ruoyi.system.domain.vo.DayLogMonthVo">
+        SELECT YEAR(create_time) as year,
+               MONTH(create_time) as `month`,
+               sum(`power`) as `power`,
+               count(msg_type) as operation,
+               count(msg_type=1) as warning
+        FROM day_log
+        WHERE fish_pond = #{fishPond}
+        GROUP BY `month`,`year`
+    </select>
+    <select id="getDateSum" resultType="com.ruoyi.system.domain.vo.DayLogMonthVo">
+        SELECT SUM(`power`) as power,COUNT(msg_type) as operation,COUNT(msg_type=1 or null) as warning
+        FROM day_log
+        WHERE fish_pond = #{fishPond}
+        AND create_time BETWEEN #{begin} AND #{end}
+    </select>
+
+
+</mapper>

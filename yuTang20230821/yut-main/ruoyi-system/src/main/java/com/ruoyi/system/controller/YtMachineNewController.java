@@ -6,12 +6,10 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
-import com.ruoyi.system.domain.DeviceThreshold;
 import com.ruoyi.system.domain.YtMachineNew;
-import com.ruoyi.system.mapper.DeviceThresholdMapper;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
-import com.ruoyi.system.mqtt.MqttPushClient;
 import com.ruoyi.system.service.IYtMachineNewService;
+import com.ruoyi.system.utils.WarningUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -27,29 +25,21 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/system/new")
-public class YtMachineNewController extends BaseController
-{
+public class YtMachineNewController extends BaseController {
 
     @Autowired
-    private DeviceThresholdMapper deviceThresholdMapper;
+    private WarningUtils warningUtils;
     @Autowired
     private IYtMachineNewService ytMachineNewService;
-
     @Autowired
     private YtMachineNewMapper ytMachineNewMapper;
-
-
-    @Autowired
-    private MqttPushClient mqttPushClient;
-
 
     /**
      * 查询设备列表
      */
 //    @PreAuthorize("@ss.hasPermi('system:new:list')")
     @GetMapping("/list")
-    public TableDataInfo list(YtMachineNew ytMachineNew)
-    {
+    public TableDataInfo list(YtMachineNew ytMachineNew) {
         startPage();
         List<YtMachineNew> list = ytMachineNewService.selectYtMachineNewList(ytMachineNew);
         return getDataTable(list);
@@ -61,8 +51,7 @@ public class YtMachineNewController extends BaseController
     @PreAuthorize("@ss.hasPermi('system:new:export')")
     @Log(title = "设备", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
-    public void export(HttpServletResponse response, YtMachineNew ytMachineNew)
-    {
+    public void export(HttpServletResponse response, YtMachineNew ytMachineNew) {
         List<YtMachineNew> list = ytMachineNewService.selectYtMachineNewList(ytMachineNew);
         ExcelUtil<YtMachineNew> util = new ExcelUtil<YtMachineNew>(YtMachineNew.class);
         util.exportExcel(response, list, "设备数据");
@@ -73,8 +62,7 @@ public class YtMachineNewController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('system:new:query')")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Integer id)
-    {
+    public AjaxResult getInfo(@PathVariable("id") Integer id) {
         return success(ytMachineNewService.selectYtMachineNewById(id));
     }
 
@@ -84,8 +72,7 @@ public class YtMachineNewController extends BaseController
     //@PreAuthorize("@ss.hasPermi('system:new:add')")
     @Log(title = "设备", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody YtMachineNew ytMachineNew)
-    {
+    public AjaxResult add(@RequestBody YtMachineNew ytMachineNew) {
         return toAjax(ytMachineNewService.insertYtMachineNew(ytMachineNew));
     }
 
@@ -95,8 +82,7 @@ public class YtMachineNewController extends BaseController
     @PreAuthorize("@ss.hasPermi('system:new:edit')")
     @Log(title = "设备", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody YtMachineNew ytMachineNew)
-    {
+    public AjaxResult edit(@RequestBody YtMachineNew ytMachineNew) {
         return toAjax(ytMachineNewService.updateYtMachineNew(ytMachineNew));
     }
 
@@ -105,9 +91,8 @@ public class YtMachineNewController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('system:new:remove')")
     @Log(title = "设备", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable Integer[] ids)
-    {
+    @DeleteMapping("/{ids}")
+    public AjaxResult remove(@PathVariable Integer[] ids) {
         return toAjax(ytMachineNewService.deleteYtMachineNewByIds(ids));
     }
 
@@ -118,55 +103,47 @@ public class YtMachineNewController extends BaseController
         return success(ytMachineNewMapper.findAllDevice4g());
     }
 
-    // 设备详情
+    // 最新 设备详情
     @GetMapping("/machine/{code}")
-    public AjaxResult findMachineByMachineCode(@PathVariable String code){
+    public AjaxResult findMachineByMachineCode(@PathVariable String code) {
         return success(ytMachineNewMapper.findMachineByMachineCode(code));
     }
 
-    // 设备报警状态
+    // 根据 设备编码 设备报警状态
     @GetMapping("/warning/{machine_code}")
     public AjaxResult isWarning(@PathVariable String machine_code) {
-        // 取最新数据信息
-        YtMachineNew ytMachineNew = ytMachineNewMapper.findMachineByMachineCode(machine_code);
-        //阈值
-        DeviceThreshold deviceThreshold = deviceThresholdMapper.find_by_machine_code(machine_code);
-
-        // 判断 current voltage_max min  temp_max min  oxygen_max min 不符合就设置报警
-        Boolean flag = false; // 不报警
-        if (ytMachineNew.getCurrent().compareTo(deviceThreshold.getCurrent()) == 1){
-            flag = true;
-        }
-        if (ytMachineNew.getVoltage().compareTo(deviceThreshold.getVoltageMax()) == 1){
-            flag = true;
-        }
-        if (ytMachineNew.getVoltage().compareTo(deviceThreshold.getVoltageMin()) == -1){
-            flag = true;
-        }
-        if (ytMachineNew.getTemperature().compareTo(deviceThreshold.getTemperatureMax()) == 1){
-            flag = true;
-        }
-        if (ytMachineNew.getTemperature().compareTo(deviceThreshold.getTemperatureMin()) == -1){
-            flag = true;
-        }
-        if (ytMachineNew.getOxygen().compareTo(deviceThreshold.getOxygenMax()) == 1){
-            flag = true;
-        }
-        if (ytMachineNew.getOxygen().compareTo(deviceThreshold.getOxygenMin()) == -1){
-            flag = true;
-        }
-
-        return success(flag);
+        return success(warningUtils.thresholdWarning(machine_code));
     }
 
     // 根据参数 设置 设备 的开关机状态，发布mqtt消息，记录日志
-    @PostMapping("machine/aerator/switch")
-    public AjaxResult switchAerator(@RequestParam String machineCode, @RequestParam Integer num){
-
-        String topic = "/home";
-        String msg = "1";
-        mqttPushClient.publish(0,true,topic,msg);
-        return success();
+    @PostMapping("/aerator/switch")
+    public AjaxResult switchAerator(@RequestParam String machine_code, @RequestParam Integer num, @RequestParam Integer change) {
+//        String topic = "/home";
+//        String msg = "1";
+//        mqttPushClient.publish(0,true,topic,msg);
+        // 查数据表 电机状态
+        YtMachineNew machineData = ytMachineNewMapper.findMachineByMachineCode(machine_code);
+        int old = 0;
+        // 判断是否 更改了 状态
+        if (old != change) {
+            // 选择 电机序号
+            if (num == 1) {
+                old = machineData.getAerator1Status();
+                machineData.setAerator1Status(change);
+            } else if (num == 2) {
+                old = machineData.getAerator2Status();
+                machineData.setAerator2Status(change);
+            } else if (num == 3) {
+                old = machineData.getAerator3Status();
+                machineData.setAerator3Status(change);
+            } else if (num == 4) {
+                old = machineData.getAerator4Status();
+                machineData.setAerator4Status(change);
+            }
+            return success(ytMachineNewService.updateMqttAerator(machineData,num.toString(), old, change));
+        } else {
+            return success();
+        }
     }
 
 }

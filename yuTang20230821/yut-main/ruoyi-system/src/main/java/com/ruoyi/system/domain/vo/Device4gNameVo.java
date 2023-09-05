@@ -10,6 +10,7 @@ public class Device4gNameVo {
     private String machineCode;
     private String machineName;
     private String machineType;
+    private Integer machineStatus;
     // 信号强度
     private String CSQ;
 }

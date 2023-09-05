@@ -4,8 +4,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.system.mapper.DeviceThresholdMapper;
+import com.ruoyi.system.utils.WarningUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
@@ -31,6 +33,8 @@ public class DeviceThresholdController extends BaseController
     private DeviceThresholdMapper deviceThresholdMapper;
     @Autowired
     private IDeviceThresholdService deviceThresholdService;
+    @Autowired
+    private WarningUtils warningUtils;
 
     /**
      * 查询【阈值】列表
@@ -113,9 +117,11 @@ public class DeviceThresholdController extends BaseController
      * 更新阈值，需补充日志消息
      */
     @Log(title = "【更新阈值】", businessType = BusinessType.DELETE)
-    @PostMapping("/machine_code")
+    @PostMapping("/change/")
     public AjaxResult insert_by_machine_code(@RequestBody DeviceThreshold deviceThreshold){
         //System.out.println(deviceThreshold);
-        return success(deviceThresholdMapper.updateDeviceThreshold(deviceThreshold));
+        deviceThresholdService.updateDeviceThreshold(deviceThreshold);
+        deviceThresholdMapper.updateDeviceThreshold(deviceThreshold);
+        return success(warningUtils.thresholdSetWarning(deviceThreshold.getMachineCode()));
     }
 }

@@ -71,4 +71,6 @@ public interface YtMachineNewMapper
     public String findMaxMachineCode();
 
     public void insertNew(YtMachineNew ytMachineNew);
+
+    void insertAeratorChange(YtMachineNew machineData);
 }
