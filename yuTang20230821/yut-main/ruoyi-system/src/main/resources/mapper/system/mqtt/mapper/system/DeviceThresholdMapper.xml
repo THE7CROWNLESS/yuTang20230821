@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.DeviceThresholdMapper">
-    
+
     <resultMap type="DeviceThreshold" id="DeviceThresholdResult">
         <result property="id"    column="id"    />
         <result property="machineCode"    column="machine_code"    />
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectDeviceThresholdList" parameterType="DeviceThreshold" resultMap="DeviceThresholdResult">
         <include refid="selectDeviceThresholdVo"/>
-        <where>  
+        <where>
             <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
             <if test="voltageMax != null "> and voltage_max = #{voltageMax}</if>
             <if test="voltageMin != null "> and voltage_min = #{voltageMin}</if>
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="temperatureMin != null "> and temperature_min = #{temperatureMin}</if>
         </where>
     </select>
-    
+
     <select id="selectDeviceThresholdById" parameterType="Integer" resultMap="DeviceThresholdResult">
         <include refid="selectDeviceThresholdVo"/>
         where id = #{id}
@@ -51,7 +51,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertDeviceThreshold" parameterType="DeviceThreshold">
         insert into device_threshold
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">id,</if>
             <if test="machineCode != null and machineCode != ''">machine_code,</if>
             <if test="voltageMax != null">voltage_max,</if>
             <if test="voltageMin != null">voltage_min,</if>
@@ -62,7 +61,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="temperatureMin != null">temperature_min,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">#{id},</if>
             <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
             <if test="voltageMax != null">#{voltageMax},</if>
             <if test="voltageMin != null">#{voltageMin},</if>
@@ -98,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteDeviceThresholdByIds" parameterType="String">
-        delete from device_threshold where id in 
+        delete from device_threshold where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

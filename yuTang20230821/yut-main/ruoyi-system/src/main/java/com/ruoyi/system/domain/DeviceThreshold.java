@@ -1,6 +1,11 @@
 package com.ruoyi.system.domain;
 
 import java.math.BigDecimal;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
@@ -8,10 +13,14 @@ import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 【请填写功能名称】对象 device_threshold
- * 
+ *
  * @author ruoyi
  * @date 2023-09-02
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class DeviceThreshold extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -51,84 +60,84 @@ public class DeviceThreshold extends BaseEntity
     @Excel(name = "温度下限")
     private BigDecimal temperatureMin;
 
-    public void setId(Integer id) 
+    public void setId(Integer id)
     {
         this.id = id;
     }
 
-    public Integer getId() 
+    public Integer getId()
     {
         return id;
     }
-    public void setMachineCode(String machineCode) 
+    public void setMachineCode(String machineCode)
     {
         this.machineCode = machineCode;
     }
 
-    public String getMachineCode() 
+    public String getMachineCode()
     {
         return machineCode;
     }
-    public void setVoltageMax(Integer voltageMax) 
+    public void setVoltageMax(Integer voltageMax)
     {
         this.voltageMax = voltageMax;
     }
 
-    public Integer getVoltageMax() 
+    public Integer getVoltageMax()
     {
         return voltageMax;
     }
-    public void setVoltageMin(Integer voltageMin) 
+    public void setVoltageMin(Integer voltageMin)
     {
         this.voltageMin = voltageMin;
     }
 
-    public Integer getVoltageMin() 
+    public Integer getVoltageMin()
     {
         return voltageMin;
     }
-    public void setCurrent(BigDecimal current) 
+    public void setCurrent(BigDecimal current)
     {
         this.current = current;
     }
 
-    public BigDecimal getCurrent() 
+    public BigDecimal getCurrent()
     {
         return current;
     }
-    public void setOxygenMax(BigDecimal oxygenMax) 
+    public void setOxygenMax(BigDecimal oxygenMax)
     {
         this.oxygenMax = oxygenMax;
     }
 
-    public BigDecimal getOxygenMax() 
+    public BigDecimal getOxygenMax()
     {
         return oxygenMax;
     }
-    public void setOxygenMin(BigDecimal oxygenMin) 
+    public void setOxygenMin(BigDecimal oxygenMin)
     {
         this.oxygenMin = oxygenMin;
     }
 
-    public BigDecimal getOxygenMin() 
+    public BigDecimal getOxygenMin()
     {
         return oxygenMin;
     }
-    public void setTemperatureMax(BigDecimal temperatureMax) 
+    public void setTemperatureMax(BigDecimal temperatureMax)
     {
         this.temperatureMax = temperatureMax;
     }
 
-    public BigDecimal getTemperatureMax() 
+    public BigDecimal getTemperatureMax()
     {
         return temperatureMax;
     }
-    public void setTemperatureMin(BigDecimal temperatureMin) 
+    public void setTemperatureMin(BigDecimal temperatureMin)
     {
         this.temperatureMin = temperatureMin;
     }
 
-    public BigDecimal getTemperatureMin() 
+    public BigDecimal getTemperatureMin()
     {
         return temperatureMin;
     }

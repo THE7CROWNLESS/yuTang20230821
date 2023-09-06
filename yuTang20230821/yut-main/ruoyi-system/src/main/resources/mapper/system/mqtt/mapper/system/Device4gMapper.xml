@@ -73,6 +73,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM device4g
         WHERE machine_code=#{machine_code}
     </select>
+    <select id="selectMaxIdByFishPond" resultType="java.lang.String">
+        SELECT COUNT(id)
+        FROM device4g
+        WHERE fish_pond=#{fishPond}
+    </select>
 
     <insert id="insertDevice4g" parameterType="Device4g" useGeneratedKeys="true" keyProperty="id">
         insert into device4g

@@ -1,5 +1,6 @@
 package com.ruoyi.system.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +21,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 【设备阈值】Controller
- * 
+ *
  * @author ruoyi
  * @date 2023-09-02
  */
@@ -110,7 +111,16 @@ public class DeviceThresholdController extends BaseController
     @Log(title = "【获取最新阈值】", businessType = BusinessType.DELETE)
     @GetMapping("/machine_code/{machine_code}")
     public AjaxResult find_by_machine_code(@PathVariable String machine_code){
-        return success(deviceThresholdMapper.find_by_machine_code(machine_code));
+        DeviceThreshold byMachineCode = deviceThresholdMapper.find_by_machine_code(machine_code);
+        // 如果没阈值信息 则插入默认值，并返回
+        if (byMachineCode == null) {
+            DeviceThreshold deviceThreshold = new DeviceThreshold(null, machine_code, 300, 0, new BigDecimal(500),
+                    new BigDecimal(1000), new BigDecimal(0), new BigDecimal(1000), new BigDecimal(0));
+            deviceThresholdMapper.insertDeviceThreshold(deviceThreshold);
+            return success(deviceThreshold);
+        }else {
+            return success(deviceThresholdMapper.find_by_machine_code(machine_code));
+        }
     }
 
     /**
@@ -121,7 +131,6 @@ public class DeviceThresholdController extends BaseController
     public AjaxResult insert_by_machine_code(@RequestBody DeviceThreshold deviceThreshold){
         //System.out.println(deviceThreshold);
         deviceThresholdService.updateDeviceThreshold(deviceThreshold);
-        deviceThresholdMapper.updateDeviceThreshold(deviceThreshold);
         return success(warningUtils.thresholdSetWarning(deviceThreshold.getMachineCode()));
     }
 }

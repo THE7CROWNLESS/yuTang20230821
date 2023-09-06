@@ -19,12 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 【请填写功能名称】Service业务层处理
- * 
+ *
  * @author ruoyi
  * @date 2023-09-02
  */
 @Service
-public class DeviceThresholdServiceImpl implements IDeviceThresholdService 
+public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 {
     @Autowired
     private DeviceThresholdMapper deviceThresholdMapper;
@@ -41,7 +41,7 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 
     /**
      * 查询【请填写功能名称】
-     * 
+     *
      * @param id 【请填写功能名称】主键
      * @return 【请填写功能名称】
      */
@@ -53,7 +53,7 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 
     /**
      * 查询【请填写功能名称】列表
-     * 
+     *
      * @param deviceThreshold 【请填写功能名称】
      * @return 【请填写功能名称】
      */
@@ -65,7 +65,7 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 
     /**
      * 新增【请填写功能名称】
-     * 
+     *
      * @param deviceThreshold 【请填写功能名称】
      * @return 结果
      */
@@ -86,7 +86,10 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
     public int updateDeviceThreshold(DeviceThreshold deviceThreshold)
     {
         // 更新
-        deviceThresholdMapper.updateDeviceThreshold(deviceThreshold);
+        int i = deviceThresholdMapper.updateDeviceThreshold(deviceThreshold);
+        if (i == 0) {
+            deviceThresholdMapper.insertDeviceThreshold(deviceThreshold);
+        }
         // 获取设备编码
         String machine_code = deviceThreshold.getMachineCode();
         // 取最新数据信息
@@ -113,7 +116,7 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 
     /**
      * 批量删除【请填写功能名称】
-     * 
+     *
      * @param ids 需要删除的【请填写功能名称】主键
      * @return 结果
      */
@@ -125,7 +128,7 @@ public class DeviceThresholdServiceImpl implements IDeviceThresholdService
 
     /**
      * 删除【请填写功能名称】信息
-     * 
+     *
      * @param id 【请填写功能名称】主键
      * @return 结果
      */

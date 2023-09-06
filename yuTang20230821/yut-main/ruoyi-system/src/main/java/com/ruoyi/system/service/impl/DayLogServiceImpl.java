@@ -6,6 +6,7 @@ import com.ruoyi.system.mapper.DayLogMapper;
 import com.ruoyi.system.service.DayLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,13 +19,13 @@ public class DayLogServiceImpl implements DayLogService {
     private DayLogMapper dayLogMapper;
 
     @Override
-    public List<DayLog> getDaysList(String fishPond) {
-        return dayLogMapper.getDaysList(fishPond);
+    public List<DayLog> getDaysList(String fishPond,Date begin, Date end) {
+        return dayLogMapper.getDaysList(fishPond,begin,end);
     }
 
     @Override
-    public List<DayLogMonthVo> getMonthsList(String fish_pond) {
-        return dayLogMapper.getMonthsList(fish_pond);
+    public List<DayLogMonthVo> getMonthsList(String fish_pond, @RequestParam Date begin, @RequestParam Date end) {
+        return dayLogMapper.getMonthsList(fish_pond,begin,end);
     }
 
     @Override

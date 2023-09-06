@@ -118,7 +118,8 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         Device4g device4g = device4gMapper.selectByMachineCode(machineCode);
         // 拼接日志消息
         String machineName = device4g.getMachineName();
-        String warningMsg = machineName + "电机" + num +  "状态由" + old.toString() + "强制转变为" + change.toString();
+        String warningMsg = machineName + "电机" + num +  "状态由" + warningUtils.parseStatus(old) +
+                            "强制转变为" + warningUtils.parseStatus(change);
 
         // mqtt主题
         String topic = "ecarbon/GET/" + device4g.getIMEI();

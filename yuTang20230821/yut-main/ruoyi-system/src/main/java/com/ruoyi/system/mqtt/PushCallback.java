@@ -8,6 +8,7 @@ import com.ruoyi.system.domain.YtMachineNew;
 import com.ruoyi.system.mapper.DayLogMapper;
 import com.ruoyi.system.mapper.Device4gMapper;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
+import com.ruoyi.system.utils.MqttUtils;
 import com.ruoyi.system.utils.WarningUtils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -86,10 +87,6 @@ public class PushCallback implements MqttCallback {
 
     public YtMachineNew dealMachineNewMsg(String topic, MqttMessage mqttMessage) {
 
-        // mqtt消息（json格式） 字符串 转 对象
-        YtMachineNew ytMachineNew = JSON.parseObject(new String(mqttMessage.getPayload()), YtMachineNew.class);
-        //logger.info(ytMachineNew.toString());
-
         // 将主题信息 设置到 对象 字段
         String[] topics = topic.split("/");
         String IMEI = topics[2];
@@ -98,6 +95,17 @@ public class PushCallback implements MqttCallback {
         String CSQ = topics[4];
         String machine_name;
         String machine_type;
+
+        // mqtt消息（json格式） 字符串 转 对象
+        YtMachineNew ytMachineNew = new YtMachineNew();
+        if (topics[0].equals("Sensor0")) {
+            JSONObject mqttJSONObject = MqttUtils.parseSensorData(new String(mqttMessage.getPayload()));
+            ytMachineNew = JSON.parseObject(String.valueOf(mqttJSONObject),YtMachineNew.class);
+        }else {
+            ytMachineNew = JSON.parseObject(new String(mqttMessage.getPayload()), YtMachineNew.class);
+        }
+        //logger.info(ytMachineNew.toString());
+
         ytMachineNew.setIMEI(IMEI);
         ytMachineNew.setICCID(ICCID);
         ytMachineNew.setLocationX(topics[4]);
@@ -112,25 +120,35 @@ public class PushCallback implements MqttCallback {
             // 计算（自增
             int machine_num_code= Integer.parseInt(ytMachineNewMapper.findMaxMachineCode()) + 1;
             // 计算类型(有ph值是浮漂sensor：1开头；无则为控制器：2开头
-            if (ytMachineNew.getPh() == null) {
-                ytMachineNew.setMachineCode("24" + Integer.toString(machine_num_code));
-                machine_name = "控制器";
-                machine_type = "2";
-            }else {
-                ytMachineNew.setMachineCode("14" + Integer.toString(machine_num_code));
-                machine_name = "浮漂式传感器";
-                machine_type = "1";
-            }
+//            if (ytMachineNew.getPh() == null) {
+//                ytMachineNew.setMachineCode("24" + Integer.toString(machine_num_code));
+//                machine_name = "1号控制器";
+//                machine_type = "2";
+//            }else {
+//                ytMachineNew.setMachineCode("14" + Integer.toString(machine_num_code));
+//                machine_name = "浮漂式传感器";
+//                machine_type = "1";
+//            }
 
             // 新设备 需存 设备表
             Device4g device4g = new Device4g();
-            device4g.setICCID(topics[3]);
-            device4g.setIMEI(topics[2]);
+            // 根据 topic[0]判断类型
+            if (topics[0].equals("Sensor0")) {
+                ytMachineNew.setMachineCode("14" + machine_num_code);
+                machine_type = "浮漂式传感器";
+            }else {
+                machine_type = "4路控制器";
+                ytMachineNew.setMachineCode("24" + machine_num_code);
+            }
             device4g.setMachineCode(ytMachineNew.getMachineCode());
-            device4g.setMachineName(machine_name);
             device4g.setMachineType(machine_type);
             // 养殖场、状态 暂时 为 静态数据
             device4g.setFishPond("一号养殖场");
+            // 设备命名
+            machine_name = device4g.getFishPond() + device4gMapper.selectMaxIdByFishPond("一号养殖场") + "号机";
+            device4g.setICCID(topics[3]);
+            device4g.setIMEI(topics[2]);
+            device4g.setMachineName(machine_name);
             device4g.setMachineStatus(0);
             device4g.setCSQ(CSQ);
             device4gMapper.insertDevice4g(device4g);

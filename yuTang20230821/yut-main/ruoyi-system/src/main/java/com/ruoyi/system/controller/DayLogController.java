@@ -19,13 +19,13 @@ public class DayLogController extends BaseController {
     private DayLogService dayLogService;
 
     @GetMapping("/days")
-    public AjaxResult getDaysList(@RequestParam String fish_pond) {
-        return success(dayLogService.getDaysList(fish_pond));
+    public AjaxResult getDaysList(@RequestParam String fish_pond,@RequestParam Date begin, @RequestParam Date end) {
+        return success(dayLogService.getDaysList(fish_pond,begin,end));
     }
 
     @GetMapping("/months")
-    public AjaxResult getMonthsList(@RequestParam String fish_pond) {
-        return success(dayLogService.getMonthsList(fish_pond));
+    public AjaxResult getMonthsList(@RequestParam String fish_pond,@RequestParam Date begin, @RequestParam Date end) {
+        return success(dayLogService.getMonthsList(fish_pond,begin,end));
     }
 
     @GetMapping("/date")

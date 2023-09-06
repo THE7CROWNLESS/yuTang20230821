@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : yutang
+ Source Server         : springboot-vue
  Source Server Type    : MySQL
- Source Server Version : 80028 (8.0.28)
+ Source Server Version : 50734 (5.7.34)
  Source Host           : localhost:3306
  Source Schema         : ecarbon
 
  Target Server Type    : MySQL
- Target Server Version : 80028 (8.0.28)
+ Target Server Version : 50734 (5.7.34)
  File Encoding         : 65001
 
- Date: 06/09/2023 01:32:25
+ Date: 06/09/2023 17:54:17
 */
 
 SET NAMES utf8mb4;
@@ -22,99 +22,54 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `day_log`;
 CREATE TABLE `day_log`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `fish_pond` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '养殖场',
   `machine_code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备编码',
   `machine_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备名称',
-  `aerator` int NULL DEFAULT NULL COMMENT '增氧机序号',
+  `aerator` int(10) NULL DEFAULT NULL COMMENT '增氧机序号',
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '日志消息',
   `power` float(10, 2) NULL DEFAULT NULL COMMENT '累计耗电',
-  `msg_type` int NULL DEFAULT NULL COMMENT '日志类型 0：操作 1报警和操作',
+  `msg_type` int(10) NULL DEFAULT NULL COMMENT '日志类型 0：操作 1报警和操作',
   `create_time` datetime(6) NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT '记录时间',
   `field1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '冗余1',
   `field2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '冗余2',
-  `field3` int NULL DEFAULT NULL COMMENT '冗余3',
+  `field3` int(10) NULL DEFAULT NULL COMMENT '冗余3',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of day_log
 -- ----------------------------
 INSERT INTO `day_log` VALUES (1, '一号养殖场', '24111111', '一号控制器', NULL, '一号控制机温度过高报警', 200.00, 1, '2023-09-05 10:11:15.173708', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (2, '一号养殖场', NULL, NULL, NULL, NULL, 10.00, 0, '2023-09-05 10:47:25.994664', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (3, '一号养殖场', NULL, NULL, NULL, NULL, 12.00, 0, '2023-06-01 10:47:26.000000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (4, '二号养殖场', NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-05 10:48:12.701009', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (5, '一号养殖场', '24123456', '1号塘1号机', NULL, NULL, NULL, NULL, '2023-09-05 17:32:15.735000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (6, '一号养殖场', '24123456', '1号塘1号机', NULL, NULL, NULL, NULL, '2023-09-05 17:32:15.756000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (7, '一号养殖场', '24123456', '1号塘1号机', NULL, NULL, NULL, NULL, '2023-09-05 17:32:15.761000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (8, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, NULL, '2023-09-05 17:34:33.434000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (9, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, NULL, '2023-09-05 17:34:33.465000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (10, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, NULL, '2023-09-05 17:34:33.476000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (11, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, NULL, '2023-09-05 17:34:34.710000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (12, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, NULL, '2023-09-05 17:34:34.724000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (13, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, NULL, '2023-09-05 17:34:34.735000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (15, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 20:30:41.474000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (16, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:30:41.793000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (17, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:30:41.802000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (18, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:30:41.809000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (19, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:30:42.005000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (20, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:30:42.130000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (21, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:30:42.239000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (22, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 20:31:54.410000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (23, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:31:54.448000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (24, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:31:54.456000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (25, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:31:54.464000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (26, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:31:54.592000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (27, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:31:54.655000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (28, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:31:54.722000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (29, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 20:34:42.605000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (30, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:34:42.790000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (31, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:34:42.800000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (32, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:34:42.899000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (33, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:34:43.042000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (34, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:34:43.125000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (35, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:34:43.207000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (36, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 20:35:27.245000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (37, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:35:27.265000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (38, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:35:27.273000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (39, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:35:27.281000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (40, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:35:27.393000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (41, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:35:27.473000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (42, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:35:27.558000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (43, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 20:36:06.142000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (44, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:36:06.170000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (45, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:36:06.176000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (46, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:36:06.186000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (47, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 20:36:06.288000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (48, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 20:36:06.374000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (49, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 20:36:06.488000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (50, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机阈值信息更改', NULL, NULL, '2023-09-05 21:56:35.481000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (51, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 21:56:35.518000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (52, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 21:56:35.529000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (53, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 21:56:35.540000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (54, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', NULL, 1, '2023-09-05 21:56:35.764000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (55, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', NULL, 1, '2023-09-05 21:56:35.818000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (56, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', NULL, 1, '2023-09-05 21:56:35.912000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (57, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机1状态由0强制转变为1', NULL, NULL, '2023-09-05 22:04:01.002000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (58, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机1状态由0强制转变为1', 20.00, NULL, '2023-09-06 00:26:37.650000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (59, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机1状态由0强制转变为1', 20.00, NULL, '2023-09-06 00:28:48.579000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (60, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机2状态由1强制转变为1', 20.00, NULL, '2023-09-06 00:29:03.105000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (61, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机2状态由1强制转变为1', 20.00, NULL, '2023-09-06 00:30:20.508000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (62, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机2状态由1强制转变为1', 20.00, NULL, '2023-09-06 00:36:21.597000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (63, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电机2状态由1强制转变为1', 20.00, NULL, '2023-09-06 00:38:43.969000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (64, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机缺A相', 20.00, 1, '2023-09-06 01:23:04.547000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (65, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机缺A相', 20.00, 1, '2023-09-06 01:24:35.281000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (8, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:43:59.824785', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (9, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', 200.00, 1, '2023-09-06 16:44:04.514326', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (10, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.064070', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (11, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.417810', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (12, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.791030', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (13, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:06.366038', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (18, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 200.00, 0, '2023-09-06 16:44:07.761668', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (19, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:08.747355', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (20, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:24.694335', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (21, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:26.756289', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (22, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.136834', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (23, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 200.00, 0, '2023-09-06 16:44:32.140625', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (24, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.144371', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (25, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.146773', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (26, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.149402', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (27, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.151722', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (28, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.153568', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (29, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由1强制转变为1', 30.00, NULL, '2023-09-06 17:52:13.000000', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for day_records
 -- ----------------------------
 DROP TABLE IF EXISTS `day_records`;
 CREATE TABLE `day_records`  (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
-  `energy` int UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电Power Consumption， 单位千瓦时 KWh',
-  `operate_nums` int NULL DEFAULT NULL COMMENT '操作次数',
-  `warning_nums` int NULL DEFAULT NULL COMMENT '警告次数',
+  `energy` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电Power Consumption， 单位千瓦时 KWh',
+  `operate_nums` int(11) NULL DEFAULT NULL COMMENT '操作次数',
+  `warning_nums` int(11) NULL DEFAULT NULL COMMENT '警告次数',
   `msg_details` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '记录消息内容',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
@@ -128,40 +83,40 @@ CREATE TABLE `day_records`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `device4g`;
 CREATE TABLE `device4g`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
+  `IMEI` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
+  `ICCID` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
   `machine_name` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '设备名称',
   `machine_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备类型',
   `fish_pond` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '养殖场名称',
-  `machine_status` int NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
-  `IMEI` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
-  `ICCID` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
-  `CSQ` int NULL DEFAULT NULL COMMENT '信号强度',
+  `machine_status` int(11) NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
+  `CSQ` int(11) NULL DEFAULT NULL COMMENT '信号强度',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device4g
 -- ----------------------------
-INSERT INTO `device4g` VALUES (1, '24123456', '1号塘1号机', '鱼塘控制器', '一号养殖场', 0, '868739055454011', '89860802142070418996', NULL);
-INSERT INTO `device4g` VALUES (2, '24198115', '1号塘2号机', '鱼塘控制器', '一号养殖场', 1, '868739055454056', '89860802142070418997', NULL);
-INSERT INTO `device4g` VALUES (3, '24255467', '1号塘3号机', '鱼塘控制器', '一号养殖场', 2, '868739057208302', '898604901920C1580174', NULL);
-INSERT INTO `device4g` VALUES (4, '14605563', '浮漂式传感器', '1', '二号养殖场', 0, '24111115', '1231823812', NULL);
-INSERT INTO `device4g` VALUES (5, '14605564', '浮漂式传感器', '1', '二号养殖场', 0, '24111117', '1231823812', 123123123);
-INSERT INTO `device4g` VALUES (6, '14605566', '浮漂式传感器', '1', '1号养殖场', 0, '24111111', '1231823812', 123123123);
-INSERT INTO `device4g` VALUES (7, '14605566', '浮漂式传感器', '1', '一号养殖场', 0, '24123456', '1231823812', 123123123);
+INSERT INTO `device4g` VALUES (1, '45310986', '868739055454011', '89860802142070418996', '1号塘1号机', '鱼塘控制器', '一号养殖场', 0, 20);
+INSERT INTO `device4g` VALUES (2, '24198115', '868739055454056', '89860802142070418997', '1号塘2号机', '鱼塘控制器', '一号养殖场', 1, 31);
+INSERT INTO `device4g` VALUES (3, '24255467', '868739057208302', '898604901920C1580174', '1号塘3号机', '鱼塘控制器', '一号养殖场', 2, 31);
+INSERT INTO `device4g` VALUES (4, '24345463', '868739057141511', '89860802142070418996', '1号塘4号机', '浮漂式传感器', '二号养殖场', 0, 100);
+INSERT INTO `device4g` VALUES (5, '24345478', '868739055451234', '898604901920C1581234', '1号塘5号机', '浮漂式传感器', '二号养殖场', 0, 20);
+INSERT INTO `device4g` VALUES (6, '24518581', '863488051172347', '89860802142070419175', '1号塘6号机', '浮漂式传感器', '一号养殖场', 0, 31);
+INSERT INTO `device4g` VALUES (7, '24518927', '863488051169913', '89860802142070419176', '一号养殖场4号机', '4路控制器', '一号养殖场', 0, 31);
 
 -- ----------------------------
 -- Table structure for device_4g
 -- ----------------------------
 DROP TABLE IF EXISTS `device_4g`;
 CREATE TABLE `device_4g`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
   `machine_name` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备名称',
   `machine_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备类型',
   `fish_pond` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '养殖场名称',
-  `machine_status` int NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
+  `machine_status` int(11) NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
   `IMEI` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
   `ICCID` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
   PRIMARY KEY (`id`) USING BTREE
@@ -185,29 +140,33 @@ INSERT INTO `device_4g` VALUES (9, '14605567', '浮漂式传感器', '1', '1号�
 -- ----------------------------
 DROP TABLE IF EXISTS `device_threshold`;
 CREATE TABLE `device_threshold`  (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
-  `voltage_max` int UNSIGNED NULL DEFAULT 0 COMMENT '电网电压上限',
-  `voltage_min` int UNSIGNED NULL DEFAULT 0 COMMENT '电网电压下限',
+  `voltage_max` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '电网电压上限',
+  `voltage_min` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '电网电压下限',
   `current` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '电网电流阈值',
   `oxygen_max` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '溶氧值上限',
   `oxygen_min` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '溶氧值下限',
   `temperature_max` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度上限',
   `temperature_min` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度下限',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device_threshold
 -- ----------------------------
-INSERT INTO `device_threshold` VALUES (1, '24123456', 10, 10, 30.00, 30.00, 10.00, 40.00, 10.00);
+INSERT INTO `device_threshold` VALUES (1, '24123456', 50, 10, 30.00, 30.00, 10.00, 40.00, 10.00);
+INSERT INTO `device_threshold` VALUES (2, '24518927', 300, 100, 490.00, 100.00, 10.00, 40.00, 10.00);
+INSERT INTO `device_threshold` VALUES (3, '24518581', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
+INSERT INTO `device_threshold` VALUES (4, '45310986', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
+INSERT INTO `device_threshold` VALUES (5, '24198115', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
 
 -- ----------------------------
 -- Table structure for gen_table
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table`;
 CREATE TABLE `gen_table`  (
-  `table_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `table_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '表名称',
   `table_comment` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '表描述',
   `sub_table_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '关联子表的表名',
@@ -239,7 +198,7 @@ CREATE TABLE `gen_table`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table_column`;
 CREATE TABLE `gen_table_column`  (
-  `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `column_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '归属表编号',
   `column_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '列名称',
   `column_comment` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '列描述',
@@ -256,7 +215,7 @@ CREATE TABLE `gen_table_column`  (
   `query_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'EQ' COMMENT '查询方式（等于、不等于、大于、小于、范围）',
   `html_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '显示类型（文本框、文本域、下拉框、复选框、单选框、日期控件）',
   `dict_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典类型',
-  `sort` int NULL DEFAULT NULL COMMENT '排序',
+  `sort` int(11) NULL DEFAULT NULL COMMENT '排序',
   `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
@@ -269,18 +228,20 @@ CREATE TABLE `gen_table_column`  (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for qrtz_calendars
+-- Table structure for qrtz_blob_triggers
 -- ----------------------------
-DROP TABLE IF EXISTS `qrtz_calendars`;
-CREATE TABLE `qrtz_calendars`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `calendar_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '日历名称',
-  `calendar` blob NOT NULL COMMENT '存放持久化calendar对象',
-  PRIMARY KEY (`sched_name`, `calendar_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '日历信息表' ROW_FORMAT = DYNAMIC;
+DROP TABLE IF EXISTS `qrtz_blob_triggers`;
+CREATE TABLE `qrtz_blob_triggers`  (
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `blob_data` blob NULL COMMENT '存放持久化Trigger对象',
+  PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
+  CONSTRAINT `qrtz_blob_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Blob类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of qrtz_calendars
+-- Records of qrtz_blob_triggers
 -- ----------------------------
 
 -- ----------------------------
@@ -288,14 +249,14 @@ CREATE TABLE `qrtz_calendars`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_cron_triggers`;
 CREATE TABLE `qrtz_cron_triggers`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-  `cron_expression` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'cron表达式',
-  `time_zone_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '时区',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `cron_expression` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'cron表达式',
+  `time_zone_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '时区',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_cron_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Cron类型的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_cron_triggers
@@ -306,21 +267,21 @@ CREATE TABLE `qrtz_cron_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_fired_triggers`;
 CREATE TABLE `qrtz_fired_triggers`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `entry_id` varchar(95) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度器实例id',
-  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-  `instance_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度器实例名',
-  `fired_time` bigint NOT NULL COMMENT '触发的时间',
-  `sched_time` bigint NOT NULL COMMENT '定时器制定的时间',
-  `priority` int NOT NULL COMMENT '优先级',
-  `state` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '状态',
-  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '任务名称',
-  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '任务组名',
-  `is_nonconcurrent` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否并发',
-  `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否接受恢复执行',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `entry_id` varchar(95) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度器实例id',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `instance_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度器实例名',
+  `fired_time` bigint(20) NOT NULL COMMENT '触发的时间',
+  `sched_time` bigint(20) NOT NULL COMMENT '定时器制定的时间',
+  `priority` int(11) NOT NULL COMMENT '优先级',
+  `state` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '状态',
+  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '任务名称',
+  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '任务组名',
+  `is_nonconcurrent` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '是否并发',
+  `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '是否接受恢复执行',
   PRIMARY KEY (`sched_name`, `entry_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '已触发的触发器表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '已触发的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_fired_triggers
@@ -331,18 +292,18 @@ CREATE TABLE `qrtz_fired_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_job_details`;
 CREATE TABLE `qrtz_job_details`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务名称',
-  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务组名',
-  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '相关介绍',
-  `job_class_name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '执行任务类名称',
-  `is_durable` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '是否持久化',
-  `is_nonconcurrent` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '是否并发',
-  `is_update_data` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '是否更新数据',
-  `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '是否接受恢复执行',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '任务名称',
+  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '任务组名',
+  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '相关介绍',
+  `job_class_name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '执行任务类名称',
+  `is_durable` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '是否持久化',
+  `is_nonconcurrent` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '是否并发',
+  `is_update_data` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '是否更新数据',
+  `requests_recovery` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '是否接受恢复执行',
   `job_data` blob NULL COMMENT '存放持久化job对象',
   PRIMARY KEY (`sched_name`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务详细信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '任务详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_job_details
@@ -353,10 +314,10 @@ CREATE TABLE `qrtz_job_details`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_locks`;
 CREATE TABLE `qrtz_locks`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `lock_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '悲观锁名称',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `lock_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '悲观锁名称',
   PRIMARY KEY (`sched_name`, `lock_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '存储的悲观锁信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_locks
@@ -367,10 +328,10 @@ CREATE TABLE `qrtz_locks`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_paused_trigger_grps`;
 CREATE TABLE `qrtz_paused_trigger_grps`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
   PRIMARY KEY (`sched_name`, `trigger_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '暂停的触发器表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '暂停的触发器表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_paused_trigger_grps
@@ -381,12 +342,12 @@ CREATE TABLE `qrtz_paused_trigger_grps`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_scheduler_state`;
 CREATE TABLE `qrtz_scheduler_state`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `instance_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '实例名称',
-  `last_checkin_time` bigint NOT NULL COMMENT '上次检查时间',
-  `checkin_interval` bigint NOT NULL COMMENT '检查间隔时间',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `instance_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '实例名称',
+  `last_checkin_time` bigint(20) NOT NULL COMMENT '上次检查时间',
+  `checkin_interval` bigint(20) NOT NULL COMMENT '检查间隔时间',
   PRIMARY KEY (`sched_name`, `instance_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '调度器状态表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '调度器状态表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_scheduler_state
@@ -397,15 +358,15 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_simple_triggers`;
 CREATE TABLE `qrtz_simple_triggers`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-  `repeat_count` bigint NOT NULL COMMENT '重复的次数统计',
-  `repeat_interval` bigint NOT NULL COMMENT '重复的间隔时间',
-  `times_triggered` bigint NOT NULL COMMENT '已经触发的次数',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `repeat_count` bigint(20) NOT NULL COMMENT '重复的次数统计',
+  `repeat_interval` bigint(20) NOT NULL COMMENT '重复的间隔时间',
+  `times_triggered` bigint(20) NOT NULL COMMENT '已经触发的次数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simple_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '简单触发器的信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simple_triggers
@@ -416,23 +377,23 @@ CREATE TABLE `qrtz_simple_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_simprop_triggers`;
 CREATE TABLE `qrtz_simprop_triggers`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
-  `str_prop_1` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第一个参数',
-  `str_prop_2` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第二个参数',
-  `str_prop_3` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第三个参数',
-  `int_prop_1` int NULL DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
-  `int_prop_2` int NULL DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
-  `long_prop_1` bigint NULL DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
-  `long_prop_2` bigint NULL DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_name的外键',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_triggers表trigger_group的外键',
+  `str_prop_1` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第一个参数',
+  `str_prop_2` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第二个参数',
+  `str_prop_3` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'String类型的trigger的第三个参数',
+  `int_prop_1` int(11) NULL DEFAULT NULL COMMENT 'int类型的trigger的第一个参数',
+  `int_prop_2` int(11) NULL DEFAULT NULL COMMENT 'int类型的trigger的第二个参数',
+  `long_prop_1` bigint(20) NULL DEFAULT NULL COMMENT 'long类型的trigger的第一个参数',
+  `long_prop_2` bigint(20) NULL DEFAULT NULL COMMENT 'long类型的trigger的第二个参数',
   `dec_prop_1` decimal(13, 4) NULL DEFAULT NULL COMMENT 'decimal类型的trigger的第一个参数',
   `dec_prop_2` decimal(13, 4) NULL DEFAULT NULL COMMENT 'decimal类型的trigger的第二个参数',
-  `bool_prop_1` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第一个参数',
-  `bool_prop_2` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
+  `bool_prop_1` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第一个参数',
+  `bool_prop_2` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'Boolean类型的trigger的第二个参数',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simprop_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '同步机制的行锁表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_simprop_triggers
@@ -443,26 +404,26 @@ CREATE TABLE `qrtz_simprop_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `qrtz_triggers`;
 CREATE TABLE `qrtz_triggers`  (
-  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调度名称',
-  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '触发器的名字',
-  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '触发器所属组的名字',
-  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_job_details表job_name的外键',
-  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'qrtz_job_details表job_group的外键',
-  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '相关介绍',
-  `next_fire_time` bigint NULL DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
-  `prev_fire_time` bigint NULL DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
-  `priority` int NULL DEFAULT NULL COMMENT '优先级',
-  `trigger_state` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '触发器状态',
-  `trigger_type` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '触发器的类型',
-  `start_time` bigint NOT NULL COMMENT '开始时间',
-  `end_time` bigint NULL DEFAULT NULL COMMENT '结束时间',
-  `calendar_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '日程表名称',
-  `misfire_instr` smallint NULL DEFAULT NULL COMMENT '补偿执行的策略',
+  `sched_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调度名称',
+  `trigger_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '触发器的名字',
+  `trigger_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '触发器所属组的名字',
+  `job_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_job_details表job_name的外键',
+  `job_group` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'qrtz_job_details表job_group的外键',
+  `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '相关介绍',
+  `next_fire_time` bigint(20) NULL DEFAULT NULL COMMENT '上一次触发时间（毫秒）',
+  `prev_fire_time` bigint(20) NULL DEFAULT NULL COMMENT '下一次触发时间（默认为-1表示不触发）',
+  `priority` int(11) NULL DEFAULT NULL COMMENT '优先级',
+  `trigger_state` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '触发器状态',
+  `trigger_type` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '触发器的类型',
+  `start_time` bigint(20) NOT NULL COMMENT '开始时间',
+  `end_time` bigint(20) NULL DEFAULT NULL COMMENT '结束时间',
+  `calendar_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '日程表名称',
+  `misfire_instr` smallint(6) NULL DEFAULT NULL COMMENT '补偿执行的策略',
   `job_data` blob NULL COMMENT '存放持久化job对象',
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
-  INDEX `sched_name`(`sched_name` ASC, `job_name` ASC, `job_group` ASC) USING BTREE,
+  INDEX `sched_name`(`sched_name`, `job_name`, `job_group`) USING BTREE,
   CONSTRAINT `qrtz_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `qrtz_job_details` (`sched_name`, `job_name`, `job_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '触发器详细信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '触发器详细信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_triggers
@@ -473,18 +434,18 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config`  (
-  `config_id` int NOT NULL AUTO_INCREMENT COMMENT '参数主键',
-  `config_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '参数名称',
-  `config_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '参数键名',
-  `config_value` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '参数键值',
-  `config_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建者',
+  `config_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+  `config_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '参数名称',
+  `config_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '参数键名',
+  `config_value` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '参数键值',
+  `config_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_config
@@ -501,22 +462,22 @@ INSERT INTO `sys_config` VALUES (6, '用户登录-黑名单列表', 'sys.login.b
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE `sys_dept`  (
-  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门id',
-  `parent_id` bigint NULL DEFAULT 0 COMMENT '父部门id',
-  `ancestors` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '祖级列表',
-  `dept_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '部门名称',
-  `order_num` int NULL DEFAULT 0 COMMENT '显示顺序',
-  `leader` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '负责人',
-  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '联系电话',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '部门状态（0正常 1停用）',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建者',
+  `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
+  `parent_id` bigint(20) NULL DEFAULT 0 COMMENT '父部门id',
+  `ancestors` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '祖级列表',
+  `dept_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '部门名称',
+  `order_num` int(11) NULL DEFAULT 0 COMMENT '显示顺序',
+  `leader` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '负责人',
+  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '联系电话',
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '部门状态（0正常 1停用）',
+  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 110 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 110 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -537,22 +498,22 @@ INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部门', 2, '若依
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_data`;
 CREATE TABLE `sys_dict_data`  (
-  `dict_code` bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-  `dict_sort` int NULL DEFAULT 0 COMMENT '字典排序',
-  `dict_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '字典标签',
-  `dict_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '字典键值',
-  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '字典类型',
-  `css_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
-  `list_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表格回显样式',
-  `is_default` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建者',
+  `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+  `dict_sort` int(11) NULL DEFAULT 0 COMMENT '字典排序',
+  `dict_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典标签',
+  `dict_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典键值',
+  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典类型',
+  `css_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
+  `list_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '表格回显样式',
+  `is_default` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -592,18 +553,18 @@ INSERT INTO `sys_dict_data` VALUES (29, 2, '失败', '1', 'sys_common_status', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_type`;
 CREATE TABLE `sys_dict_type`  (
-  `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
-  `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '字典名称',
-  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '字典类型',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建者',
+  `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+  `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典名称',
+  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '字典类型',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
-  UNIQUE INDEX `dict_type`(`dict_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
+  UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -624,21 +585,21 @@ INSERT INTO `sys_dict_type` VALUES (10, '系统状态', 'sys_common_status', '0'
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job`;
 CREATE TABLE `sys_job`  (
-  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务ID',
-  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '任务名称',
-  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
-  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调用目标字符串',
-  `cron_expression` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT 'cron执行表达式',
-  `misfire_policy` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
-  `concurrent` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '状态（0正常 1暂停）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '创建者',
+  `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '任务名称',
+  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
+  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调用目标字符串',
+  `cron_expression` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT 'cron执行表达式',
+  `misfire_policy` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
+  `concurrent` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '状态（0正常 1暂停）',
+  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
+  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '备注信息',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '定时任务调度表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job
@@ -652,16 +613,16 @@ INSERT INTO `sys_job` VALUES (3, '系统默认（多参）', 'DEFAULT', 'ryTask.
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job_log`;
 CREATE TABLE `sys_job_log`  (
-  `job_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
-  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务名称',
-  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务组名',
-  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '调用目标字符串',
-  `job_message` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '日志信息',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
-  `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '异常信息',
+  `job_log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
+  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '任务名称',
+  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '任务组名',
+  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '调用目标字符串',
+  `job_message` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '日志信息',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
+  `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job_log
@@ -672,29 +633,105 @@ CREATE TABLE `sys_job_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_logininfor`;
 CREATE TABLE `sys_logininfor`  (
-  `info_id` bigint NOT NULL AUTO_INCREMENT COMMENT '访问ID',
-  `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '用户账号',
-  `ipaddr` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '登录IP地址',
-  `login_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '登录地点',
-  `browser` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '浏览器类型',
-  `os` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '操作系统',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '登录状态（0成功 1失败）',
-  `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '提示消息',
+  `info_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
+  `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '用户账号',
+  `ipaddr` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '登录IP地址',
+  `login_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '登录地点',
+  `browser` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '浏览器类型',
+  `os` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '操作系统',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '登录状态（0成功 1失败）',
+  `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '提示消息',
   `login_time` datetime NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE,
-  INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
-  INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 205 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
+  INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
+  INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 256 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
 -- ----------------------------
-INSERT INTO `sys_logininfor` VALUES (1, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-07-07 22:23:47');
-INSERT INTO `sys_logininfor` VALUES (2, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-04 21:19:57');
-INSERT INTO `sys_logininfor` VALUES (3, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-04 22:28:23');
-INSERT INTO `sys_logininfor` VALUES (4, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-04 22:58:09');
-INSERT INTO `sys_logininfor` VALUES (5, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 00:05:42');
-INSERT INTO `sys_logininfor` VALUES (6, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 00:39:43');
+INSERT INTO `sys_logininfor` VALUES (1, 'admin', '192.168.10.127', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-02 16:09:55');
+INSERT INTO `sys_logininfor` VALUES (2, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-02 16:12:40');
+INSERT INTO `sys_logininfor` VALUES (3, 'admin', '192.168.10.174', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-02 16:18:31');
+INSERT INTO `sys_logininfor` VALUES (4, 'admin', '192.168.10.174', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-02 16:25:18');
+INSERT INTO `sys_logininfor` VALUES (5, 'admin', '192.168.10.174', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-02 16:32:32');
+INSERT INTO `sys_logininfor` VALUES (6, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:34:09');
+INSERT INTO `sys_logininfor` VALUES (7, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:34:40');
+INSERT INTO `sys_logininfor` VALUES (8, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:34:43');
+INSERT INTO `sys_logininfor` VALUES (9, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:37:03');
+INSERT INTO `sys_logininfor` VALUES (10, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:37:57');
+INSERT INTO `sys_logininfor` VALUES (11, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:41:58');
+INSERT INTO `sys_logininfor` VALUES (12, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:42:28');
+INSERT INTO `sys_logininfor` VALUES (13, 'admin', '192.168.10.174', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-02 16:43:28');
+INSERT INTO `sys_logininfor` VALUES (14, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:46:33');
+INSERT INTO `sys_logininfor` VALUES (15, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:47:08');
+INSERT INTO `sys_logininfor` VALUES (16, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:47:19');
+INSERT INTO `sys_logininfor` VALUES (17, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:48:14');
+INSERT INTO `sys_logininfor` VALUES (18, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:49:17');
+INSERT INTO `sys_logininfor` VALUES (19, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:53:25');
+INSERT INTO `sys_logininfor` VALUES (20, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 16:58:37');
+INSERT INTO `sys_logininfor` VALUES (21, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:04:41');
+INSERT INTO `sys_logininfor` VALUES (22, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:05:46');
+INSERT INTO `sys_logininfor` VALUES (23, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:51:34');
+INSERT INTO `sys_logininfor` VALUES (24, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:52:13');
+INSERT INTO `sys_logininfor` VALUES (25, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:52:22');
+INSERT INTO `sys_logininfor` VALUES (26, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:55:41');
+INSERT INTO `sys_logininfor` VALUES (27, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:57:16');
+INSERT INTO `sys_logininfor` VALUES (28, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:58:16');
+INSERT INTO `sys_logininfor` VALUES (29, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 17:59:58');
+INSERT INTO `sys_logininfor` VALUES (30, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:00:12');
+INSERT INTO `sys_logininfor` VALUES (31, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:02:38');
+INSERT INTO `sys_logininfor` VALUES (32, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:02:53');
+INSERT INTO `sys_logininfor` VALUES (33, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:05:56');
+INSERT INTO `sys_logininfor` VALUES (34, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:09:26');
+INSERT INTO `sys_logininfor` VALUES (35, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:10:25');
+INSERT INTO `sys_logininfor` VALUES (36, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:16:57');
+INSERT INTO `sys_logininfor` VALUES (37, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:17:57');
+INSERT INTO `sys_logininfor` VALUES (38, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:20:34');
+INSERT INTO `sys_logininfor` VALUES (39, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:25:01');
+INSERT INTO `sys_logininfor` VALUES (40, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:25:51');
+INSERT INTO `sys_logininfor` VALUES (41, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:26:12');
+INSERT INTO `sys_logininfor` VALUES (42, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:28:46');
+INSERT INTO `sys_logininfor` VALUES (43, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:32:19');
+INSERT INTO `sys_logininfor` VALUES (44, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:33:48');
+INSERT INTO `sys_logininfor` VALUES (45, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:36:38');
+INSERT INTO `sys_logininfor` VALUES (46, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-02 18:39:32');
+INSERT INTO `sys_logininfor` VALUES (47, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 09:18:40');
+INSERT INTO `sys_logininfor` VALUES (48, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 09:36:22');
+INSERT INTO `sys_logininfor` VALUES (49, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 09:52:20');
+INSERT INTO `sys_logininfor` VALUES (50, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:03:51');
+INSERT INTO `sys_logininfor` VALUES (51, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:09:54');
+INSERT INTO `sys_logininfor` VALUES (52, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:28:44');
+INSERT INTO `sys_logininfor` VALUES (53, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:39:37');
+INSERT INTO `sys_logininfor` VALUES (54, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:46:41');
+INSERT INTO `sys_logininfor` VALUES (55, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 10:48:01');
+INSERT INTO `sys_logininfor` VALUES (56, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 11:07:38');
+INSERT INTO `sys_logininfor` VALUES (57, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 11:08:42');
+INSERT INTO `sys_logininfor` VALUES (58, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 11:13:10');
+INSERT INTO `sys_logininfor` VALUES (59, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-03 11:37:10');
+INSERT INTO `sys_logininfor` VALUES (60, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 13:49:16');
+INSERT INTO `sys_logininfor` VALUES (61, 'admin', '192.168.10.174', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-03 14:04:11');
+INSERT INTO `sys_logininfor` VALUES (62, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 14:25:17');
+INSERT INTO `sys_logininfor` VALUES (63, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 14:27:22');
+INSERT INTO `sys_logininfor` VALUES (64, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 14:42:41');
+INSERT INTO `sys_logininfor` VALUES (65, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 14:44:22');
+INSERT INTO `sys_logininfor` VALUES (66, 'admin', '192.168.10.174', '内网IP', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-03 14:44:39');
+INSERT INTO `sys_logininfor` VALUES (67, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-04 13:56:14');
+INSERT INTO `sys_logininfor` VALUES (68, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-04 17:20:22');
+INSERT INTO `sys_logininfor` VALUES (69, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 08:57:58');
+INSERT INTO `sys_logininfor` VALUES (70, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 10:54:29');
+INSERT INTO `sys_logininfor` VALUES (71, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 11:27:40');
+INSERT INTO `sys_logininfor` VALUES (72, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 13:34:08');
+INSERT INTO `sys_logininfor` VALUES (73, 'admin', '54.86.50.139', 'XX XX', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 15:39:37');
+INSERT INTO `sys_logininfor` VALUES (74, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:44:58');
+INSERT INTO `sys_logininfor` VALUES (75, 'admin', '123.152.131.246', 'XX XX', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 15:45:11');
+INSERT INTO `sys_logininfor` VALUES (76, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:45:43');
+INSERT INTO `sys_logininfor` VALUES (77, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:50:21');
+INSERT INTO `sys_logininfor` VALUES (78, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:50:25');
+INSERT INTO `sys_logininfor` VALUES (79, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:55:04');
+INSERT INTO `sys_logininfor` VALUES (80, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:55:13');
+INSERT INTO `sys_logininfor` VALUES (81, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:55:34');
+INSERT INTO `sys_logininfor` VALUES (82, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:57:16');
 INSERT INTO `sys_logininfor` VALUES (83, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 15:59:20');
 INSERT INTO `sys_logininfor` VALUES (84, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 15:59:28');
 INSERT INTO `sys_logininfor` VALUES (85, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 16:04:52');
@@ -753,85 +790,136 @@ INSERT INTO `sys_logininfor` VALUES (137, 'admin', '203.218.252.55', 'XX XX', 'M
 INSERT INTO `sys_logininfor` VALUES (138, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 16:58:04');
 INSERT INTO `sys_logininfor` VALUES (139, 'admin', '203.218.252.55', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 16:58:44');
 INSERT INTO `sys_logininfor` VALUES (140, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-05 17:17:55');
-INSERT INTO `sys_logininfor` VALUES (141, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 19:59:28');
-INSERT INTO `sys_logininfor` VALUES (142, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-05 21:56:16');
-INSERT INTO `sys_logininfor` VALUES (143, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:09:52');
-INSERT INTO `sys_logininfor` VALUES (144, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:12:49');
-INSERT INTO `sys_logininfor` VALUES (145, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:27:34');
-INSERT INTO `sys_logininfor` VALUES (146, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:28:13');
-INSERT INTO `sys_logininfor` VALUES (147, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:31:18');
-INSERT INTO `sys_logininfor` VALUES (148, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:32:04');
-INSERT INTO `sys_logininfor` VALUES (149, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:33:16');
-INSERT INTO `sys_logininfor` VALUES (150, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:34:27');
-INSERT INTO `sys_logininfor` VALUES (151, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:36:20');
-INSERT INTO `sys_logininfor` VALUES (152, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:36:47');
-INSERT INTO `sys_logininfor` VALUES (153, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:37:12');
-INSERT INTO `sys_logininfor` VALUES (154, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:43:26');
-INSERT INTO `sys_logininfor` VALUES (155, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:48:10');
-INSERT INTO `sys_logininfor` VALUES (156, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:48:31');
-INSERT INTO `sys_logininfor` VALUES (157, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:48:34');
-INSERT INTO `sys_logininfor` VALUES (158, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:49:43');
-INSERT INTO `sys_logininfor` VALUES (159, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:50:36');
-INSERT INTO `sys_logininfor` VALUES (160, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:50:41');
-INSERT INTO `sys_logininfor` VALUES (161, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:51:36');
-INSERT INTO `sys_logininfor` VALUES (162, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:52:05');
-INSERT INTO `sys_logininfor` VALUES (163, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:52:34');
-INSERT INTO `sys_logininfor` VALUES (164, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:52:47');
-INSERT INTO `sys_logininfor` VALUES (165, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:52:54');
-INSERT INTO `sys_logininfor` VALUES (166, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:53:27');
-INSERT INTO `sys_logininfor` VALUES (167, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:53:38');
-INSERT INTO `sys_logininfor` VALUES (168, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:54:58');
-INSERT INTO `sys_logininfor` VALUES (169, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:55:57');
-INSERT INTO `sys_logininfor` VALUES (170, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:56:08');
-INSERT INTO `sys_logininfor` VALUES (171, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:56:17');
-INSERT INTO `sys_logininfor` VALUES (172, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:56:34');
-INSERT INTO `sys_logininfor` VALUES (173, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:56:52');
-INSERT INTO `sys_logininfor` VALUES (174, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:57:03');
-INSERT INTO `sys_logininfor` VALUES (175, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:57:11');
-INSERT INTO `sys_logininfor` VALUES (176, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:57:23');
-INSERT INTO `sys_logininfor` VALUES (177, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:57:41');
-INSERT INTO `sys_logininfor` VALUES (178, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:59:04');
-INSERT INTO `sys_logininfor` VALUES (179, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:59:33');
-INSERT INTO `sys_logininfor` VALUES (180, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 22:59:37');
-INSERT INTO `sys_logininfor` VALUES (181, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:00:05');
-INSERT INTO `sys_logininfor` VALUES (182, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:01:53');
-INSERT INTO `sys_logininfor` VALUES (183, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:02:13');
-INSERT INTO `sys_logininfor` VALUES (184, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:03:14');
-INSERT INTO `sys_logininfor` VALUES (185, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:16:36');
-INSERT INTO `sys_logininfor` VALUES (186, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:18:06');
-INSERT INTO `sys_logininfor` VALUES (187, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:18:33');
-INSERT INTO `sys_logininfor` VALUES (188, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:18:55');
-INSERT INTO `sys_logininfor` VALUES (189, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:22:43');
-INSERT INTO `sys_logininfor` VALUES (190, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:23:57');
-INSERT INTO `sys_logininfor` VALUES (191, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:24:47');
-INSERT INTO `sys_logininfor` VALUES (192, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:25:03');
-INSERT INTO `sys_logininfor` VALUES (193, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:25:18');
-INSERT INTO `sys_logininfor` VALUES (194, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:25:34');
-INSERT INTO `sys_logininfor` VALUES (195, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:26:13');
-INSERT INTO `sys_logininfor` VALUES (196, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:27:16');
-INSERT INTO `sys_logininfor` VALUES (197, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:30:56');
-INSERT INTO `sys_logininfor` VALUES (198, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:32:30');
-INSERT INTO `sys_logininfor` VALUES (199, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:33:40');
-INSERT INTO `sys_logininfor` VALUES (200, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:34:26');
-INSERT INTO `sys_logininfor` VALUES (201, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:35:25');
-INSERT INTO `sys_logininfor` VALUES (202, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:36:36');
-INSERT INTO `sys_logininfor` VALUES (203, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-05 23:37:45');
-INSERT INTO `sys_logininfor` VALUES (204, 'admin', '127.0.0.1', '内网IP', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-06 00:26:23');
+INSERT INTO `sys_logininfor` VALUES (141, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:46:08');
+INSERT INTO `sys_logininfor` VALUES (142, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:47:21');
+INSERT INTO `sys_logininfor` VALUES (143, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:48:25');
+INSERT INTO `sys_logininfor` VALUES (144, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 12:55:08');
+INSERT INTO `sys_logininfor` VALUES (145, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:58:43');
+INSERT INTO `sys_logininfor` VALUES (146, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:59:06');
+INSERT INTO `sys_logininfor` VALUES (147, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 12:59:47');
+INSERT INTO `sys_logininfor` VALUES (148, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:01:00');
+INSERT INTO `sys_logininfor` VALUES (149, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:01:53');
+INSERT INTO `sys_logininfor` VALUES (150, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:04:20');
+INSERT INTO `sys_logininfor` VALUES (151, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 13:25:48');
+INSERT INTO `sys_logininfor` VALUES (152, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:48:05');
+INSERT INTO `sys_logininfor` VALUES (153, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 13:49:04');
+INSERT INTO `sys_logininfor` VALUES (154, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 13:49:57');
+INSERT INTO `sys_logininfor` VALUES (155, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:52:16');
+INSERT INTO `sys_logininfor` VALUES (156, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:53:12');
+INSERT INTO `sys_logininfor` VALUES (157, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 13:53:27');
+INSERT INTO `sys_logininfor` VALUES (158, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:05:53');
+INSERT INTO `sys_logininfor` VALUES (159, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:06:17');
+INSERT INTO `sys_logininfor` VALUES (160, 'admin', '211.20.8.131', 'XX XX', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-06 14:06:59');
+INSERT INTO `sys_logininfor` VALUES (161, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:09:46');
+INSERT INTO `sys_logininfor` VALUES (162, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:10:37');
+INSERT INTO `sys_logininfor` VALUES (163, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:11:52');
+INSERT INTO `sys_logininfor` VALUES (164, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:13:48');
+INSERT INTO `sys_logininfor` VALUES (165, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:15:29');
+INSERT INTO `sys_logininfor` VALUES (166, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:16:36');
+INSERT INTO `sys_logininfor` VALUES (167, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:17:34');
+INSERT INTO `sys_logininfor` VALUES (168, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:17:39');
+INSERT INTO `sys_logininfor` VALUES (169, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:18:23');
+INSERT INTO `sys_logininfor` VALUES (170, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:18:36');
+INSERT INTO `sys_logininfor` VALUES (171, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:19:08');
+INSERT INTO `sys_logininfor` VALUES (172, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:22:53');
+INSERT INTO `sys_logininfor` VALUES (173, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:23:37');
+INSERT INTO `sys_logininfor` VALUES (174, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:24:16');
+INSERT INTO `sys_logininfor` VALUES (175, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:24:50');
+INSERT INTO `sys_logininfor` VALUES (176, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:25:58');
+INSERT INTO `sys_logininfor` VALUES (177, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:28:27');
+INSERT INTO `sys_logininfor` VALUES (178, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:30:55');
+INSERT INTO `sys_logininfor` VALUES (179, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:32:04');
+INSERT INTO `sys_logininfor` VALUES (180, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:33:04');
+INSERT INTO `sys_logininfor` VALUES (181, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:55:45');
+INSERT INTO `sys_logininfor` VALUES (182, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:56:52');
+INSERT INTO `sys_logininfor` VALUES (183, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 14:59:39');
+INSERT INTO `sys_logininfor` VALUES (184, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 15:00:20');
+INSERT INTO `sys_logininfor` VALUES (185, 'admin', '211.20.8.131', 'XX XX', 'Unknown', 'Unknown', '0', '登录成功', '2023-09-06 15:01:22');
+INSERT INTO `sys_logininfor` VALUES (186, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 15:03:33');
+INSERT INTO `sys_logininfor` VALUES (187, 'admin', '101.94.168.181', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 15:04:01');
+INSERT INTO `sys_logininfor` VALUES (188, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 16:02:28');
+INSERT INTO `sys_logininfor` VALUES (189, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:09:44');
+INSERT INTO `sys_logininfor` VALUES (190, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:09:49');
+INSERT INTO `sys_logininfor` VALUES (191, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:16:50');
+INSERT INTO `sys_logininfor` VALUES (192, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:18:35');
+INSERT INTO `sys_logininfor` VALUES (193, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:19:05');
+INSERT INTO `sys_logininfor` VALUES (194, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:20:05');
+INSERT INTO `sys_logininfor` VALUES (195, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:20:53');
+INSERT INTO `sys_logininfor` VALUES (196, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:21:31');
+INSERT INTO `sys_logininfor` VALUES (197, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:22:02');
+INSERT INTO `sys_logininfor` VALUES (198, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:23:05');
+INSERT INTO `sys_logininfor` VALUES (199, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:23:09');
+INSERT INTO `sys_logininfor` VALUES (200, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:24:08');
+INSERT INTO `sys_logininfor` VALUES (201, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:24:13');
+INSERT INTO `sys_logininfor` VALUES (202, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:24:44');
+INSERT INTO `sys_logininfor` VALUES (203, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:27:11');
+INSERT INTO `sys_logininfor` VALUES (204, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:27:17');
+INSERT INTO `sys_logininfor` VALUES (205, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:34:01');
+INSERT INTO `sys_logininfor` VALUES (206, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:35:08');
+INSERT INTO `sys_logininfor` VALUES (207, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:37:27');
+INSERT INTO `sys_logininfor` VALUES (208, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:38:57');
+INSERT INTO `sys_logininfor` VALUES (209, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:40:33');
+INSERT INTO `sys_logininfor` VALUES (210, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:43:27');
+INSERT INTO `sys_logininfor` VALUES (211, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:43:31');
+INSERT INTO `sys_logininfor` VALUES (212, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:44:47');
+INSERT INTO `sys_logininfor` VALUES (213, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:45:06');
+INSERT INTO `sys_logininfor` VALUES (214, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:46:17');
+INSERT INTO `sys_logininfor` VALUES (215, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:46:45');
+INSERT INTO `sys_logininfor` VALUES (216, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:47:31');
+INSERT INTO `sys_logininfor` VALUES (217, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:54:30');
+INSERT INTO `sys_logininfor` VALUES (218, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:55:28');
+INSERT INTO `sys_logininfor` VALUES (219, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:56:05');
+INSERT INTO `sys_logininfor` VALUES (220, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:56:25');
+INSERT INTO `sys_logininfor` VALUES (221, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:58:52');
+INSERT INTO `sys_logininfor` VALUES (222, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:59:01');
+INSERT INTO `sys_logininfor` VALUES (223, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 16:59:33');
+INSERT INTO `sys_logininfor` VALUES (224, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:04:04');
+INSERT INTO `sys_logininfor` VALUES (225, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:05:15');
+INSERT INTO `sys_logininfor` VALUES (226, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:06:09');
+INSERT INTO `sys_logininfor` VALUES (227, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:07:37');
+INSERT INTO `sys_logininfor` VALUES (228, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:07:57');
+INSERT INTO `sys_logininfor` VALUES (229, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:10:28');
+INSERT INTO `sys_logininfor` VALUES (230, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:10:32');
+INSERT INTO `sys_logininfor` VALUES (231, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:11:36');
+INSERT INTO `sys_logininfor` VALUES (232, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:13:35');
+INSERT INTO `sys_logininfor` VALUES (233, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:13:38');
+INSERT INTO `sys_logininfor` VALUES (234, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:14:25');
+INSERT INTO `sys_logininfor` VALUES (235, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:15:14');
+INSERT INTO `sys_logininfor` VALUES (236, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:17:41');
+INSERT INTO `sys_logininfor` VALUES (237, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:17:46');
+INSERT INTO `sys_logininfor` VALUES (238, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:25:44');
+INSERT INTO `sys_logininfor` VALUES (239, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:30:52');
+INSERT INTO `sys_logininfor` VALUES (240, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:31:49');
+INSERT INTO `sys_logininfor` VALUES (241, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:32:22');
+INSERT INTO `sys_logininfor` VALUES (242, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:33:20');
+INSERT INTO `sys_logininfor` VALUES (243, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:33:40');
+INSERT INTO `sys_logininfor` VALUES (244, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:34:16');
+INSERT INTO `sys_logininfor` VALUES (245, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:34:43');
+INSERT INTO `sys_logininfor` VALUES (246, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:35:27');
+INSERT INTO `sys_logininfor` VALUES (247, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:39:20');
+INSERT INTO `sys_logininfor` VALUES (248, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-06 17:40:00');
+INSERT INTO `sys_logininfor` VALUES (249, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:40:15');
+INSERT INTO `sys_logininfor` VALUES (250, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:41:50');
+INSERT INTO `sys_logininfor` VALUES (251, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:43:23');
+INSERT INTO `sys_logininfor` VALUES (252, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:43:29');
+INSERT INTO `sys_logininfor` VALUES (253, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:44:14');
+INSERT INTO `sys_logininfor` VALUES (254, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:51:13');
+INSERT INTO `sys_logininfor` VALUES (255, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:53:18');
 
 -- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu`  (
-  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  `menu_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `menu_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '菜单名称',
-  `parent_id` bigint NULL DEFAULT 0 COMMENT '父菜单ID',
-  `order_num` int NULL DEFAULT 0 COMMENT '显示顺序',
+  `parent_id` bigint(20) NULL DEFAULT 0 COMMENT '父菜单ID',
+  `order_num` int(11) NULL DEFAULT 0 COMMENT '显示顺序',
   `path` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '路由地址',
   `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '组件路径',
   `query` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '路由参数',
-  `is_frame` int NULL DEFAULT 1 COMMENT '是否为外链（0是 1否）',
-  `is_cache` int NULL DEFAULT 0 COMMENT '是否缓存（0缓存 1不缓存）',
+  `is_frame` int(11) NULL DEFAULT 1 COMMENT '是否为外链（0是 1否）',
+  `is_cache` int(11) NULL DEFAULT 0 COMMENT '是否缓存（0缓存 1不缓存）',
   `menu_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
   `visible` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '菜单状态（0显示 1隐藏）',
   `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '菜单状态（0正常 1停用）',
@@ -981,7 +1069,7 @@ INSERT INTO `sys_menu` VALUES (1102, '【请填写功能名称】导出', 1097, 
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_notice`;
 CREATE TABLE `sys_notice`  (
-  `notice_id` int NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  `notice_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '公告ID',
   `notice_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公告标题',
   `notice_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '公告类型（1通知 2公告）',
   `notice_content` longblob NULL COMMENT '公告内容',
@@ -1005,12 +1093,12 @@ INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌�
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_oper_log`;
 CREATE TABLE `sys_oper_log`  (
-  `oper_id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
+  `oper_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志主键',
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '模块标题',
-  `business_type` int NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
+  `business_type` int(11) NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
   `method` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '方法名称',
   `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '请求方式',
-  `operator_type` int NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
+  `operator_type` int(11) NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
   `oper_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '操作人员',
   `dept_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '部门名称',
   `oper_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '请求URL',
@@ -1018,15 +1106,15 @@ CREATE TABLE `sys_oper_log`  (
   `oper_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '操作地点',
   `oper_param` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '请求参数',
   `json_result` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '返回参数',
-  `status` int NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
+  `status` int(11) NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
   `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime NULL DEFAULT NULL COMMENT '操作时间',
-  `cost_time` bigint NULL DEFAULT 0 COMMENT '消耗时间',
+  `cost_time` bigint(20) NULL DEFAULT 0 COMMENT '消耗时间',
   PRIMARY KEY (`oper_id`) USING BTREE,
-  INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
-  INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
-  INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
+  INDEX `idx_sys_oper_log_bt`(`business_type`) USING BTREE,
+  INDEX `idx_sys_oper_log_s`(`status`) USING BTREE,
+  INDEX `idx_sys_oper_log_ot`(`oper_time`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 156 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1107,24 +1195,95 @@ INSERT INTO `sys_oper_log` VALUES (73, '【获取最新阈值】', 3, 'com.ruoyi
 INSERT INTO `sys_oper_log` VALUES (74, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '203.218.252.55', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-05 15:45:58', 6);
 INSERT INTO `sys_oper_log` VALUES (75, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/14605568', '203.218.252.55', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-05 16:22:03', 10);
 INSERT INTO `sys_oper_log` VALUES (76, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123457', '203.218.252.55', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-05 16:22:07', 5);
-INSERT INTO `sys_oper_log` VALUES (77, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{}}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE machine_code = \'24123456\'\' at line 3\r\n### The error may exist in file [E:\\self\\yuTang20230821\\yuTang20230821\\yut-main\\ruoyi-system\\target\\classes\\mapper\\system\\mqtt\\mapper\\system\\DeviceThresholdMapper.xml]\r\n### The error may involve com.ruoyi.system.mapper.DeviceThresholdMapper.updateDeviceThreshold-Inline\r\n### The error occurred while setting parameters\r\n### SQL: update device_threshold                         WHERE machine_code = ?\r\n### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE machine_code = \'24123456\'\' at line 3\n; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE machine_code = \'24123456\'\' at line 3', '2023-09-05 20:26:09', 209);
-INSERT INTO `sys_oper_log` VALUES (78, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column \'msgType\' in \'field list\'\r\n### The error may exist in file [E:\\self\\yuTang20230821\\yuTang20230821\\yut-main\\ruoyi-system\\target\\classes\\mapper\\system\\mqtt\\mapper\\system\\DayLogMapper.xml]\r\n### The error may involve com.ruoyi.system.mapper.DayLogMapper.insert-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into day_log          ( fish_pond,             machine_code,             machine_name,                          msg,                          msgType,             create_time )           values ( ?,             ?,             ?,                          ?,                          ?,             ? )\r\n### Cause: java.sql.SQLSyntaxErrorException: Unknown column \'msgType\' in \'field list\'\n; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column \'msgType\' in \'field list\'', '2023-09-05 20:27:28', 263);
-INSERT INTO `sys_oper_log` VALUES (79, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 20:30:42', 976);
-INSERT INTO `sys_oper_log` VALUES (80, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 20:31:54', 416);
-INSERT INTO `sys_oper_log` VALUES (81, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 20:34:43', 760);
-INSERT INTO `sys_oper_log` VALUES (82, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 20:35:27', 388);
-INSERT INTO `sys_oper_log` VALUES (83, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 20:36:06', 460);
-INSERT INTO `sys_oper_log` VALUES (84, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"machineCode\":\"24123456\",\"params\":{},\"voltageMax\":10}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-05 21:56:36', 660);
+INSERT INTO `sys_oper_log` VALUES (77, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-06 12:46:18', 17);
+INSERT INTO `sys_oper_log` VALUES (78, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-06 12:47:25', 15);
+INSERT INTO `sys_oper_log` VALUES (79, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-06 12:48:33', 6);
+INSERT INTO `sys_oper_log` VALUES (80, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-06 12:58:52', 6);
+INSERT INTO `sys_oper_log` VALUES (81, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24123456', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":30.0,\"id\":1,\"machineCode\":\"24123456\",\"oxygenMax\":30.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":50,\"voltageMin\":10}}', 0, NULL, '2023-09-06 12:59:14', 5);
+INSERT INTO `sys_oper_log` VALUES (82, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 12:59:49', 5);
+INSERT INTO `sys_oper_log` VALUES (83, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24198115', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:00', 13);
+INSERT INTO `sys_oper_log` VALUES (84, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24255467', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:03', 6);
+INSERT INTO `sys_oper_log` VALUES (85, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518581', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:08', 15);
+INSERT INTO `sys_oper_log` VALUES (86, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:11', 3);
+INSERT INTO `sys_oper_log` VALUES (87, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:21', 9);
+INSERT INTO `sys_oper_log` VALUES (88, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24198115', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:00:23', 5);
+INSERT INTO `sys_oper_log` VALUES (89, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:01:02', 5);
+INSERT INTO `sys_oper_log` VALUES (90, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:02:01', 5);
+INSERT INTO `sys_oper_log` VALUES (91, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:04:47', 4);
+INSERT INTO `sys_oper_log` VALUES (92, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', NULL, 1, '', '2023-09-06 13:32:40', 98);
+INSERT INTO `sys_oper_log` VALUES (93, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', NULL, 1, '', '2023-09-06 13:45:39', 164);
+INSERT INTO `sys_oper_log` VALUES (94, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 13:48:08', 8);
+INSERT INTO `sys_oper_log` VALUES (95, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', NULL, 1, '', '2023-09-06 13:54:57', 30);
+INSERT INTO `sys_oper_log` VALUES (96, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', NULL, 1, '', '2023-09-06 14:06:40', 55);
+INSERT INTO `sys_oper_log` VALUES (97, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'id\' doesn\'t have a default value\r\n### The error may exist in file [D:\\yuTang\\ws_yutang\\ws_yutang\\yuTang20230821\\yuTang20230821\\yuTang20230821\\yut-main\\ruoyi-system\\target\\classes\\mapper\\system\\mqtt\\mapper\\system\\DeviceThresholdMapper.xml]\r\n### The error may involve com.ruoyi.system.mapper.DeviceThresholdMapper.insertDeviceThreshold-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into device_threshold          ( machine_code,             voltage_max,             voltage_min,             current,             oxygen_max,             oxygen_min,             temperature_max,             temperature_min )           values ( ?,             ?,             ?,             ?,             ?,             ?,             ?,             ? )\r\n### Cause: java.sql.SQLException: Field \'id\' doesn\'t have a default value\n; Field \'id\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'id\' doesn\'t have a default value', '2023-09-06 14:16:17', 153);
+INSERT INTO `sys_oper_log` VALUES (98, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '127.0.0.1', '内网IP', '{\"current\":500,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40.00,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-06 14:17:54', 160);
+INSERT INTO `sys_oper_log` VALUES (99, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:19:48', 3);
+INSERT INTO `sys_oper_log` VALUES (100, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:21:12', 3);
+INSERT INTO `sys_oper_log` VALUES (101, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:22:56', 4);
+INSERT INTO `sys_oper_log` VALUES (102, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:22:58', 4);
+INSERT INTO `sys_oper_log` VALUES (103, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:23:40', 8);
+INSERT INTO `sys_oper_log` VALUES (104, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:24:21', 2);
+INSERT INTO `sys_oper_log` VALUES (105, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:24:57', 3);
+INSERT INTO `sys_oper_log` VALUES (106, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:25:11', 2);
+INSERT INTO `sys_oper_log` VALUES (107, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:26:00', 3);
+INSERT INTO `sys_oper_log` VALUES (108, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:26:06', 2);
+INSERT INTO `sys_oper_log` VALUES (109, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24198115', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:26:15', 5);
+INSERT INTO `sys_oper_log` VALUES (110, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:26:30', 5);
+INSERT INTO `sys_oper_log` VALUES (111, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:27:12', 3);
+INSERT INTO `sys_oper_log` VALUES (112, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-06 14:28:32', 5);
+INSERT INTO `sys_oper_log` VALUES (113, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:28:36', 3);
+INSERT INTO `sys_oper_log` VALUES (114, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:28:43', 3);
+INSERT INTO `sys_oper_log` VALUES (115, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"45310986\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 14:30:58', 9);
+INSERT INTO `sys_oper_log` VALUES (116, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:31:00', 14);
+INSERT INTO `sys_oper_log` VALUES (117, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:31:06', 6);
+INSERT INTO `sys_oper_log` VALUES (118, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:31:14', 13);
+INSERT INTO `sys_oper_log` VALUES (119, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:32:09', 11);
+INSERT INTO `sys_oper_log` VALUES (120, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:32:15', 11);
+INSERT INTO `sys_oper_log` VALUES (121, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:33:08', 12);
+INSERT INTO `sys_oper_log` VALUES (122, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:33:14', 8);
+INSERT INTO `sys_oper_log` VALUES (123, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"45310986\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 14:56:15', 4);
+INSERT INTO `sys_oper_log` VALUES (124, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:56:19', 18);
+INSERT INTO `sys_oper_log` VALUES (125, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:56:28', 12);
+INSERT INTO `sys_oper_log` VALUES (126, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"45310986\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 14:56:54', 4);
+INSERT INTO `sys_oper_log` VALUES (127, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"45310986\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 14:57:01', 13);
+INSERT INTO `sys_oper_log` VALUES (128, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:59:46', 9);
+INSERT INTO `sys_oper_log` VALUES (129, '【更新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.insert_by_machine_code()', 'POST', 1, 'admin', NULL, '/system/threshold/change/', '101.94.168.181', 'XX XX', '{\"current\":490,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100,\"oxygenMin\":10,\"params\":{},\"temperatureMax\":40,\"temperatureMin\":10,\"voltageMax\":300,\"voltageMin\":100}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":true}', 0, NULL, '2023-09-06 14:59:51', 112);
+INSERT INTO `sys_oper_log` VALUES (130, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 14:59:51', 9);
+INSERT INTO `sys_oper_log` VALUES (131, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '101.94.168.181', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 15:00:01', 17);
+INSERT INTO `sys_oper_log` VALUES (132, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:18:23', 29);
+INSERT INTO `sys_oper_log` VALUES (133, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518581', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"24518581\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 17:19:32', 12);
+INSERT INTO `sys_oper_log` VALUES (134, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"45310986\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 17:19:34', 9);
+INSERT INTO `sys_oper_log` VALUES (135, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24198115', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500,\"machineCode\":\"24198115\",\"oxygenMax\":1000,\"oxygenMin\":0,\"params\":{},\"temperatureMax\":1000,\"temperatureMin\":0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 17:19:36', 7);
+INSERT INTO `sys_oper_log` VALUES (136, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:19:38', 7);
+INSERT INTO `sys_oper_log` VALUES (137, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/45310986', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":500.0,\"id\":4,\"machineCode\":\"45310986\",\"oxygenMax\":1000.0,\"oxygenMin\":0.0,\"params\":{},\"temperatureMax\":1000.0,\"temperatureMin\":0.0,\"voltageMax\":300,\"voltageMin\":0}}', 0, NULL, '2023-09-06 17:25:47', 5);
+INSERT INTO `sys_oper_log` VALUES (138, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:30:57', 5);
+INSERT INTO `sys_oper_log` VALUES (139, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:31:54', 3);
+INSERT INTO `sys_oper_log` VALUES (140, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:32:30', 9);
+INSERT INTO `sys_oper_log` VALUES (141, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:33:24', 5);
+INSERT INTO `sys_oper_log` VALUES (142, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:33:43', 5);
+INSERT INTO `sys_oper_log` VALUES (143, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:34:25', 6);
+INSERT INTO `sys_oper_log` VALUES (144, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:34:46', 3);
+INSERT INTO `sys_oper_log` VALUES (145, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:35:34', 5);
+INSERT INTO `sys_oper_log` VALUES (146, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:39:24', 4);
+INSERT INTO `sys_oper_log` VALUES (147, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:39:50', 5);
+INSERT INTO `sys_oper_log` VALUES (148, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:39:54', 5);
+INSERT INTO `sys_oper_log` VALUES (149, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:40:19', 4);
+INSERT INTO `sys_oper_log` VALUES (150, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:40:48', 4);
+INSERT INTO `sys_oper_log` VALUES (151, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:41:57', 5);
+INSERT INTO `sys_oper_log` VALUES (152, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:43:33', 3);
+INSERT INTO `sys_oper_log` VALUES (153, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:44:18', 5);
+INSERT INTO `sys_oper_log` VALUES (154, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:51:24', 5);
+INSERT INTO `sys_oper_log` VALUES (155, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:53:27', 4);
 
 -- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
 CREATE TABLE `sys_post`  (
-  `post_id` bigint NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+  `post_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
   `post_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '岗位编码',
   `post_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '岗位名称',
-  `post_sort` int NOT NULL COMMENT '显示顺序',
+  `post_sort` int(11) NOT NULL COMMENT '显示顺序',
   `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '状态（0正常 1停用）',
   `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '创建者',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
@@ -1147,10 +1306,10 @@ INSERT INTO `sys_post` VALUES (4, 'user', '普通员工', 4, '0', 'admin', '2023
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
-  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `role_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `role_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '角色名称',
   `role_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '角色权限字符串',
-  `role_sort` int NOT NULL COMMENT '显示顺序',
+  `role_sort` int(11) NOT NULL COMMENT '显示顺序',
   `data_scope` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
   `menu_check_strictly` tinyint(1) NULL DEFAULT 1 COMMENT '菜单树选择项是否关联显示',
   `dept_check_strictly` tinyint(1) NULL DEFAULT 1 COMMENT '部门树选择项是否关联显示',
@@ -1175,8 +1334,8 @@ INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 1, 1, '0', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
 CREATE TABLE `sys_role_dept`  (
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  `dept_id` bigint NOT NULL COMMENT '部门ID',
+  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+  `dept_id` bigint(20) NOT NULL COMMENT '部门ID',
   PRIMARY KEY (`role_id`, `dept_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色和部门关联表' ROW_FORMAT = DYNAMIC;
 
@@ -1192,8 +1351,8 @@ INSERT INTO `sys_role_dept` VALUES (2, 105);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu`  (
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  `menu_id` bigint NOT NULL COMMENT '菜单ID',
+  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+  `menu_id` bigint(20) NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = DYNAMIC;
 
@@ -1292,8 +1451,8 @@ INSERT INTO `sys_role_menu` VALUES (2, 1061);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
-  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `dept_id` bigint NULL DEFAULT NULL COMMENT '部门ID',
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `dept_id` bigint(20) NULL DEFAULT NULL COMMENT '部门ID',
   `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户账号',
   `nick_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户昵称',
   `user_type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '00' COMMENT '用户类型（00系统用户）',
@@ -1317,7 +1476,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-06 00:26:23', 'admin', '2023-04-24 15:37:22', '', '2023-09-06 00:26:23', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '211.20.8.131', '2023-09-06 17:53:18', 'admin', '2023-04-24 15:37:22', '', '2023-09-06 17:53:18', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-04-24 15:37:22', 'admin', '2023-04-24 15:37:22', '', NULL, '测试员');
 
 -- ----------------------------
@@ -1325,8 +1484,8 @@ INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_post`;
 CREATE TABLE `sys_user_post`  (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `post_id` bigint NOT NULL COMMENT '岗位ID',
+  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `post_id` bigint(20) NOT NULL COMMENT '岗位ID',
   PRIMARY KEY (`user_id`, `post_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = DYNAMIC;
 
@@ -1341,8 +1500,8 @@ INSERT INTO `sys_user_post` VALUES (2, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `role_id` bigint NOT NULL COMMENT '角色ID',
+  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`, `role_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户和角色关联表' ROW_FORMAT = DYNAMIC;
 
@@ -1357,12 +1516,12 @@ INSERT INTO `sys_user_role` VALUES (2, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_sensor`;
 CREATE TABLE `tb_sensor`  (
-  `device_id` int NULL DEFAULT NULL,
+  `device_id` int(32) NULL DEFAULT NULL,
   `sensor_tag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sensor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sensor_val` float(32, 2) NULL DEFAULT NULL,
   `record_time` datetime NULL DEFAULT NULL,
-  INDEX `deviceId`(`device_id` ASC) USING BTREE,
+  INDEX `deviceId`(`device_id`) USING BTREE,
   CONSTRAINT `tb_sensor_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `tb_device` (`device_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -1408,16 +1567,16 @@ INSERT INTO `tb_sensor` VALUES (10000004, 'humity', '湿度', 10.00, '2023-08-08
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_admin_log`;
 CREATE TABLE `yt_admin_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '表id',
-  `admin_id` int NULL DEFAULT NULL COMMENT '管理员id',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '表id',
+  `admin_id` int(11) NULL DEFAULT NULL COMMENT '管理员id',
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `log_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `log_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `log_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '日志描述',
   `log_agent` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `log_ip` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ip地址',
-  `create_time` int NULL DEFAULT NULL COMMENT '日志时间',
-  `update_time` int NULL DEFAULT NULL,
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '日志时间',
+  `update_time` int(11) NULL DEFAULT NULL,
   `status` tinyint(1) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE,
@@ -1433,12 +1592,12 @@ CREATE TABLE `yt_admin_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_admin_user`;
 CREATE TABLE `yt_admin_user`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `mobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '手机',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '邮箱',
-  `status` tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '用户状态  1 正常  2 禁止',
+  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT 1 COMMENT '用户状态  1 正常  2 禁止',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `last_login_time` datetime NULL DEFAULT NULL COMMENT '最后登陆时间',
   `last_login_ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '最后登录IP',
@@ -1449,7 +1608,7 @@ CREATE TABLE `yt_admin_user`  (
 -- ----------------------------
 -- Records of yt_admin_user
 -- ----------------------------
-INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-06 00:26:24', '127.0.0.1');
+INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-06 17:53:18', '211.20.8.131');
 INSERT INTO `yt_admin_user` VALUES (210, 'chuhuo001', '424913503b6fa1de5061472d31671ac3', '', '', 1, '2021-09-03 11:21:45', NULL, '113.110.152.118');
 INSERT INTO `yt_admin_user` VALUES (206, 'shengchan001', '07cb604fbcfa40ffb68e642317bb9a4f', '', '', 1, '2021-07-22 10:30:56', NULL, '113.110.147.142');
 INSERT INTO `yt_admin_user` VALUES (211, 'yuanrujun', '0b4e9eb6364c89be83134cb7c7f4f61c', '', '', 1, '2022-02-17 10:40:32', NULL, '113.116.228.226');
@@ -1461,8 +1620,8 @@ INSERT INTO `yt_admin_user` VALUES (207, 'nan123222', 'f379eaf3c831b04de153469d1
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_admin_user_log`;
 CREATE TABLE `yt_admin_user_log`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `uid` int NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT 0,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `ip` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
@@ -1480,16 +1639,16 @@ CREATE TABLE `yt_admin_user_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_article`;
 CREATE TABLE `yt_article`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '类型',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cate_id` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '类型',
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标题',
   `detail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '内容',
   `thumb` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '预览图片地址',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态 0禁止 1正常',
-  `sort` smallint UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
-  `hits` int UNSIGNED NULL DEFAULT 0 COMMENT '点击量',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态 0禁止 1正常',
+  `sort` smallint(5) UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
+  `hits` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '点击量',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -1511,11 +1670,11 @@ INSERT INTO `yt_article` VALUES (14, 8, '养殖水体中溶氧的影响因素', 
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_article_cate`;
 CREATE TABLE `yt_article_cate`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pid` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '父级分类',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pid` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '父级分类',
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品名称',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -1538,7 +1697,7 @@ INSERT INTO `yt_article_cate` VALUES (25, 1, '光伏增氧方案', 1628473590, 1
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_auth_group`;
 CREATE TABLE `yt_auth_group`  (
-  `id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` char(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `rules` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限规则ID',
@@ -1559,12 +1718,12 @@ INSERT INTO `yt_auth_group` VALUES (279, '公司网站管理', 1, '262,333,334,3
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_auth_group_access`;
 CREATE TABLE `yt_auth_group_access`  (
-  `uid` mediumint UNSIGNED NOT NULL,
-  `group_id` mediumint UNSIGNED NOT NULL,
+  `uid` mediumint(8) UNSIGNED NOT NULL,
+  `group_id` mediumint(8) UNSIGNED NOT NULL,
   UNIQUE INDEX `uid_group_id`(`uid`, `group_id`) USING BTREE,
   INDEX `uid`(`uid`) USING BTREE,
   INDEX `group_id`(`group_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限组规则表' ROW_FORMAT = FIXED;
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限组规则表' ROW_FORMAT = FIXED;
 
 -- ----------------------------
 -- Records of yt_auth_group_access
@@ -1581,9 +1740,9 @@ INSERT INTO `yt_auth_group_access` VALUES (211, 279);
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_auth_login_log`;
 CREATE TABLE `yt_auth_login_log`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `type` int NULL DEFAULT NULL COMMENT '1:密码,2:短信,3：公众号',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
+  `type` int(11) NULL DEFAULT NULL COMMENT '1:密码,2:短信,3：公众号',
   `ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'IP',
   `device` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'device',
   `platform` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '系统信息',
@@ -1591,9 +1750,9 @@ CREATE TABLE `yt_auth_login_log`  (
   `net_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '网络类型',
   `agent` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT 'UserAgent',
   `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '访问路径',
-  `from_type` int UNSIGNED NULL DEFAULT 0 COMMENT '来源类型 0登录',
-  `create_time` int NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` int NULL DEFAULT NULL,
+  `from_type` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '来源类型 0登录',
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户登录日志' ROW_FORMAT = COMPACT;
 
@@ -1654,14 +1813,14 @@ INSERT INTO `yt_auth_login_log` VALUES (48, 8, 1, '119.131.38.89', 'M2012K11AC R
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_auth_rule`;
 CREATE TABLE `yt_auth_rule`  (
-  `id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '规则名称',
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `type` tinyint UNSIGNED NULL DEFAULT 1,
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1,
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '状态',
-  `pid` smallint UNSIGNED NULL DEFAULT NULL COMMENT '父级ID',
+  `pid` smallint(5) UNSIGNED NULL DEFAULT NULL COMMENT '父级ID',
   `icon` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '图标',
-  `sort` int UNSIGNED NULL DEFAULT NULL COMMENT '排序',
+  `sort` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '排序',
   `condition` char(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name`) USING BTREE
@@ -1741,13 +1900,13 @@ INSERT INTO `yt_auth_rule` VALUES (355, 'admin/user/edit', '基本资料修改',
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_banner`;
 CREATE TABLE `yt_banner`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `image` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '轮播图',
   `url` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '跳转URL',
-  `sort` smallint UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `sort` smallint(5) UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -1765,7 +1924,7 @@ INSERT INTO `yt_banner` VALUES (9, '第三', 'http://api.ecarboncn.com/upload/20
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_company`;
 CREATE TABLE `yt_company`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `company_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公司名称',
   `company_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公司LOGO',
   `company_profile` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '公司简介',
@@ -1793,19 +1952,19 @@ INSERT INTO `yt_company` VALUES (1, '深圳市翌卡本智能科技有限公司'
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_feeback`;
 CREATE TABLE `yt_feeback`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '1 小程序 2网站',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '1 小程序 2网站',
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `user_id` int NOT NULL DEFAULT 0 COMMENT '用户ID',
+  `user_id` int(11) NOT NULL DEFAULT 0 COMMENT '用户ID',
   `phone` char(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '用户联系方式',
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '主题',
   `message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '评论内容',
   `qq` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'qq',
   `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `plug_sug_open` tinyint NOT NULL DEFAULT 0 COMMENT '1=已回复 0=未回复',
+  `plug_sug_open` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=已回复 0=未回复',
   `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '客户反馈留言' ROW_FORMAT = DYNAMIC;
 
@@ -1823,11 +1982,11 @@ INSERT INTO `yt_feeback` VALUES (5, 1, '释宪案潇洒是', 7, '', '忘情水',
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_fish_breed`;
 CREATE TABLE `yt_fish_breed`  (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品种名称',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态 0隐藏 1显示',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态 0隐藏 1显示',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '鱼类品种' ROW_FORMAT = COMPACT;
 
@@ -1840,13 +1999,13 @@ CREATE TABLE `yt_fish_breed`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_help`;
 CREATE TABLE `yt_help`  (
-  `id` int UNSIGNED NOT NULL,
-  `hc_id` int UNSIGNED NULL DEFAULT 0 COMMENT '分类ID',
+  `id` int(10) UNSIGNED NOT NULL,
+  `hc_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '分类ID',
   `question` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '问题',
   `anwer` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '回答',
-  `admin_id` int UNSIGNED NULL DEFAULT 0 COMMENT '管理员ID',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `admin_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '管理员ID',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '帮助指引' ROW_FORMAT = COMPACT;
 
@@ -1859,12 +2018,12 @@ CREATE TABLE `yt_help`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_help_cate`;
 CREATE TABLE `yt_help_cate`  (
-  `id` int UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '帮助分类',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '1显示 0隐藏',
-  `admin_id` int UNSIGNED NULL DEFAULT 0 COMMENT '管理员ID',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '1显示 0隐藏',
+  `admin_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '管理员ID',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '帮助分类\r\n' ROW_FORMAT = COMPACT;
 
@@ -1877,10 +2036,10 @@ CREATE TABLE `yt_help_cate`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_history_logs`;
 CREATE TABLE `yt_history_logs`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '逻辑id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '逻辑id',
   `client_id` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '发送消息的设备唯一标识',
   `event` tinyint(1) NULL DEFAULT NULL COMMENT '事件(事件ID： 1-在线， 2-离线， 3-订阅， 4-取消订阅， 5-发布 6-到达 7-确认',
-  `ts` int NULL DEFAULT NULL COMMENT '时间戳',
+  `ts` int(11) NULL DEFAULT NULL COMMENT '时间戳',
   `topic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '消息主题路径',
   `memo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'memo',
   PRIMARY KEY (`id`) USING BTREE
@@ -2895,12 +3054,12 @@ INSERT INTO `yt_history_logs` VALUES (113126315, 'cron_heart01', 5, 1672557256, 
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_invite`;
 CREATE TABLE `yt_invite`  (
-  `id` int UNSIGNED NOT NULL,
-  `invite_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '邀请人ID',
-  `accept_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '接受人ID',
-  `status` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '0待邀请  1已接受  2已失效 3已拒绝',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `id` int(10) UNSIGNED NOT NULL,
+  `invite_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '邀请人ID',
+  `accept_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '接受人ID',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '0待邀请  1已接受  2已失效 3已拒绝',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
@@ -2913,69 +3072,69 @@ CREATE TABLE `yt_invite`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine`;
 CREATE TABLE `yt_machine`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
   `machine_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '机器名',
-  `machine_type` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '机器类型 1增氧 2投料 3风扇 4测氧仪 5PH检测仪 6鱼塘控制器',
+  `machine_type` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '机器类型 1增氧 2投料 3风扇 4测氧仪 5PH检测仪 6鱼塘控制器',
   `IMEI` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
   `ICCID` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
   `connect_time` datetime NULL DEFAULT NULL COMMENT '连接时间',
   `shut_time` datetime NULL DEFAULT NULL COMMENT '断开时间',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间(入库日期公用)',
-  `over_date` int UNSIGNED NULL DEFAULT 0 COMMENT '服务到期日期(也叫截止日期=入库+3年)',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间(入库日期公用)',
+  `over_date` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '服务到期日期(也叫截止日期=入库+3年)',
   `first_bind_date` datetime NULL DEFAULT NULL COMMENT '首次绑定日期（激活日期）',
   `end_bind_date` datetime NULL DEFAULT NULL COMMENT '计费结束日期，和first_bind_date相对应',
   `speed` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '转速',
   `power` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '功率',
-  `status` tinyint UNSIGNED NULL DEFAULT 2 COMMENT ' 0--离线  1-- 运行   2--停机 3--故障',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 2 COMMENT ' 0--离线  1-- 运行   2--停机 3--故障',
   `status_code` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '状态异常码',
-  `last_connect_time` int NULL DEFAULT 0 COMMENT '最后心跳时间',
-  `if_show` int NULL DEFAULT 1 COMMENT '是否显示——1：显示；0：不显示',
-  `using_userid` int NULL DEFAULT NULL COMMENT '正在使用用户ID',
-  `online_count` int UNSIGNED NULL DEFAULT NULL COMMENT '累计时长 秒',
-  `electric_count` int UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电 ',
+  `last_connect_time` int(11) NULL DEFAULT 0 COMMENT '最后心跳时间',
+  `if_show` int(11) NULL DEFAULT 1 COMMENT '是否显示——1：显示；0：不显示',
+  `using_userid` int(11) NULL DEFAULT NULL COMMENT '正在使用用户ID',
+  `online_count` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '累计时长 秒',
+  `electric_count` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电 ',
   `qr_code` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '二维码',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   `sev_ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '设备连接IP地址',
   `sev_prot` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '设备连接端口号',
   `hardmodel` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '硬件型号',
   `softver` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '软件版本',
   `protocol` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '通讯协议版本',
-  `stat` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '设备状态 0待入库 1已入库',
+  `stat` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '设备状态 0待入库 1已入库',
   `express_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '快递名称',
   `express_no` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '快递单号',
-  `is_del` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '默认0正常   1删除',
+  `is_del` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '默认0正常   1删除',
   `degree` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度',
   `oxygen` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '溶氧值',
-  `ox_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '增氧仪设备ID  测氧仪需要关联  machine_type=4',
+  `ox_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '增氧仪设备ID  测氧仪需要关联  machine_type=4',
   `critical` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '警戒值',
   `x1_value` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT 'X1',
   `x2_value` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT 'X2',
   `r1_value` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT 'R1',
   `r2_value` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT 'R2',
-  `voltage` int UNSIGNED NULL DEFAULT 0 COMMENT '电网电压',
+  `voltage` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '电网电压',
   `current` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '电网电流',
   `total_power` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '控制柜总功率',
-  `aerator_1_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机 0停机 1运行 3故障',
-  `aerator_1_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
-  `aerator_2_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号增氧机 0停机 1运行 3故障',
-  `aerator_2_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
+  `aerator_1_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机 0停机 1运行 3故障',
+  `aerator_1_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
+  `aerator_2_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号增氧机 0停机 1运行 3故障',
+  `aerator_2_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
   `aerator_3_status` tinyint(1) NULL DEFAULT NULL COMMENT '控制柜3号增氧机 0停机 1运行 3故障',
-  `aerator_3_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜3号增氧机转速',
+  `aerator_3_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜3号增氧机转速',
   `aerator_4_status` tinyint(1) NULL DEFAULT NULL COMMENT '控制柜4号增氧机 0停机 1运行 3故障',
-  `aerator_4_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜4号增氧机转速',
-  `relay_1_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号继电器 0关 1开',
-  `relay_2_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号继电器 0关 1开',
-  `relay_3_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜3号继电器 0关 1开',
-  `relay_4_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜4号继电器 0关 1开',
+  `aerator_4_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜4号增氧机转速',
+  `relay_1_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号继电器 0关 1开',
+  `relay_2_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号继电器 0关 1开',
+  `relay_3_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜3号继电器 0关 1开',
+  `relay_4_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜4号继电器 0关 1开',
   `remark` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '正在使用的用户名称',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `machine_code`(`machine_code` ASC) USING BTREE,
-  UNIQUE INDEX `qr_code`(`qr_code` ASC) USING BTREE,
-  INDEX `machine_id`(`id` ASC) USING BTREE,
-  INDEX `is_del`(`is_del` ASC) USING BTREE,
-  INDEX `is_end_bind_date`(`end_bind_date` ASC) USING BTREE
+  UNIQUE INDEX `machine_code`(`machine_code`) USING BTREE,
+  UNIQUE INDEX `qr_code`(`qr_code`) USING BTREE,
+  INDEX `machine_id`(`id`) USING BTREE,
+  INDEX `is_del`(`is_del`) USING BTREE,
+  INDEX `is_end_bind_date`(`end_bind_date`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2434807 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -3302,26 +3461,26 @@ INSERT INTO `yt_machine` VALUES (2434806, '97215683', '2', 1, '869298050891605',
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_action_log`;
 CREATE TABLE `yt_machine_action_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
   `machine_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备机器码',
   `ip` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机IP',
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
   `nickname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `type` smallint UNSIGNED NULL DEFAULT 0 COMMENT '1启动 2关闭 3复位 4紧急启动 11设置定时 12设置自动',
+  `type` smallint(5) UNSIGNED NULL DEFAULT 0 COMMENT '1启动 2关闭 3复位 4紧急启动 11设置定时 12设置自动',
   `action` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作内容',
   `send_msg` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送指令',
-  `send` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '发送结果1. 成功 0 失败',
+  `send` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '发送结果1. 成功 0 失败',
   `error` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送失败原因',
-  `result` tinyint NOT NULL DEFAULT 0 COMMENT '机器响应结果1. 成功 0 失败',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `result` tinyint(4) NOT NULL DEFAULT 0 COMMENT '机器响应结果1. 成功 0 失败',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_machine_id`(`user_machine_id` ASC) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE
+  INDEX `user_machine_id`(`user_machine_id`) USING BTREE,
+  INDEX `machine_id`(`machine_id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1001 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '2.0 前端操作机器日志' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -4333,21 +4492,21 @@ INSERT INTO `yt_machine_action_log` VALUES (1000, 93, 2434554, '1号', '92186705
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_action_system_log`;
 CREATE TABLE `yt_machine_action_system_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
   `IMEI` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'IMEI',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
   `machine_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备机器码',
   `ip` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机IP',
   `send_msg` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送指令',
-  `send` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '发送结果1. 成功 0 失败',
+  `send` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '发送结果1. 成功 0 失败',
   `error` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送失败原因',
-  `admin_id` int UNSIGNED NULL DEFAULT 0,
+  `admin_id` int(10) UNSIGNED NULL DEFAULT 0,
   `admin_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE
+  INDEX `machine_id`(`machine_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台操作机器日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -4359,21 +4518,21 @@ CREATE TABLE `yt_machine_action_system_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_electric`;
 CREATE TABLE `yt_machine_electric`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '对应当前用户绑定设备ID',
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '对应所属鱼塘ID',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
-  `electric` int UNSIGNED NULL DEFAULT 0 COMMENT '当月新增耗电量',
-  `total_electric` int UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电量',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '对应当前用户绑定设备ID',
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '对应所属鱼塘ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `electric` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '当月新增耗电量',
+  `total_electric` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电量',
   `year` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '年',
   `month` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '月',
   `date` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '日期年月',
-  `create_time` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `mahince_id`(`machine_id` ASC, `date` ASC) USING BTREE,
-  INDEX `pond_id`(`pond_id` ASC) USING BTREE,
-  INDEX `date`(`date` ASC) USING BTREE
+  UNIQUE INDEX `mahince_id`(`machine_id`, `date`) USING BTREE,
+  INDEX `pond_id`(`pond_id`) USING BTREE,
+  INDEX `date`(`date`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1009 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备记录耗电' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -5385,27 +5544,27 @@ INSERT INTO `yt_machine_electric` VALUES (1008, 0, 146, 2434599, 6469, 25257, '2
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_error_log`;
 CREATE TABLE `yt_machine_error_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '所属鱼塘ID',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '所属鱼塘ID',
   `pond_title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '所属鱼塘名称',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `machine_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
   `IMEI` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `error_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '故障原因',
-  `error_type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '故障类型',
-  `status` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '状态 0待处理 1已处理 ',
+  `error_type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '故障类型',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '状态 0待处理 1已处理 ',
   `solve` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '处理结果',
-  `solve_time` int UNSIGNED NULL DEFAULT 0 COMMENT '处理时间',
+  `solve_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '处理时间',
   `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注信息',
   `error_code` char(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '故障码',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_machine_id`(`user_machine_id` ASC) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE,
-  INDEX `status`(`status` ASC) USING BTREE
+  INDEX `user_machine_id`(`user_machine_id`) USING BTREE,
+  INDEX `machine_id`(`machine_id`) USING BTREE,
+  INDEX `status`(`status`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1001 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '错误日志' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -6417,94 +6576,76 @@ INSERT INTO `yt_machine_error_log` VALUES (1000, 14, 35, 'B05A', 46, '24608327',
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_new`;
 CREATE TABLE `yt_machine_new`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
   `machine_code` char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '00000000' COMMENT '机器码',
   `IMEI` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
   `ICCID` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
-  `voltage` int UNSIGNED NULL DEFAULT 0 COMMENT '电网电压',
-  `phase` tinyint UNSIGNED NULL DEFAULT 2 COMMENT '0:正常；1：缺 A 相；2：缺 B 相；3：缺 C 相',
+  `voltage` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '电网电压',
+  `phase` tinyint(3) UNSIGNED NULL DEFAULT 2 COMMENT '0:正常；1：缺 A 相；2：缺 B 相；3：缺 C 相',
   `power` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '功率',
   `current` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '电网电流',
-  `energy` int UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电Power Consumption， 单位千瓦时 KWh',
+  `energy` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电Power Consumption， 单位千瓦时 KWh',
   `x1_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第1路电机的模式',
   `x2_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第2路电机的模式',
   `x4_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第3路电机的模式',
   `x3_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第4路电机的模式',
-  `aerator_1_speed` tinyint NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
-  `aerator_1_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机： 0关机 1开机 2故障',
-  `aerator_2_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
-  `aerator_2_status` tinyint UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号增氧机： 0关机 1开机 2故障',
-  `aerator_3_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜3号增氧机转速',
+  `aerator_1_speed` tinyint(3) NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
+  `aerator_1_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机： 0关机 1开机 2故障',
+  `aerator_2_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
+  `aerator_2_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号增氧机： 0关机 1开机 2故障',
+  `aerator_3_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜3号增氧机转速',
   `aerator_3_status` tinyint(1) NULL DEFAULT NULL COMMENT '控制柜3号增氧机： 0关机 1开机 2故障',
-  `aerator_4_speed` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '控制柜4号增氧机转速',
+  `aerator_4_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜4号增氧机转速',
   `aerator_4_status` tinyint(1) NULL DEFAULT NULL COMMENT '控制柜4号增氧机： 0关机 1开机 2故障',
-  `connect_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '连接时间',
-  `ox_machine_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '增氧仪设备ID  测氧仪需要关联  machine_type=4',
+  `connect_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '连接时间',
+  `ox_machine_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '增氧仪设备ID  测氧仪需要关联  machine_type=4',
   `oxygen` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '溶氧值',
   `oxy_critical` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '警戒值',
   `temperature` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度',
   `remark` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `userid` int NULL DEFAULT NULL COMMENT '正在使用用户ID',
+  `userid` int(11) NULL DEFAULT NULL COMMENT '正在使用用户ID',
   `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '正在使用的用户名称',
   `location_x` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '经度',
   `location_y` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '纬度',
   `ph` float(10, 2) NULL DEFAULT NULL COMMENT 'ph值',
   `atmosphere` float(10, 2) NULL DEFAULT NULL COMMENT '大气压强',
   PRIMARY KEY (`id`, `ox_machine_id`) USING BTREE,
-  INDEX `machine_id`(`id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
+  INDEX `machine_id`(`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of yt_machine_new
 -- ----------------------------
-INSERT INTO `yt_machine_new` VALUES (1, '45310986', '868739055454011', '89860802142070418996', 20, 2, '10', 20.00, 100, 10.00, 10.00, 2.80, 0.00, 7, 1, 160, 1, 0, 2, 80, 1, '2000-08-08 00:00:00', 0, 20.00, 20.00, 20.00, NULL, NULL, '李凯', NULL, NULL, 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (22, '24198115', '868739055454056', '89860802142070418997', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (23, '24255467', '868739057208302', '898604901920C1580174', 0, 2, '0', 0.00, NULL, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, 2.20, 0.00, 25.50, NULL, NULL, '深圳转多多', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (25, '24345463', '868739057141511', '89860802142070418996', 0, 2, NULL, 0.00, 0, 2.00, 7.00, 1.00, 160.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, 1.78, 7.00, 33.30, NULL, NULL, '李凯', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (26, '24345478', '868739055451234', '898604901920C1581234', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (27, '24518581', '863488051172347', '89860802142070419175', 0, 3, '0', 0.00, 25627, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, 0.00, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (28, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (29, '24605562', '863488051327685', '89860802142070419150', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (30, '24111111', '11231231', '1231231231', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-04 15:16:25', 1, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (32, '24111121', '11231231', '1231231231', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-04 15:17:13', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (33, '21111111', '', '', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-04 15:24:44', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (36, '24111123', '11231231', '1231231231', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-04 15:31:15', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (38, '14605563', '8687390554540112', '89860802142070418996', 20, 0, '10', 20.00, 100, 1.00, 1.00, 1.00, 2.00, 20, 0, 20, 0, 20, NULL, 10, 0, NULL, 1, 30.00, 50.00, 23.00, NULL, NULL, NULL, '31', '113.1231', 7.20, 22.20);
-INSERT INTO `yt_machine_new` VALUES (39, '14605564', '8687390554540112', '89860802142070418996', 20, 0, '10', 20.00, 100, 1.00, 0.00, 1.00, 2.00, 20, 0, 20, 0, 20, NULL, 10, 0, NULL, 1, 30.00, 50.00, 23.00, NULL, NULL, NULL, '31', '113.1231', 7.20, 22.20);
-INSERT INTO `yt_machine_new` VALUES (40, '14605565', '8687390554540112', '89860802142070418996', 20, 0, '10', 20.00, 100, 1.00, 1.00, 1.00, 2.00, 20, 0, 20, 0, 20, NULL, 10, 0, NULL, 1, 30.00, 50.00, 23.00, NULL, NULL, NULL, '31', '113.1231', 7.20, 22.20);
-INSERT INTO `yt_machine_new` VALUES (42, '45310986', '868739055454011', '89860802142070418996', 0, 2, '30', 11.00, 30, 0.00, 1.00, 0.00, 0.00, 50, 1, 0, 1, 0, NULL, 0, NULL, '2023-09-05 16:09:14', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (43, '24123456', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 0, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (44, '00000000', '868739055454011', '89860802142070418996', 0, 2, NULL, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, NULL, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (45, '00000000', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 1, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (46, '00000000', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 1, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (47, '00000000', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 0, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (48, '00000000', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 0, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (49, '24123456', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 0, 60, 1, 0, NULL, 0, NULL, '2023-09-05 17:20:21', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (50, '24123456', '868739055454011', '89860802142070418996', 0, 2, '20', 100.00, 50, 0.00, 0.00, 0.00, 0.00, 33, 0, 60, 1, 0, NULL, 0, NULL, '2023-09-06 00:38:44', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (51, '24123456', '868739055454011', '1231823812', 0, 1, '20', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-06 01:23:14', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, '123123123', '31', 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (52, '24123456', '868739055454011', '1231823812', 0, 1, '20', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-06 01:24:35', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, '123123123', '31', 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (53, '24123456', '868739055454011', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-06 01:31:45', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, '123123123', '31', 7.00, NULL);
+INSERT INTO `yt_machine_new` VALUES (1, '45310986', '868739055454011', '89860802142070418996', 20, 2, '10', 20.00, 100, 10.00, 10.00, 2.80, 0.00, 7, 0, 160, 0, 0, 0, 80, 0, '2000-08-08 00:00:00', 0, 20.00, 20.00, 20.00, NULL, NULL, '李凯', NULL, NULL, 7.00, NULL);
+INSERT INTO `yt_machine_new` VALUES (22, '24198115', '868739055454056', '89860802142070418997', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-01 15:29:47', 0, 3.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (23, '24255467', '868739057208302', '898604901920C1580174', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-02 00:29:56', 0, 2.20, 0.00, 25.50, NULL, NULL, '深圳转多多', NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (25, '24345463', '868739057141511', '89860802142070418996', 0, 2, '20', 0.00, 0, 2.00, 7.00, 1.00, 160.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-06 05:30:00', 0, 1.78, 7.00, 33.30, NULL, NULL, '李凯', NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (26, '24345478', '868739055451234', '898604901920C1581234', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-02 15:30:06', 0, 2.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (27, '24518581', '863488051172347', '89860802142070419175', 0, 3, '0', 0.00, 25627, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-01 15:30:20', 0, 5.00, 0.00, 20.00, NULL, NULL, '', NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (28, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:31:33', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (29, '24605562', '863488051327685', '89860802142070419150', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-06 15:29:42', 0, 6.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (48, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:52:13', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for yt_machine_oxygen_log
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_oxygen_log`;
 CREATE TABLE `yt_machine_oxygen_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `machine_id` int NULL DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `machine_id` int(11) NULL DEFAULT NULL,
   `IMEI` char(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `oxygen` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '溶氧量',
   `degree` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度',
-  `time` int UNSIGNED NULL DEFAULT 0 COMMENT '时间',
+  `time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '时间',
   `date` date NULL DEFAULT NULL COMMENT '日期  年月日',
   `hour` char(4) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '小时',
   `minute` char(4) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT '分钟',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE,
-  INDEX `IMEI`(`IMEI` ASC) USING BTREE,
-  INDEX `time`(`time` ASC) USING BTREE,
-  INDEX `date`(`date` ASC) USING BTREE,
-  INDEX `dhm`(`date` ASC, `hour` ASC, `minute` ASC) USING BTREE
+  INDEX `machine_id`(`machine_id`) USING BTREE,
+  INDEX `IMEI`(`IMEI`) USING BTREE,
+  INDEX `time`(`time`) USING BTREE,
+  INDEX `date`(`date`) USING BTREE,
+  INDEX `dhm`(`date`, `hour`, `minute`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1001 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = '测氧仪记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -7516,14 +7657,14 @@ INSERT INTO `yt_machine_oxygen_log` VALUES (1000, 25, '868739057141511', 3.31, 3
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_machine_oxygen_middle`;
 CREATE TABLE `yt_machine_oxygen_middle`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int UNSIGNED NULL DEFAULT 0,
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0,
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '测氧仪设备ID',
-  `ox_user_machine_id` int UNSIGNED NULL DEFAULT 0,
-  `ox_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '增氧仪设备ID',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0,
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0,
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '测氧仪设备ID',
+  `ox_user_machine_id` int(10) UNSIGNED NULL DEFAULT 0,
+  `ox_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '增氧仪设备ID',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '测氧增氧设备绑定中间表' ROW_FORMAT = DYNAMIC;
 
@@ -7536,14 +7677,14 @@ CREATE TABLE `yt_machine_oxygen_middle`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_notice`;
 CREATE TABLE `yt_notice`  (
-  `id` bigint UNSIGNED NOT NULL,
-  `type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '通知类型 1错误预警',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '通知类型 1错误预警',
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '通知标题',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '通知内容',
-  `form_id` int UNSIGNED NULL DEFAULT NULL COMMENT '来源ID',
-  `is_read` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否已读 0否 1是',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `form_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '来源ID',
+  `is_read` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否已读 0否 1是',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
@@ -7556,15 +7697,15 @@ CREATE TABLE `yt_notice`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_package`;
 CREATE TABLE `yt_package`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '套餐类型 1使用设备',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '套餐类型 1使用设备',
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '套餐名',
   `origin_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '原始价格',
   `pay_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '支付价格',
-  `valid_day` smallint UNSIGNED NULL DEFAULT 0 COMMENT '有效天数',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态 0 下架 1商家',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `valid_day` smallint(5) UNSIGNED NULL DEFAULT 0 COMMENT '有效天数',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态 0 下架 1商家',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '充值套餐' ROW_FORMAT = COMPACT;
 
@@ -7586,22 +7727,22 @@ INSERT INTO `yt_package` VALUES (9, 1, '一年网费', 120.00, 60.00, 365, 1, 16
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_pond`;
 CREATE TABLE `yt_pond`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
   `breed` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品种',
   `norm` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '规格',
   `density` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '密度',
   `acreage` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '面积',
   `put_date` date NULL DEFAULT NULL COMMENT '投放日期',
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
-  `group_id` int UNSIGNED NULL DEFAULT 0 COMMENT '所属组ID',
-  `is_del` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否删除 0否 1是',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
+  `group_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '所属组ID',
+  `is_del` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否删除 0否 1是',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  INDEX `group_id`(`group_id` ASC) USING BTREE,
-  INDEX `is_del`(`is_del` ASC) USING BTREE
+  INDEX `user_id`(`user_id`) USING BTREE,
+  INDEX `group_id`(`group_id`) USING BTREE,
+  INDEX `is_del`(`is_del`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 170 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -7780,16 +7921,16 @@ INSERT INTO `yt_pond` VALUES (169, '新哥', '黑鱼', '10', '10', '10', '2022-1
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_pond_group`;
 CREATE TABLE `yt_pond_group`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `group_user_id` int NULL DEFAULT NULL COMMENT '群主ID',
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '成员ID',
-  `sort` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '排序优先级 由小到大 ',
-  `is_top` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否置顶',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `group_user_id` int(11) NULL DEFAULT NULL COMMENT '群主ID',
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '成员ID',
+  `sort` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '排序优先级 由小到大 ',
+  `is_top` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否置顶',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  INDEX `group_user_id`(`group_user_id` ASC) USING BTREE
+  INDEX `user_id`(`user_id`) USING BTREE,
+  INDEX `group_user_id`(`group_user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -7834,21 +7975,21 @@ INSERT INTO `yt_pond_group` VALUES (33, 12, 26, 0, 0, 1659683444, 1659683444);
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_pond_group_machine`;
 CREATE TABLE `yt_pond_group_machine`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '可管理的用户ID',
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
-  `status` tinyint UNSIGNED NULL DEFAULT 1,
-  `is_master` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否主人',
-  `master_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '主人ID',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '可管理的用户ID',
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1,
+  `is_master` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否主人',
+  `master_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '主人ID',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  INDEX `user_machine_id`(`user_machine_id` ASC) USING BTREE,
-  INDEX `status`(`status` ASC) USING BTREE,
-  INDEX `is_master`(`is_master` ASC) USING BTREE,
-  INDEX `master_user_id`(`master_user_id` ASC) USING BTREE
+  INDEX `user_id`(`user_id`) USING BTREE,
+  INDEX `user_machine_id`(`user_machine_id`) USING BTREE,
+  INDEX `status`(`status`) USING BTREE,
+  INDEX `is_master`(`is_master`) USING BTREE,
+  INDEX `master_user_id`(`master_user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 357 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '分组管理设备' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -8024,15 +8165,15 @@ INSERT INTO `yt_pond_group_machine` VALUES (356, 12, 169, 314, 1, 1, 12, 1669444
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_pond_machine_rule`;
 CREATE TABLE `yt_pond_machine_rule`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '目标鱼塘ID',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '真实设备ID',
-  `x_ponit` tinyint UNSIGNED NULL DEFAULT 0 COMMENT 'X坐标',
-  `y_ponit` tinyint UNSIGNED NULL DEFAULT 0 COMMENT 'Y坐标',
-  `act_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '操作人',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '目标鱼塘ID',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '真实设备ID',
+  `x_ponit` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT 'X坐标',
+  `y_ponit` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT 'Y坐标',
+  `act_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '操作人',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 365 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = '鱼塘放置设备规则表' ROW_FORMAT = DYNAMIC;
 
@@ -8160,19 +8301,19 @@ INSERT INTO `yt_pond_machine_rule` VALUES (364, 169, 314, 2434706, 1, 1, 12, 166
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_product`;
 CREATE TABLE `yt_product`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '类型',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cate_id` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '类型',
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品名称',
   `thumb` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '首图',
   `images` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '图片数组',
   `detail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '详情',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态 0禁止 1正常',
-  `sort` smallint UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
-  `hits` int UNSIGNED NULL DEFAULT 0 COMMENT '点击量',
-  `admin_id` int UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态 0禁止 1正常',
+  `sort` smallint(5) UNSIGNED NULL DEFAULT 9999 COMMENT '排序 越小越靠前',
+  `hits` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '点击量',
+  `admin_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
   `admin_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '添加用户名',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -8186,11 +8327,11 @@ INSERT INTO `yt_product` VALUES (9, 5, '智能变频增氧机', 'http://api.ecar
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_product_cate`;
 CREATE TABLE `yt_product_cate`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pid` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '父级分类',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pid` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '父级分类',
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品名称',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -8205,16 +8346,16 @@ INSERT INTO `yt_product_cate` VALUES (5, 1, '智能变频增氧机', 1626253678,
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_request_log`;
 CREATE TABLE `yt_request_log`  (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
-  `user_id` int UNSIGNED NULL DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键，自动生成',
+  `user_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '前端Or后端',
   `method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请求方法',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'URL',
   `ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'IP',
   `params` varchar(10000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `headers` varchar(10000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `create_time` int NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` int NULL DEFAULT NULL,
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1001 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '请求记录日志表' ROW_FORMAT = DYNAMIC;
 
@@ -9227,15 +9368,15 @@ INSERT INTO `yt_request_log` VALUES (1000, 32, 'mini', 'GET', 'machine/detail', 
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_send_voice_log`;
 CREATE TABLE `yt_send_voice_log`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `error_id` int UNSIGNED NULL DEFAULT 0 COMMENT '关联错误ID',
-  `send_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '发送用户ID',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `error_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '关联错误ID',
+  `send_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '发送用户ID',
   `send_user_phone` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送用户手机',
   `send_content` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送内容',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态  1已发送待呼叫  2呼叫失败 3呼叫接听成功',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态  1已发送待呼叫  2呼叫失败 3呼叫接听成功',
   `fail_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '错误原因',
   `result` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '返回结果',
-  `call_num` int UNSIGNED NULL DEFAULT 1 COMMENT '拨打次数',
+  `call_num` int(10) UNSIGNED NULL DEFAULT 1 COMMENT '拨打次数',
   `param_1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `param_2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `param_3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -9244,16 +9385,16 @@ CREATE TABLE `yt_send_voice_log`  (
   `call_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'call_status',
   `call_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'call_reason',
   `notify_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `is_back` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否需要回拨  0不需要 1需要',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户设备ID',
-  `second_send_user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '次发送用户ID',
+  `is_back` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否需要回拨  0不需要 1需要',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户设备ID',
+  `second_send_user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '次发送用户ID',
   `second_send_user_phone` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '次发送用户手机',
-  `create_time` int NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` int NULL DEFAULT NULL,
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `error_id`(`error_id` ASC) USING BTREE,
-  INDEX `status`(`status` ASC, `is_back` ASC) USING BTREE,
-  INDEX `call_id`(`call_id` ASC) USING BTREE
+  INDEX `error_id`(`error_id`) USING BTREE,
+  INDEX `status`(`status`, `is_back`) USING BTREE,
+  INDEX `call_id`(`call_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1001 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = '发送语音日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -10265,18 +10406,18 @@ INSERT INTO `yt_send_voice_log` VALUES (1000, 2165, 28, '13710639189', '设备�
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_service`;
 CREATE TABLE `yt_service`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `machine_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '设备名称',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '当前关联设备ID',
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '当前鱼塘ID',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '当前关联设备ID',
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '当前鱼塘ID',
   `contact` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系人',
   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系人电话',
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `create_time` int UNSIGNED NULL DEFAULT 0,
-  `update_time` int UNSIGNED NULL DEFAULT NULL,
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0,
+  `update_time` int(10) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备维修服务留言' ROW_FORMAT = DYNAMIC;
 
@@ -10290,14 +10431,14 @@ INSERT INTO `yt_service` VALUES (7, 51, 2434601, '62387150', '未命名设备', 
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_task`;
 CREATE TABLE `yt_task`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `task_id` int UNSIGNED NULL DEFAULT 0 COMMENT '任务ID',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `task_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '任务ID',
   `start_time` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `end_time` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `speed` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `sort` tinyint UNSIGNED NULL DEFAULT 0,
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `sort` tinyint(3) UNSIGNED NULL DEFAULT 0,
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
@@ -10314,23 +10455,23 @@ INSERT INTO `yt_task` VALUES (8, 1, '21:00', '00:00', '400', 0, 1623598194, 1623
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_task_setting`;
 CREATE TABLE `yt_task_setting`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
   `pond_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `machine_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
-  `mode` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '模式 1定时 2自动',
+  `mode` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '模式 1定时 2自动',
   `speed_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '转速设置',
-  `status` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '状态 0失效 1正常',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '状态 0失效 1正常',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE,
-  INDEX `user_machine_id`(`user_machine_id` ASC) USING BTREE,
-  INDEX `mode`(`mode` ASC) USING BTREE
+  INDEX `machine_id`(`machine_id`) USING BTREE,
+  INDEX `user_machine_id`(`user_machine_id`) USING BTREE,
+  INDEX `mode`(`mode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 190 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务设置' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -10472,23 +10613,23 @@ INSERT INTO `yt_task_setting` VALUES (189, 169, '新哥', 12, 314, 2434706, '615
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_user`;
 CREATE TABLE `yt_user`  (
-  `id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '表id',
+  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '表id',
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方返回昵称',
   `openid` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方唯一标示',
   `phone` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '手机号码',
-  `user_type` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '用户类型   0普通用户 1塘主  2管理员',
-  `leader` int UNSIGNED NULL DEFAULT 0 COMMENT '推荐邀请人',
+  `user_type` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '用户类型   0普通用户 1塘主  2管理员',
+  `leader` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '推荐邀请人',
   `status` tinyint(1) NULL DEFAULT 1 COMMENT '是否被锁定冻结 0 冻结，1 正常',
-  `last_login` int UNSIGNED NULL DEFAULT 0 COMMENT '最后登录时间',
-  `login_num` int NULL DEFAULT 0 COMMENT '登录次数',
+  `last_login` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '最后登录时间',
+  `login_num` int(11) NULL DEFAULT 0 COMMENT '登录次数',
   `last_ip` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '最后登录ip',
   `mobile_validated` tinyint(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '是否验证手机',
   `oauth` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '第三方来源 wx weibo alipay qq',
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
   `paypwd` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '支付密码',
   `unionid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `sex` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '0 保密 1 男 2 女',
+  `sex` tinyint(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '0 保密 1 男 2 女',
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
   `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '省份',
   `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '市区',
@@ -10499,13 +10640,13 @@ CREATE TABLE `yt_user`  (
   `alias_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '成员别名',
   `session_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `auth_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '登录类型',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '注册时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `id`(`id` ASC) USING BTREE,
-  UNIQUE INDEX `openid`(`openid` ASC) USING BTREE,
-  INDEX `unionid`(`unionid` ASC) USING BTREE,
-  INDEX `phone`(`mobile_validated` ASC) USING BTREE
+  UNIQUE INDEX `id`(`id`) USING BTREE,
+  UNIQUE INDEX `openid`(`openid`) USING BTREE,
+  INDEX `unionid`(`unionid`) USING BTREE,
+  INDEX `phone`(`mobile_validated`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 110 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -10625,13 +10766,13 @@ INSERT INTO `yt_user` VALUES (109, '看淡人生', '看淡人生', 'o4uAA4-Nx0Sg
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_user_action_log`;
 CREATE TABLE `yt_user_action_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
-  `type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '类型',
-  `from_id` int UNSIGNED NULL DEFAULT 0,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户ID',
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '类型',
+  `from_id` int(10) UNSIGNED NULL DEFAULT 0,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作内容',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
@@ -10644,25 +10785,25 @@ CREATE TABLE `yt_user_action_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_user_machine`;
 CREATE TABLE `yt_user_machine`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
-  `machine_type` int UNSIGNED NULL DEFAULT 0,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `machine_type` int(10) UNSIGNED NULL DEFAULT 0,
   `machine_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `machine_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备名称',
   `pond_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '鱼塘名称',
-  `pond_id` int UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
-  `user_id` int UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
-  `group_id` int UNSIGNED NULL DEFAULT 0 COMMENT '组ID',
-  `is_del` tinyint UNSIGNED NULL DEFAULT 0,
-  `priority` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '通知优先级 1塘主 2管理员',
-  `is_offline_warn` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '是否开启离线预警 0 否 1是',
-  `is_error_warn` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '是否开启故障预警 0 否 1是',
-  `create_time` int UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
+  `pond_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '鱼塘ID',
+  `user_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加用户ID',
+  `group_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '组ID',
+  `is_del` tinyint(3) UNSIGNED NULL DEFAULT 0,
+  `priority` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '通知优先级 1塘主 2管理员',
+  `is_offline_warn` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '是否开启离线预警 0 否 1是',
+  `is_error_warn` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '是否开启故障预警 0 否 1是',
+  `create_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  INDEX `is_del`(`is_del` ASC) USING BTREE
+  INDEX `machine_id`(`machine_id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE,
+  INDEX `is_del`(`is_del`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 315 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户 添加设备' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -10988,23 +11129,23 @@ INSERT INTO `yt_user_machine` VALUES (314, 2434706, 1, '61580274', '苗种', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_user_rechange_order`;
 CREATE TABLE `yt_user_rechange_order`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `out_trade_no` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单号',
-  `user_id` int NULL DEFAULT NULL COMMENT '充值用户ID',
-  `user_machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
-  `machine_id` int UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '充值用户ID',
+  `user_machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '用户关联设备ID',
+  `machine_id` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '设备ID',
   `machine_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '设备码',
   `price` decimal(8, 2) NULL DEFAULT NULL COMMENT '充值金额',
-  `package_id` int UNSIGNED NOT NULL COMMENT '套餐ID',
-  `pay_time` int NULL DEFAULT NULL COMMENT '充值支付时间',
-  `valid_day` smallint UNSIGNED NULL DEFAULT NULL COMMENT '有效天数',
-  `status` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '状态 0待支付 1已充值 2已失效',
-  `create_time` int NULL DEFAULT NULL COMMENT '充值时间',
+  `package_id` int(10) UNSIGNED NOT NULL COMMENT '套餐ID',
+  `pay_time` int(11) NULL DEFAULT NULL COMMENT '充值支付时间',
+  `valid_day` smallint(5) UNSIGNED NULL DEFAULT NULL COMMENT '有效天数',
+  `status` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '状态 0待支付 1已充值 2已失效',
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '充值时间',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `out`(`out_trade_no` ASC) USING BTREE,
-  INDEX `uid`(`user_id` ASC) USING BTREE,
-  INDEX `user_machine_id`(`user_machine_id` ASC) USING BTREE,
-  INDEX `machine_id`(`machine_id` ASC) USING BTREE
+  UNIQUE INDEX `out`(`out_trade_no`) USING BTREE,
+  INDEX `uid`(`user_id`) USING BTREE,
+  INDEX `user_machine_id`(`user_machine_id`) USING BTREE,
+  INDEX `machine_id`(`machine_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户充值表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -11027,18 +11168,18 @@ INSERT INTO `yt_user_rechange_order` VALUES (11, 'wx2022021811443610021', 21, 20
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_weixin_pay_log`;
 CREATE TABLE `yt_weixin_pay_log`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID付款订单号',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID付款订单号',
+  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
   `order_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付订单号',
   `total_fee` decimal(10, 2) NULL DEFAULT NULL,
-  `order_id` int NULL DEFAULT NULL COMMENT '支付订单ID',
-  `type` tinyint UNSIGNED NULL DEFAULT 1 COMMENT '类型 1充值  2：推荐购买',
+  `order_id` int(11) NULL DEFAULT NULL COMMENT '支付订单ID',
+  `type` tinyint(3) UNSIGNED NULL DEFAULT 1 COMMENT '类型 1充值  2：推荐购买',
   `open_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `is_paid` tinyint UNSIGNED NULL DEFAULT 0 COMMENT '是否已支付',
+  `is_paid` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '是否已支付',
   `transaction_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '交易号',
-  `paid_at` int UNSIGNED NULL DEFAULT 0 COMMENT '支付时间',
-  `create_time` int NULL DEFAULT NULL COMMENT '添加时间',
-  `update_time` int NULL DEFAULT NULL,
+  `paid_at` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '支付时间',
+  `create_time` int(11) NULL DEFAULT NULL COMMENT '添加时间',
+  `update_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '微信支付记录日志' ROW_FORMAT = COMPACT;
 
@@ -11063,14 +11204,14 @@ INSERT INTO `yt_weixin_pay_log` VALUES (12, 21, 'wx2022080315162010021', 60.00, 
 -- ----------------------------
 DROP TABLE IF EXISTS `yt_weixin_unify_log`;
 CREATE TABLE `yt_weixin_unify_log`  (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `out_trade_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '订单号',
   `out_refund_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '退款单号',
   `pay` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '支付请求',
   `log` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '记录',
   `notify` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '异步通知',
-  `create_time` int UNSIGNED NULL DEFAULT NULL COMMENT '添加时间',
-  `update_time` int UNSIGNED NULL DEFAULT 0,
+  `create_time` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '添加时间',
+  `update_time` int(10) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '微信支付回调' ROW_FORMAT = COMPACT;
 

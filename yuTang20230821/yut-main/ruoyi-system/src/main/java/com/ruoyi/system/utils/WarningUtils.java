@@ -15,6 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Component
@@ -116,6 +117,11 @@ public class WarningUtils {
         YtMachineNew ytMachineNew = ytMachineNewMapper.findMachineByMachineCode(machine_code);
         // 阈值
         DeviceThreshold deviceThreshold = deviceThresholdMapper.find_by_machine_code(machine_code);
+        // 默认阈值
+        if (deviceThreshold == null) {
+            deviceThreshold = new DeviceThreshold(null,machine_code,300,0,new BigDecimal(500),
+                    new BigDecimal(1000),new BigDecimal(0),new BigDecimal(1000),new BigDecimal(0));
+        }
 
         // 判断 current voltage_max min  temp_max min  oxygen_max min 不符合就设置报警
         boolean flag = false; // 不报警

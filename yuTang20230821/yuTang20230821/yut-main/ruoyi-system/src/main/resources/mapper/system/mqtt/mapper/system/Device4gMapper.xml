@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.Device4gMapper">
+
+    <resultMap type="Device4g" id="Device4gResult">
+        <result property="id"    column="id"    />
+        <result property="machineCode"    column="machine_code"    />
+        <result property="machineName"    column="machine_name"    />
+        <result property="machineType"    column="machine_type"    />
+        <result property="fishPond"    column="fish_pond"    />
+        <result property="machineStatus"    column="machine_status"    />
+        <result property="IMEI"    column="IMEI"    />
+        <result property="ICCID"    column="ICCID"    />
+        <result property="CSQ"    column="CSQ"    />
+    </resultMap>
+
+    <sql id="selectDevice4gVo">
+        select id, machine_code, machine_name, machine_type, fish_pond, machine_status, IMEI, ICCID,CSQ from device_4g
+    </sql>
+
+    <select id="selectDevice4gList" parameterType="Device4g" resultMap="Device4gResult">
+        <include refid="selectDevice4gVo"/>
+        <where>
+            <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
+            <if test="machineName != null  and machineName != ''"> and machine_name like concat('%', #{machineName}, '%')</if>
+            <if test="machineType != null  and machineType != ''"> and machine_type = #{machineType}</if>
+            <if test="fishPond != null  and fishPond != ''"> and fish_pond = #{fishPond}</if>
+            <if test="machineStatus != null "> and machine_status = #{machineStatus}</if>
+            <if test="IMEI != null  and IMEI != ''"> and IMEI = #{IMEI}</if>
+            <if test="ICCID != null  and ICCID != ''"> and ICCID = #{ICCID}</if>
+        </where>
+    </select>
+
+    <select id="selectDevice4gById" parameterType="Integer" resultMap="Device4gResult">
+        <include refid="selectDevice4gVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectDevice4gByImei" resultType="java.lang.String">
+        select machine_code
+        from device4g
+        <where>
+            imei = #{imei}
+        </where>
+    </select>
+    <select id="countStatus" resultType="Device4gVo">
+        SELECT count(*) as deviceSum,count(machine_status=0 or null) as deviceOn,count(machine_status=1 or null) as deviceOff,count(machine_status=2 or null) as deviceError
+        FROM device4g
+        <where>
+            fish_pond = #{fishPond}
+        </where>
+    </select>
+    <select id="selectStatusList" resultType="com.ruoyi.system.domain.vo.Device4gNameVo">
+        SELECT fish_pond,machine_name,machine_code,machine_type,CSQ
+        FROM device4g
+        where
+            machine_status = #{status}
+            and fish_pond = #{fishPond}
+
+    </select>
+    <select id="selectAllStatusList" resultType="com.ruoyi.system.domain.vo.Device4gNameVo">
+        SELECT fish_pond,machine_name,machine_code,machine_type,machine_status,CSQ
+        FROM device4g
+        where fish_pond=#{fishPond}
+    </select>
+    <select id="pondList" resultType="com.ruoyi.system.domain.Device4g">
+        SELECT DISTINCT(fish_pond)
+        FROM device4g
+    </select>
+    <select id="selectByMachineCode" resultType="com.ruoyi.system.domain.Device4g">
+        SELECT *
+        FROM device4g
+        WHERE machine_code=#{machine_code}
+    </select>
+    <select id="selectMaxIdByFishPond" resultType="java.lang.String">
+        SELECT COUNT(id)
+        FROM device4g
+        WHERE fish_pond=#{fishPond}
+    </select>
+
+    <insert id="insertDevice4g" parameterType="Device4g" useGeneratedKeys="true" keyProperty="id">
+        insert into device4g
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">machine_code,</if>
+            <if test="machineName != null">machine_name,</if>
+            <if test="machineType != null">machine_type,</if>
+            <if test="fishPond != null">fish_pond,</if>
+            <if test="machineStatus != null">machine_status,</if>
+            <if test="IMEI != null and IMEI != ''">IMEI,</if>
+            <if test="ICCID != null and ICCID != ''">ICCID,</if>
+            <if test="CSQ != null and CSQ != ''">CSQ,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">#{machineCode},</if>
+            <if test="machineName != null">#{machineName},</if>
+            <if test="machineType != null">#{machineType},</if>
+            <if test="fishPond != null">#{fishPond},</if>
+            <if test="machineStatus != null">#{machineStatus},</if>
+            <if test="IMEI != null and IMEI != ''">#{IMEI},</if>
+            <if test="ICCID != null and ICCID != ''">#{ICCID},</if>
+            <if test="CSQ != null and CSQ != ''">#{CSQ},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDevice4g" parameterType="Device4g">
+        update device_4g
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>
+            <if test="machineName != null">machine_name = #{machineName},</if>
+            <if test="machineType != null">machine_type = #{machineType},</if>
+            <if test="fishPond != null">fish_pond = #{fishPond},</if>
+            <if test="machineStatus != null">machine_status = #{machineStatus},</if>
+            <if test="IMEI != null and IMEI != ''">IMEI = #{IMEI},</if>
+            <if test="ICCID != null and ICCID != ''">ICCID = #{ICCID},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDevice4gById" parameterType="Integer">
+        delete from device_4g where id = #{id}
+    </delete>
+
+    <delete id="deleteDevice4gByIds" parameterType="String">
+        delete from device_4g where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

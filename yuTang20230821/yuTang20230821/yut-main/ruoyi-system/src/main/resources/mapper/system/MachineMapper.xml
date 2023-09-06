@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MachineMapper">
+
+    <resultMap id="MachineResultMap" type="com.ruoyi.system.domain.Machine">
+        <id column="id" property="id"/>
+        <result column="machine_code" property="machineCode"/>
+        <result column="machine_name" property="machineName"/>
+        <result column="machine_type" property="machineType"/>
+        <result column="IMEI" property="IMEI"/>
+        <result column="ICCID" property="ICCID"/>
+        <result column="connect_time" property="connectTime"/>
+        <result column="shut_time" property="shutTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="over_date" property="overDate"/>
+        <result column="first_bind_date" property="firstBindDate"/>
+        <result column="end_bind_date" property="endBindDate"/>
+        <result column="speed" property="speed"/>
+        <result column="power" property="power"/>
+        <result column="status" property="status"/>
+        <result column="status_code" property="statusCode"/>
+        <result column="last_connect_time" property="lastConnectTime"/>
+        <result column="if_show" property="ifShow"/>
+        <result column="using_userid" property="usingUserid"/>
+        <result column="online_count" property="onlineCount"/>
+        <result column="electric_count" property="electricCount"/>
+        <result column="qr_code" property="qrCode"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="sev_ip" property="sevIp"/>
+        <result column="sev_prot" property="sevPort"/>
+        <result column="hardmodel" property="hardModel"/>
+        <result column="softver" property="softVer"/>
+        <result column="protocol" property="protocol"/>
+        <result column="stat" property="stat"/>
+        <result column="express_name" property="expressName"/>
+        <result column="express_no" property="expressNo"/>
+        <result column="is_del" property="isDel"/>
+        <result column="degree" property="degree"/>
+        <result column="oxygen" property="oxygen"/>
+        <result column="ox_machine_id" property="oxMachineId"/>
+        <result column="critical" property="critical"/>
+        <result column="x1_value" property="x1Value"/>
+        <result column="x2_value" property="x2Value"/>
+        <result column="r1_value" property="r1Value"/>
+        <result column="r2_value" property="r2Value"/>
+        <result column="voltage" property="voltage"/>
+        <result column="current" property="current"/>
+        <result column="total_power" property="totalPower"/>
+        <result column="aerator_1_status" property="aerator1Status"/>
+        <result column="aerator_1_speed" property="aerator1Speed"/>
+        <result column="aerator_2_status" property="aerator2Status"/>
+        <result column="aerator_2_speed" property="aerator2Speed"/>
+        <result column="aerator_3_status" property="aerator3Status"/>
+        <result column="aerator_3_speed" property="aerator3Speed"/>
+        <result column="aerator_4_status" property="aerator4Status"/>
+        <result column="aerator_4_speed" property="aerator4Speed"/>
+        <result column="relay_1_status" property="relay1Status"/>
+        <result column="relay_2_status" property="relay2Status"/>
+        <result column="relay_3_status" property="relay3Status"/>
+        <result column="relay_4_status" property="relay4Status"/>
+        <result column="remark" property="remark"/>
+        <result column="username" property="username"/>
+    </resultMap>
+    <resultMap id="MachineListVoResultMap" type="com.ruoyi.system.domain.vo.MachineListVo">
+        <id column="id" property="id"/>
+        <result column="machine_code" property="machine_code"/>
+        <result column="machine_name" property="machine_name"/>
+        <result column="machine_type" property="machine_type"/>
+        <result column="IMEI" property="IMEI"/>
+        <result column="ICCID" property="ICCID"/>
+        <result column="create_time" property="create_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="over_date" property="over_date" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="first_bind_date" property="first_bind_date"/>
+        <result column="end_bind_date" property="end_bind_date"/>
+        <result column="speed" property="speed"/>
+        <result column="power" property="power"/>
+        <result column="status" property="status"/>
+        <result column="status_code" property="status_code"/>
+        <result column="last_connect_time" property="last_connect_time"/>
+        <result column="if_show" property="ifShow"/>
+        <result column="using_userid" property="using_userid"/>
+        <result column="online_count" property="online_count"/>
+        <result column="electric_count" property="electric_count"/>
+        <result column="qr_code" property="qr_code"/>
+        <result column="update_time" property="update_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="sev_ip" property="sev_ip"/>
+        <result column="sev_port" property="sev_port"/>
+        <result column="hardmodel" property="hardmodel"/>
+        <result column="softver" property="soft_ver"/>
+        <result column="protocol" property="protocol"/>
+        <result column="stat" property="stat"/>
+        <result column="express_name" property="express_name"/>
+        <result column="express_no" property="express_no"/>
+        <result column="is_del" property="is_del"/>
+        <result column="degree" property="degree"/>
+        <result column="oxygen" property="oxygen"/>
+        <result column="ox_machine_id" property="ox_machine_id"/>
+        <result column="critical" property="critical"/>
+        <result column="remark" property="remark"/>
+        <result column="username" property="username"/>
+        <result column="master" property="master"/>
+        <result column="manager" property="manager"/>
+    </resultMap>
+    <resultMap id="MachineDetailVoResultMap" type="com.ruoyi.system.domain.vo.MachineDetailVo">
+        <id column="id" property="id"/>
+        <result column="machine_code" property="machine_code"/>
+        <result column="machine_name" property="machine_name"/>
+        <result column="machine_type" property="machine_type"/>
+        <result column="IMEI" property="IMEI"/>
+        <result column="ICCID" property="ICCID"/>
+        <result column="connect_time" property="connect_time"/>
+        <result column="shut_time" property="shut_time"/>
+        <result column="create_time" property="create_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="over_date" property="over_date" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="first_bind_date" property="first_bind_date"/>
+        <result column="end_bind_date" property="end_bind_date"/>
+        <result column="speed" property="speed"/>
+        <result column="power" property="power"/>
+        <result column="status" property="status"/>
+        <result column="status_code" property="status_code"/>
+        <result column="last_connect_time" property="last_connect_time"/>
+        <result column="if_show" property="if_show"/>
+        <result column="using_userid" property="using_userid"/>
+        <result column="online_count" property="online_count"/>
+        <result column="electric_count" property="electric_count"/>
+        <result column="qr_code" property="qr_code"/>
+        <result column="update_time" property="update_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+        <result column="sev_ip" property="sev_ip"/>
+        <result column="sev_port" property="sev_port"/>
+        <result column="hardmodel" property="hardmodel"/>
+        <result column="softver" property="softver"/>
+        <result column="protocol" property="protocol"/>
+        <result column="stat" property="stat"/>
+        <result column="express_name" property="express_name"/>
+        <result column="express_no" property="express_no"/>
+        <result column="is_del" property="is_del"/>
+        <result column="degree" property="degree"/>
+        <result column="oxygen" property="oxygen"/>
+        <result column="ox_machine_id" property="ox_machine_d"/>
+        <result column="critical" property="critical"/>
+        <result column="x1_value" property="x1_value"/>
+        <result column="x2_value" property="x2_value"/>
+        <result column="r1_value" property="r1_value"/>
+        <result column="r2_value" property="r2_value"/>
+        <result column="remark" property="remark"/>
+        <result column="username" property="username"/>
+        <result column="master" property="master"/>
+        <result column="manager" property="manager"/>
+        <result column="pond_title" property="pond_title"/>
+    </resultMap>
+    <resultMap id="MachineActionLogVoResultMap" type="com.ruoyi.system.domain.vo.MachineActionLogVo">
+        <id column="id" property="id"/>
+        <result column="user_machine_id" property="userMachine_id"/>
+        <result column="machine_id" property="machine_id"/>
+        <result column="machine_name" property="machine_name"/>
+        <result column="machine_code" property="machine_code"/>
+        <result column="user_id" property="user_id"/>
+        <result column="nickname" property="nickname"/>
+        <result column="type" property="type"/>
+        <result column="action" property="action"/>
+        <result column="create_time" property="create_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+    </resultMap>
+    <resultMap id="MachineElectricVoResultMap" type="com.ruoyi.system.domain.vo.MachineElectricVo">
+        <result column="user_machine_id" property="user_machine_id"/>
+        <result column="pond_id" property="pond_id"/>
+        <result column="machine_id" property="machine_id"/>
+        <result column="electric" property="electric"/>
+        <result column="total_electric" property="total_electric"/>
+        <result column="year" property="year"/>
+        <result column="month" property="month"/>
+        <result column="date" property="date"/>
+    </resultMap>
+    <resultMap id="MachineActionSystemLogVoResultMap" type="com.ruoyi.system.domain.vo.MachineActionSystemLogVo">
+        <id column="id" property="id"/>
+        <result column="IMEI" property="IMEI"/>
+        <result column="machine_id" property="machine_id"/>
+        <result column="machine_name" property="machine_name"/>
+        <result column="machine_code" property="machine_code"/>
+        <result column="send_msg" property="send_msg"/>
+        <result column="admin_id" property="admin_id"/>
+        <result column="admin_name" property="admin_name"/>
+        <result column="create_time" property="create_time" jdbcType="INTEGER" typeHandler="com.ruoyi.system.handle.LocalDateTimeTypeHandler"/>
+    </resultMap>
+
+    <insert id="saveMachineActionSystemLog">
+        INSERT INTO yt_machine_action_system_log(id, IMEI, machine_id, machine_name, machine_code, ip, send_msg, send,
+                                                 admin_id, admin_name, create_time, update_time)
+        VALUES (null, #{IMEI}, #{machineId}, #{machineName}, #{machineCode}, #{ip}, #{sendMsg}, #{send}, #{adminId},
+                #{adminName}, #{createTime}, #{updateTime});
+    </insert>
+    <update id="updateMachineExpressById">
+        UPDATE yt_machine
+        SET express_name = #{express_name},
+            express_no   = #{express_no}
+        WHERE id = #{id};
+    </update>
+    <update id="updateMachineStatById">
+        UPDATE yt_machine
+        SET stat = #{stat}
+        WHERE id = #{id};
+    </update>
+    <update id="updateMachineDelById">
+        UPDATE yt_machine
+        SET is_del=#{del},
+            username=''
+        WHERE id = #{id};
+    </update>
+    <update id="updateUserMachineDelById">
+        UPDATE yt_user_machine
+        SET is_del=#{del}
+        WHERE id = #{id};
+    </update>
+    <update id="updateMachineEditById">
+        UPDATE yt_machine
+        SET
+        <if test="remark != null and remark != ''">
+            remark = #{remark},
+        </if>
+        <if test="over_date != null and over_date != ''">
+            over_date = #{over_date},
+        </if>
+        machine_type = #{machine_type},
+        end_bind_date = #{end_bind_date}
+        WHERE id=#{id}
+    </update>
+    <update id="updateUserMachineType">
+        UPDATE yt_user_machine SET machine_type = #{machineType} WHERE machine_id=#{machineId}
+    </update>
+    <delete id="deletePondGroupMachineByUserMachineId">
+        DELETE FROM yt_pond_group_machine WHERE user_machine_id=#{userMachineId};
+    </delete>
+    <delete id="deletePondMachineRuleByUserMachineId">
+        DELETE FROM yt_pond_machine_rule WHERE user_machine_id=#{userMachineId};
+    </delete>
+    <delete id="deleteTaskSettingByUserMachineId">
+        DELETE FROM yt_task_setting WHERE user_machine_id=#{userMachineId};
+    </delete>
+    <delete id="deleteMachineOxygenMiddleByOxUserMachineId">
+        DELETE FROM yt_machine_oxygen_middle WHERE ox_user_machine_id=#{userMachineId};
+    </delete>
+    <select id="getMachineList" resultMap="MachineListVoResultMap">
+        SELECT
+        m.id,
+        m.machine_code,
+        m.machine_name,
+        m.machine_type,
+        m.IMEI,
+        m.ICCID,
+        m.create_time,
+        m.over_date,
+        m.first_bind_date,
+        m.end_bind_date,
+        m.status,
+        m.online_count,
+        m.electric_count,
+        m.qr_code,
+        m.stat,
+        m.status_code,
+        m.express_name,
+        m.express_no,
+        m.degree,
+        m.oxygen,
+        m.speed,
+        m.power,
+        m.remark,
+        m.username,
+        um.pond_title,
+        u.nickname AS master,
+        u2.nickname AS manager
+        FROM
+        yt_machine m
+        JOIN yt_user_machine um ON m.id = um.machine_id
+        AND um.is_del = 0
+        JOIN yt_user u ON um.user_id = u.id
+        LEFT JOIN yt_pond_group_machine pgm ON um.id = pgm.user_machine_id
+        AND pgm.is_master = 0
+        LEFT JOIN yt_user u2 ON pgm.user_id = u2.id
+        WHERE
+        m.is_del = 0
+        <if test="machineType != null and machineType != ''">
+            AND m.machine_type = #{machineType}
+        </if>
+        <if test="overDate != null and overDate != ''">
+            AND m.over_date &lt; #{overDate}
+
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND ( m.id =#{keyword} or m.machine_name = #{keyword} )
+        </if>
+        <if test="stat != null and stat !=''">
+            AND m.stat = #{stat}
+        </if>
+        <if test="name != null and name != ''">
+            AND ( m.remark = #{name} or m.username = #{name})
+        </if>
+    </select>
+    <select id="detail" resultMap="MachineDetailVoResultMap">
+        SELECT m.id,
+               m.machine_code,
+               m.machine_name,
+               m.machine_type,
+               m.IMEI,
+               m.ICCID,
+               m.connect_time,
+               m.shut_time,
+               m.create_time,
+               m.over_date,
+               m.first_bind_date,
+               m.end_bind_date,
+               m.status,
+               m.status_code,
+               m.last_connect_time,
+               m.if_show,
+               m.using_userid,
+               m.online_count,
+               m.electric_count,
+               m.qr_code,
+               m.update_time,
+               m.sev_ip,
+               m.hardmodel,
+               m.softver,
+               m.protocol,
+               m.stat,
+               m.express_name,
+               m.express_no,
+               m.is_del,
+               m.degree,
+               m.oxygen,
+               m.ox_machine_id,
+               m.critical,
+               m.x1_value,
+               m.x2_value,
+               m.r1_value,
+               m.r2_value,
+               m.speed,
+               m.power,
+               m.remark,
+               m.username,
+               um.pond_title,
+               u.nickname  AS master,
+               u2.nickname AS manager
+        FROM yt_machine m
+                 JOIN yt_user_machine um ON m.id = um.machine_id
+            AND um.is_del = 0
+                 JOIN yt_user u ON um.user_id = u.id
+                 LEFT JOIN yt_pond_group_machine pgm ON um.id = pgm.user_machine_id
+            AND pgm.is_master = 0
+                 LEFT JOIN yt_user u2 ON pgm.user_id = u2.id
+        WHERE m.is_del = 0
+          AND m.id = #{id}
+    </select>
+    <select id="log" resultMap="MachineActionLogVoResultMap">
+        SELECT mal.id,
+               mal.user_machine_id,
+               mal.machine_id,
+               mal.machine_name,
+               mal.machine_code,
+               mal.user_id,
+               mal.nickname,
+               mal.type,
+               mal.action,
+               mal.create_time
+        FROM yt_machine_action_log mal
+        WHERE mal.user_machine_id = #{id}
+    </select>
+    <select id="getMachineCountById" resultType="java.lang.Integer">
+        SELECT count(id) FROM yt_machine WHERE id = #{id}
+    </select>
+    <select id="getMachineById" resultType="com.ruoyi.system.domain.Machine">
+        select * from yt_machine WHERE id=#{id};
+    </select>
+    <select id="systemLog" resultMap="MachineActionSystemLogVoResultMap">
+        select id,
+               IMEI,
+               machine_id,
+               machine_name,
+               machine_code,
+               send_msg,
+               admin_id,
+               admin_name,
+               create_time
+        FROM yt_machine_action_system_log WHERE machine_id=#{id}
+    </select>
+    <select id="getUserMachineByMachineId" resultType="com.ruoyi.system.domain.UserMachine">
+        SELECT *
+        FROM yt_user_machine
+        WHERE machine_id = #{id};
+    </select>
+    <select id="getMachineElectric" resultMap="MachineElectricVoResultMap">
+        SELECT user_machine_id,
+               pond_id,
+               machine_id,
+               electric,
+               total_electric,
+               `year`,
+               `month`,
+               `date`
+        FROM yt_machine_electric
+        WHERE machine_id = #{id}
+        ORDER BY `date` DESC;
+
+    </select>
+
+
+</mapper>

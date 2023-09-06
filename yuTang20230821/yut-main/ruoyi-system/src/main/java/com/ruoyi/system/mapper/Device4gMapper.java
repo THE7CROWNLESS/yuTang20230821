@@ -76,4 +76,6 @@ public interface Device4gMapper
     List<Device4g> pondList();
 
     Device4g selectByMachineCode(String machineCode);
+
+    String selectMaxIdByFishPond(String 一号养殖场);
 }
