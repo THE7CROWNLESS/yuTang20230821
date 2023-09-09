@@ -43,7 +43,7 @@ public interface IDevice4gService
      * @param device4g 【请填写功能名称】
      * @return 结果
      */
-    public int updateDevice4g(Device4g device4g);
+    public int updateOrInsertDevice4g(Device4g device4g);
 
     /**
      * 批量删除【请填写功能名称】

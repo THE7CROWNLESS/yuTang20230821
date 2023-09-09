@@ -2,6 +2,7 @@ package com.ruoyi.system.mapper;
 
 import com.ruoyi.system.domain.Device4g;
 import com.ruoyi.system.domain.YtMachineNew;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -72,5 +73,6 @@ public interface YtMachineNewMapper
 
     public void insertNew(YtMachineNew ytMachineNew);
 
-    void insertAeratorChange(YtMachineNew machineData);
+    int insertAeratorChange(YtMachineNew machineData);
+
 }

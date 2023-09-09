@@ -14,4 +14,7 @@ public interface DayLogService {
     List<DayLogMonthVo> getMonthsList(String fish_pond, Date begin, Date end);
 
     List<Integer> getDateSum(String fishPond,Date begin, Date end);
+
+
+    int insertLog(DayLog dayLog);
 }

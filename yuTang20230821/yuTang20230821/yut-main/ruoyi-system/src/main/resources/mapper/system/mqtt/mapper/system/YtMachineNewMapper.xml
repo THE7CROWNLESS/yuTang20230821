@@ -250,6 +250,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 <if test="atmosphere != null">#{atmosphere},</if>
             </trim>
     </insert>
+    <insert id="insertMqttAeratorSpeed">
+
+    </insert>
     <update id="updateYtMachineNew" parameterType="YtMachineNew">
         update yt_machine_new
         <trim prefix="SET" suffixOverrides=",">
@@ -288,6 +291,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </trim>
         where id = #{id}
     </update>
+
 
     <delete id="deleteYtMachineNewById" parameterType="Integer">
         delete from yt_machine_new where id = #{id}

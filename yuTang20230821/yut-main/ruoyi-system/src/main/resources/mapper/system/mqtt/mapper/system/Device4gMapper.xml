@@ -67,6 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="pondList" resultType="com.ruoyi.system.domain.Device4g">
         SELECT DISTINCT(fish_pond)
         FROM device4g
+        where fish_pond != '无'
     </select>
     <select id="selectByMachineCode" resultType="com.ruoyi.system.domain.Device4g">
         SELECT *
@@ -78,6 +79,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM device4g
         WHERE fish_pond=#{fishPond}
     </select>
+    <select id="selectNullFishPond" resultType="com.ruoyi.system.domain.Device4g">
+        SELECT *
+        FROM device4g
+        WHERE fish_pond = '无'
+    </select>
+
 
     <insert id="insertDevice4g" parameterType="Device4g" useGeneratedKeys="true" keyProperty="id">
         insert into device4g
@@ -104,9 +111,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <update id="updateDevice4g" parameterType="Device4g">
-        update device_4g
+        update device4g
         <trim prefix="SET" suffixOverrides=",">
-            <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>
+<!--            <if test="machineCode != null and machineCode != ''">machine_code = #{machineCode},</if>-->
             <if test="machineName != null">machine_name = #{machineName},</if>
             <if test="machineType != null">machine_type = #{machineType},</if>
             <if test="fishPond != null">fish_pond = #{fishPond},</if>
@@ -114,7 +121,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="IMEI != null and IMEI != ''">IMEI = #{IMEI},</if>
             <if test="ICCID != null and ICCID != ''">ICCID = #{ICCID},</if>
         </trim>
-        where id = #{id}
+        where machine_code = #{machineCode}
     </update>
 
     <delete id="deleteDevice4gById" parameterType="Integer">

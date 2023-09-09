@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="video-grid-1">
+    <block wx:for="{{videosUrl}}" wx:key="index" wx:for-item="videoUrl">
+      <view class="video-wrapper">
+        <block wx:if="{{videoUrl}}">
+          <text>{{videoSerialNo[index]}}</text>
+          <video id="myVideo" src="{{videoUrl}}" controls="{{true}}" enable-progress-gesture="false" muted="{{!openSound}}"
+            objectFit="contain" mode="RTC" custom-cache="{{true}}" autoplay="{{autoPlay}}" show-play-btn="{{true}}"
+            show-fullscreen-btn="{{isfullscreenBtn}}" enable-auto-rotation="{{autoRo}}"></video>
+        </block>
+      </view>
+    </block>
+    
+  </view>
+</view>

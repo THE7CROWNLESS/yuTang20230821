@@ -11,7 +11,7 @@
  Target Server Version : 50734 (5.7.34)
  File Encoding         : 65001
 
- Date: 06/09/2023 17:54:17
+ Date: 07/09/2023 14:44:56
 */
 
 SET NAMES utf8mb4;
@@ -22,20 +22,20 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `day_log`;
 CREATE TABLE `day_log`  (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fish_pond` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '养殖场',
   `machine_code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备编码',
   `machine_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '设备名称',
-  `aerator` int(10) NULL DEFAULT NULL COMMENT '增氧机序号',
+  `aerator` int(11) NULL DEFAULT NULL COMMENT '增氧机序号',
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '日志消息',
   `power` float(10, 2) NULL DEFAULT NULL COMMENT '累计耗电',
-  `msg_type` int(10) NULL DEFAULT NULL COMMENT '日志类型 0：操作 1报警和操作',
+  `msg_type` int(11) NULL DEFAULT NULL COMMENT '日志类型 0：操作 1报警和操作',
   `create_time` datetime(6) NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT '记录时间',
   `field1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '冗余1',
   `field2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '冗余2',
-  `field3` int(10) NULL DEFAULT NULL COMMENT '冗余3',
+  `field3` int(11) NULL DEFAULT NULL COMMENT '冗余3',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of day_log
@@ -59,6 +59,25 @@ INSERT INTO `day_log` VALUES (26, '一号养殖场', '24518927', '一号养殖�
 INSERT INTO `day_log` VALUES (27, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.151722', NULL, NULL, NULL);
 INSERT INTO `day_log` VALUES (28, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.153568', NULL, NULL, NULL);
 INSERT INTO `day_log` VALUES (29, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由1强制转变为1', 30.00, NULL, '2023-09-06 17:52:13.000000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (30, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:10:20.118000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (31, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:11:46.190000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (32, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:12:19.007000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (33, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:13:50.201000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (34, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 19:43:02.917000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (35, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机3状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 19:45:18.899000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (36, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 30.00, NULL, '2023-09-06 20:09:05.988000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (37, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 30.00, 1, '2023-09-06 20:09:05.998000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (38, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.003000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (39, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.113000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (40, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.172000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (41, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 21:12:11.831000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (42, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 21:12:51.680000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (43, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 22:23:07.542000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (44, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '小程序端将三号养殖场1号机的养殖场编号设置为三号养殖场', NULL, NULL, '2023-09-07 13:42:50.620953', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (45, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机速度由0强制转变为20', NULL, NULL, '2023-09-07 14:30:38.838000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (46, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机速度由0强制转变为20', NULL, NULL, '2023-09-07 14:34:31.449000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (47, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机第1号电机状态由正常强制转变为关机', 30.00, NULL, '2023-09-07 14:38:22.335000', NULL, NULL, NULL);
+INSERT INTO `day_log` VALUES (48, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机状态由正常强制转变为关机', NULL, NULL, '2023-09-07 14:38:54.238000', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for day_records
@@ -93,7 +112,7 @@ CREATE TABLE `device4g`  (
   `machine_status` int(11) NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
   `CSQ` int(11) NULL DEFAULT NULL COMMENT '信号强度',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device4g
@@ -105,6 +124,7 @@ INSERT INTO `device4g` VALUES (4, '24345463', '868739057141511', '89860802142070
 INSERT INTO `device4g` VALUES (5, '24345478', '868739055451234', '898604901920C1581234', '1号塘5号机', '浮漂式传感器', '二号养殖场', 0, 20);
 INSERT INTO `device4g` VALUES (6, '24518581', '863488051172347', '89860802142070419175', '1号塘6号机', '浮漂式传感器', '一号养殖场', 0, 31);
 INSERT INTO `device4g` VALUES (7, '24518927', '863488051169913', '89860802142070419176', '一号养殖场4号机', '4路控制器', '一号养殖场', 0, 31);
+INSERT INTO `device4g` VALUES (9, '14605563', '868739055454099', '1231823812', '三号养殖场1号机', '浮漂式传感器', '三号养殖场', 0, 123123199);
 
 -- ----------------------------
 -- Table structure for device_4g
@@ -128,8 +148,8 @@ CREATE TABLE `device_4g`  (
 INSERT INTO `device_4g` VALUES (1, '24123456', '1号塘1号机', '鱼塘控制器', '一号养殖场', 0, '868739055454011', '89860802142070418996');
 INSERT INTO `device_4g` VALUES (2, '24123457', '1号塘2号机', '鱼塘控制器', '一号养殖场', 1, '868739055454056', '89860802142070418997');
 INSERT INTO `device_4g` VALUES (3, '24123458', '1号塘3号机', '鱼塘控制器', '一号养殖场', 2, '868739057208302', '898604901920C1580174');
-INSERT INTO `device_4g` VALUES (4, '14605563', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (5, '14605563', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
+INSERT INTO `device_4g` VALUES (4, '14605563', '三号养殖场0号机', '1', '三号养殖场', 0, '8687390554540112', '89860802142070418996');
+INSERT INTO `device_4g` VALUES (5, '14605563', '三号养殖场0号机', '1', '三号养殖场', 0, '8687390554540112', '89860802142070418996');
 INSERT INTO `device_4g` VALUES (6, '14605564', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
 INSERT INTO `device_4g` VALUES (7, '14605565', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
 INSERT INTO `device_4g` VALUES (8, '14605566', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
@@ -150,16 +170,17 @@ CREATE TABLE `device_threshold`  (
   `temperature_max` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度上限',
   `temperature_min` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '温度下限',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device_threshold
 -- ----------------------------
 INSERT INTO `device_threshold` VALUES (1, '24123456', 50, 10, 30.00, 30.00, 10.00, 40.00, 10.00);
-INSERT INTO `device_threshold` VALUES (2, '24518927', 300, 100, 490.00, 100.00, 10.00, 40.00, 10.00);
+INSERT INTO `device_threshold` VALUES (2, '24518927', 300, 100, 480.00, 100.00, 10.00, 40.00, 10.00);
 INSERT INTO `device_threshold` VALUES (3, '24518581', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
 INSERT INTO `device_threshold` VALUES (4, '45310986', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
 INSERT INTO `device_threshold` VALUES (5, '24198115', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
+INSERT INTO `device_threshold` VALUES (6, '24255467', 300, 0, 500.00, 1000.00, 0.00, 1000.00, 0.00);
 
 -- ----------------------------
 -- Table structure for gen_table
@@ -645,7 +666,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 256 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 259 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -905,6 +926,9 @@ INSERT INTO `sys_logininfor` VALUES (252, 'admin', '211.20.8.131', 'XX XX', 'Mob
 INSERT INTO `sys_logininfor` VALUES (253, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:44:14');
 INSERT INTO `sys_logininfor` VALUES (254, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:51:13');
 INSERT INTO `sys_logininfor` VALUES (255, 'admin', '211.20.8.131', 'XX XX', 'Mobile Safari', 'Mac OS X (iPhone)', '0', '登录成功', '2023-09-06 17:53:18');
+INSERT INTO `sys_logininfor` VALUES (256, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 11:05:04');
+INSERT INTO `sys_logininfor` VALUES (257, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 13:42:37');
+INSERT INTO `sys_logininfor` VALUES (258, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 14:27:40');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1114,7 +1138,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type`) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status`) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 156 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 183 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1274,6 +1298,11 @@ INSERT INTO `sys_oper_log` VALUES (152, '【获取最新阈值】', 3, 'com.ruoy
 INSERT INTO `sys_oper_log` VALUES (153, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:44:18', 5);
 INSERT INTO `sys_oper_log` VALUES (154, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:51:24', 5);
 INSERT INTO `sys_oper_log` VALUES (155, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":490.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 17:53:27', 4);
+INSERT INTO `sys_oper_log` VALUES (178, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":480.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 20:14:47', 5);
+INSERT INTO `sys_oper_log` VALUES (179, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":480.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 20:21:03', 5);
+INSERT INTO `sys_oper_log` VALUES (180, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":480.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 22:20:48', 32);
+INSERT INTO `sys_oper_log` VALUES (181, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":480.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 22:23:05', 4);
+INSERT INTO `sys_oper_log` VALUES (182, '【获取最新阈值】', 3, 'com.ruoyi.system.controller.DeviceThresholdController.find_by_machine_code()', 'GET', 1, 'admin', NULL, '/system/threshold/machine_code/24518927', '211.20.8.131', 'XX XX', '{}', '{\"msg\":\"操作成功\",\"code\":200,\"data\":{\"current\":480.0,\"id\":2,\"machineCode\":\"24518927\",\"oxygenMax\":100.0,\"oxygenMin\":10.0,\"params\":{},\"temperatureMax\":40.0,\"temperatureMin\":10.0,\"voltageMax\":300,\"voltageMin\":100}}', 0, NULL, '2023-09-06 22:23:12', 4);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1476,7 +1505,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '211.20.8.131', '2023-09-06 17:53:18', 'admin', '2023-04-24 15:37:22', '', '2023-09-06 17:53:18', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-07 14:27:41', 'admin', '2023-04-24 15:37:22', '', '2023-09-07 14:27:40', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-04-24 15:37:22', 'admin', '2023-04-24 15:37:22', '', NULL, '测试员');
 
 -- ----------------------------
@@ -1516,7 +1545,7 @@ INSERT INTO `sys_user_role` VALUES (2, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_sensor`;
 CREATE TABLE `tb_sensor`  (
-  `device_id` int(32) NULL DEFAULT NULL,
+  `device_id` int(11) NULL DEFAULT NULL,
   `sensor_tag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sensor_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sensor_val` float(32, 2) NULL DEFAULT NULL,
@@ -1608,7 +1637,7 @@ CREATE TABLE `yt_admin_user`  (
 -- ----------------------------
 -- Records of yt_admin_user
 -- ----------------------------
-INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-06 17:53:18', '211.20.8.131');
+INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-07 14:27:41', '127.0.0.1');
 INSERT INTO `yt_admin_user` VALUES (210, 'chuhuo001', '424913503b6fa1de5061472d31671ac3', '', '', 1, '2021-09-03 11:21:45', NULL, '113.110.152.118');
 INSERT INTO `yt_admin_user` VALUES (206, 'shengchan001', '07cb604fbcfa40ffb68e642317bb9a4f', '', '', 1, '2021-07-22 10:30:56', NULL, '113.110.147.142');
 INSERT INTO `yt_admin_user` VALUES (211, 'yuanrujun', '0b4e9eb6364c89be83134cb7c7f4f61c', '', '', 1, '2022-02-17 10:40:32', NULL, '113.116.228.226');
@@ -6589,7 +6618,7 @@ CREATE TABLE `yt_machine_new`  (
   `x2_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第2路电机的模式',
   `x4_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第3路电机的模式',
   `x3_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第4路电机的模式',
-  `aerator_1_speed` tinyint(3) NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
+  `aerator_1_speed` tinyint(4) NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
   `aerator_1_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机： 0关机 1开机 2故障',
   `aerator_2_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
   `aerator_2_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜2号增氧机： 0关机 1开机 2故障',
@@ -6611,7 +6640,7 @@ CREATE TABLE `yt_machine_new`  (
   `atmosphere` float(10, 2) NULL DEFAULT NULL COMMENT '大气压强',
   PRIMARY KEY (`id`, `ox_machine_id`) USING BTREE,
   INDEX `machine_id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of yt_machine_new
@@ -6625,6 +6654,20 @@ INSERT INTO `yt_machine_new` VALUES (27, '24518581', '863488051172347', '8986080
 INSERT INTO `yt_machine_new` VALUES (28, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:31:33', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `yt_machine_new` VALUES (29, '24605562', '863488051327685', '89860802142070419150', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-06 15:29:42', 0, 6.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `yt_machine_new` VALUES (48, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:52:13', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (49, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:10:20', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (50, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:11:46', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (51, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:12:19', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (52, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:14:10', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (53, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 0, 0, 0, '2023-09-06 19:43:03', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (54, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-06 19:45:19', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (55, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 1, 0, 1, 0, 0, '2023-09-06 21:12:12', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (56, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-06 21:12:52', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (57, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 1, 0, 1, 0, 0, '2023-09-06 22:23:07', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (59, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
+INSERT INTO `yt_machine_new` VALUES (60, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
+INSERT INTO `yt_machine_new` VALUES (61, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 20, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
+INSERT INTO `yt_machine_new` VALUES (63, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-07 14:38:22', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (64, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 20, 1, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 14:38:54', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
 
 -- ----------------------------
 -- Table structure for yt_machine_oxygen_log

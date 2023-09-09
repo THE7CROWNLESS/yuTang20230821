@@ -2,9 +2,13 @@ package com.ruoyi.system.mapper;
 
 import com.ruoyi.system.domain.Device4g;
 import com.ruoyi.system.domain.YtMachineNew;
+import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 设备Mapper接口
@@ -72,5 +76,8 @@ public interface YtMachineNewMapper
 
     public void insertNew(YtMachineNew ytMachineNew);
 
-    void insertAeratorChange(YtMachineNew machineData);
+    int insertAeratorChange(YtMachineNew machineData);
+
+    List<Integer> plotCurve(@Param("machineCode")String machineCode, @Param("day") Date day);
+
 }

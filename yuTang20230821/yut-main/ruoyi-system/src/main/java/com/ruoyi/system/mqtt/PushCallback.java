@@ -137,15 +137,15 @@ public class PushCallback implements MqttCallback {
                 ytMachineNew.setMachineCode("14" + machine_num_code);
                 machine_type = "浮漂式传感器";
             }else {
-                machine_type = "4路控制器";
+                machine_type = "DTU路控制器";
                 ytMachineNew.setMachineCode("24" + machine_num_code);
             }
             device4g.setMachineCode(ytMachineNew.getMachineCode());
             device4g.setMachineType(machine_type);
-            // 养殖场、状态 暂时 为 静态数据
-            device4g.setFishPond("一号养殖场");
+            // 养殖场、状态 默认值
+            device4g.setFishPond("无");
             // 设备命名
-            machine_name = device4g.getFishPond() + device4gMapper.selectMaxIdByFishPond("一号养殖场") + "号机";
+            machine_name = "无";
             device4g.setICCID(topics[3]);
             device4g.setIMEI(topics[2]);
             device4g.setMachineName(machine_name);

@@ -41,6 +41,20 @@
             <if test="createTime != null">#{createTime},</if>
         </trim>
     </insert>
+    <update id="updateDevice">
+        update day_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="fishPond != null and fishPond != ''">fish_pond = #{fishPond},</if>
+<!--            <if test="machineCode != null and machineCode != ''">machine_code,</if>-->
+            <if test="machineName != null and machineName != ''">machine_name = #{machineName},</if>
+            <if test="aerator != null and aerator != ''">aerator = #{aerator},</if>
+            <if test="msg != null and msg != ''">msg = #{msg},</if>
+            <if test="power != null and power != ''">power = #{power},</if>
+            <if test="msgType != null and msgType != ''">msg_type = #{msgType},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where machine_code = #{machineCode}
+    </update>
 
 
     <select id="getDaysList" resultType="com.ruoyi.system.domain.DayLog">

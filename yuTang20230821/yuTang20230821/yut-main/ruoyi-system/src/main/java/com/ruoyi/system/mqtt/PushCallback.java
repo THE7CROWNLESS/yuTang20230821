@@ -8,6 +8,7 @@ import com.ruoyi.system.domain.YtMachineNew;
 import com.ruoyi.system.mapper.DayLogMapper;
 import com.ruoyi.system.mapper.Device4gMapper;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
+import com.ruoyi.system.utils.MqttUtils;
 import com.ruoyi.system.utils.WarningUtils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -86,10 +87,6 @@ public class PushCallback implements MqttCallback {
 
     public YtMachineNew dealMachineNewMsg(String topic, MqttMessage mqttMessage) {
 
-        // mqtt消息（json格式） 字符串 转 对象
-        YtMachineNew ytMachineNew = JSON.parseObject(new String(mqttMessage.getPayload()), YtMachineNew.class);
-        //logger.info(ytMachineNew.toString());
-
         // 将主题信息 设置到 对象 字段
         String[] topics = topic.split("/");
         String IMEI = topics[2];
@@ -98,6 +95,17 @@ public class PushCallback implements MqttCallback {
         String CSQ = topics[4];
         String machine_name;
         String machine_type;
+
+        // mqtt消息（json格式） 字符串 转 对象
+        YtMachineNew ytMachineNew = new YtMachineNew();
+        if (topics[0].equals("Sensor0")) {
+            JSONObject mqttJSONObject = MqttUtils.parseSensorData(new String(mqttMessage.getPayload()));
+            ytMachineNew = JSON.parseObject(String.valueOf(mqttJSONObject),YtMachineNew.class);
+        }else {
+            ytMachineNew = JSON.parseObject(new String(mqttMessage.getPayload()), YtMachineNew.class);
+        }
+        //logger.info(ytMachineNew.toString());
+
         ytMachineNew.setIMEI(IMEI);
         ytMachineNew.setICCID(ICCID);
         ytMachineNew.setLocationX(topics[4]);
@@ -134,10 +142,10 @@ public class PushCallback implements MqttCallback {
             }
             device4g.setMachineCode(ytMachineNew.getMachineCode());
             device4g.setMachineType(machine_type);
-            // 养殖场、状态 暂时 为 静态数据
+            // 养殖场、状态 默认值
             device4g.setFishPond("一号养殖场");
             // 设备命名
-            machine_name = device4g.getFishPond() + device4gMapper.selectMaxIdByFishPond("一号养殖场") + "号机";
+            machine_name = "设备";
             device4g.setICCID(topics[3]);
             device4g.setIMEI(topics[2]);
             device4g.setMachineName(machine_name);

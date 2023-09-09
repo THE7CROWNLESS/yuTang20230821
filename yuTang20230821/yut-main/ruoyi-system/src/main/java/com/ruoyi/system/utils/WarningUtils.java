@@ -36,8 +36,11 @@ public class WarningUtils {
     public void mqttLogPublish(MqttPushClient mqttPushClient, Integer type,String topic,
                                String warningMsg,JSONObject message, Device4g device4g , YtMachineNew ytMachineNew){
 
+        // 添加 回车符
+        String string = "\n" + message.toString() + "\n";
+
         // 发布 mqtt
-        mqttPushClient.publish(0,true,topic,message.toString());
+        mqttPushClient.publish(0,true,topic,string);
 
         // 日志信息 存表
         log(type,warningMsg,device4g,ytMachineNew);

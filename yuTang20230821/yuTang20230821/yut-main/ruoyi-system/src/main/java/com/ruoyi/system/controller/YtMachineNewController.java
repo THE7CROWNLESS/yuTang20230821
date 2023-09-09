@@ -7,6 +7,8 @@ import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.YtMachineNew;
+import com.ruoyi.system.domain.to.AeratorSpeedTo;
+import com.ruoyi.system.domain.to.AeratorTo;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
 import com.ruoyi.system.service.IYtMachineNewService;
 import com.ruoyi.system.utils.WarningUtils;
@@ -117,27 +119,25 @@ public class YtMachineNewController extends BaseController {
 
     // 根据参数 设置 设备 的开关机状态，发布mqtt消息，记录日志
     @PostMapping("/aerator/switch")
-    public AjaxResult switchAerator(@RequestParam String machine_code, @RequestParam Integer num, @RequestParam Integer change) {
-//        String topic = "/home";
-//        String msg = "1";
-//        mqttPushClient.publish(0,true,topic,msg);
+    public AjaxResult switchAerator(@RequestBody AeratorTo aeratorTo) {
+        String machine_code = aeratorTo.getMachineCode();
+        Integer old = aeratorTo.getOld();
+        Integer num = aeratorTo.getNum();
+        Integer change = aeratorTo.getChange();
+
         // 查数据表 电机状态
         YtMachineNew machineData = ytMachineNewMapper.findMachineByMachineCode(machine_code);
-        int old = 0;
+//        int old = 0;
         // 判断是否 更改了 状态
         if (old != change) {
             // 选择 电机序号
             if (num == 1) {
-                old = machineData.getAerator1Status();
                 machineData.setAerator1Status(change);
             } else if (num == 2) {
-                old = machineData.getAerator2Status();
                 machineData.setAerator2Status(change);
             } else if (num == 3) {
-                old = machineData.getAerator3Status();
                 machineData.setAerator3Status(change);
             } else if (num == 4) {
-                old = machineData.getAerator4Status();
                 machineData.setAerator4Status(change);
             }
             return success(ytMachineNewService.updateMqttAerator(machineData,num.toString(), old, change));
@@ -146,4 +146,30 @@ public class YtMachineNewController extends BaseController {
         }
     }
 
+    @PostMapping("/speed/switch")
+    public AjaxResult switchAerator(@RequestBody AeratorSpeedTo aeratorSpeedTo){
+        YtMachineNew oldData = ytMachineNewMapper.findMachineByMachineCode(aeratorSpeedTo.getMachineCode());
+        Integer speed = aeratorSpeedTo.getSpeed();
+        int num = aeratorSpeedTo.getNum();
+        int oldSpeed = 0;
+        if (num == 1) {
+            oldSpeed = oldData.getAerator1Speed();
+            oldData.setAerator1Speed(speed);
+        } else if (num == 2) {
+            oldSpeed = oldData.getAerator2Speed();
+            oldData.setAerator2Speed(speed);
+        } else if (num == 3) {
+            oldSpeed = oldData.getAerator3Speed();
+            oldData.setAerator3Speed(speed);
+        } else if (num == 4) {
+            oldSpeed = oldData.getAerator3Speed();
+            oldData.setAerator4Speed(speed);
+        }
+
+        if (oldSpeed == speed){
+            return success("未改变,请输入不同值");
+        }else {
+            return toAjax(ytMachineNewService.updateMqttAeratorSpeed(oldData,num,oldSpeed,speed));
+        }
+    }
 }

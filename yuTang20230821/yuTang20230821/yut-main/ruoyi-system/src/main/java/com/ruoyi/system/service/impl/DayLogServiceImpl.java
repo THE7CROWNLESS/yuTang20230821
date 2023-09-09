@@ -37,4 +37,9 @@ public class DayLogServiceImpl implements DayLogService {
         res.add(dateSum.getWarning());
         return res;
     }
+
+    @Override
+    public int insertLog(DayLog dayLog) {
+        return dayLogMapper.insert(dayLog);
+    }
 }

@@ -3,7 +3,9 @@ package com.ruoyi.system.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.system.domain.to.FishPondTo;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -75,16 +77,16 @@ public class Device4gController extends BaseController
         return toAjax(device4gService.insertDevice4g(device4g));
     }
 
-    /**
-     * 修改【请填写功能名称】
-     */
-    @PreAuthorize("@ss.hasPermi('system:4g:edit')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
-    @PutMapping
-    public AjaxResult edit(@RequestBody Device4g device4g)
-    {
-        return toAjax(device4gService.updateDevice4g(device4g));
-    }
+//    /**
+//     * 修改【请填写功能名称】
+//     */
+//    @PreAuthorize("@ss.hasPermi('system:4g:edit')")
+//    @Log(title = "【请填写功能名称】", businessType = BusinessType.UPDATE)
+//    @PutMapping
+//    public AjaxResult edit(@RequestBody Device4g device4g)
+//    {
+//        return toAjax(device4gService.updateDevice4g(device4g));
+//    }
 
     /**
      * 删除【请填写功能名称】
@@ -133,6 +135,18 @@ public class Device4gController extends BaseController
     @GetMapping("/pond")
     public AjaxResult pondList(){
         return success(device4gService.pondList());
+    }
+
+
+    @PostMapping("/setPond")
+    public AjaxResult setPond(@RequestBody FishPondTo fishPondTo){
+        Device4g device4g = new Device4g();
+        BeanUtils.copyProperties(fishPondTo,device4g);
+        return toAjax(device4gService.updateOrInsertDevice4g(device4g));
+    }
+    @GetMapping("/nullFishPond")
+    public AjaxResult selectNullFishPond(){
+        return success(device4gService.selectNullFishPond());
     }
 
 }

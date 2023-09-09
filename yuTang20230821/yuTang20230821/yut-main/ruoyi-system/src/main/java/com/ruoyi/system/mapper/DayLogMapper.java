@@ -17,5 +17,9 @@ public interface DayLogMapper {
 
     DayLogMonthVo getDateSum(@Param("fishPond") String fishPond, @Param("begin")Date begin, @Param("end")Date end);
 
-    void insert(DayLog dayLog);
+    int insert(DayLog dayLog);
+
+    int updateDevice(DayLog dayLog);
+
+
 }

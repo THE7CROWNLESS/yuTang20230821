@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
@@ -22,6 +23,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 public class YtMachineNew extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -123,7 +125,7 @@ public class YtMachineNew extends BaseEntity
     private Integer aerator4Status;
 
     /** 连接时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "连接时间", width = 30, dateFormat = "yyyy-MM-dd")
     @JSONField(name = "connect_time")
     private Date connectTime;

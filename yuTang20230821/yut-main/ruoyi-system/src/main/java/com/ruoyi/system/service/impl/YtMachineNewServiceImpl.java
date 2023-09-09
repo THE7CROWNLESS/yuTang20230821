@@ -17,12 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 设备Service业务层处理
- * 
+ *
  * @author ruoyi
  * @date 2023-09-02
  */
 @Service
-public class YtMachineNewServiceImpl implements IYtMachineNewService 
+public class YtMachineNewServiceImpl implements IYtMachineNewService
 {
     @Autowired
     private YtMachineNewMapper ytMachineNewMapper;
@@ -34,7 +34,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 查询设备
-     * 
+     *
      * @param id 设备主键
      * @return 设备
      */
@@ -46,7 +46,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 查询设备列表
-     * 
+     *
      * @param ytMachineNew 设备
      * @return 设备
      */
@@ -58,7 +58,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 新增设备
-     * 
+     *
      * @param ytMachineNew 设备
      * @return 结果
      */
@@ -70,7 +70,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 修改设备
-     * 
+     *
      * @param ytMachineNew 设备
      * @return 结果
      */
@@ -82,7 +82,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 批量删除设备
-     * 
+     *
      * @param ids 需要删除的设备主键
      * @return 结果
      */
@@ -94,7 +94,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
 
     /**
      * 删除设备信息
-     * 
+     *
      * @param id 设备主键
      * @return 结果
      */
@@ -118,7 +118,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         Device4g device4g = device4gMapper.selectByMachineCode(machineCode);
         // 拼接日志消息
         String machineName = device4g.getMachineName();
-        String warningMsg = machineName + "电机" + num +  "状态由" + warningUtils.parseStatus(old) +
+        String warningMsg = machineName + "第" + num +  "号电机状态由"  + warningUtils.parseStatus(old) +
                             "强制转变为" + warningUtils.parseStatus(change);
 
         // mqtt主题
@@ -126,11 +126,37 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         // mqtt信息 拼接
         JSONObject message = new JSONObject();
         String key = "control." + num;
-        message.putIfAbsent(key, change);
+        message.putIfAbsent(key, change.toString());
         // 发布 mqtt
         warningUtils.mqttLogPublish(new MqttPushClient(),0,topic,warningMsg,message,device4g,machineData);
 
         return null;
+    }
+
+    @Override
+    public int updateMqttAeratorSpeed(YtMachineNew machineData,Integer num,Integer old, Integer speed) {
+        // 取设备信息
+        Device4g device4g = device4gMapper.selectByMachineCode(machineData.getMachineCode());
+        // 拼接日志消息
+        String warningMsg = device4g.getMachineName() + "第" + num +  "号电机速度由"
+                            + old + "强制转变为" + speed;
+
+        // mqtt主题
+        String topic = "ecarbon/GET/" + machineData.getIMEI();
+        // mqtt信息 拼接
+        JSONObject message = new JSONObject();
+        String key = "speed." + num;
+        message.putIfAbsent(key, speed.toString());
+        // 发布 mqtt
+        warningUtils.mqttLogPublish(new MqttPushClient(),0,topic,warningMsg,message,device4g,machineData);
+        // 更新data
+
+        return ytMachineNewMapper.insertAeratorChange(machineData);
+    }
+
+    @Override
+    public List<Integer> plotCurve(String machineCode, Date day) {
+        return ytMachineNewMapper.plotCurve(machineCode, day);
     }
 
 }

@@ -1,31 +1,27 @@
 package com.ruoyi.web.controller.system;
 
-import java.util.*;
-
-import com.ruoyi.common.core.domain.entity.YtAdminUser;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.core.domain.model.UpdateBody;
-import com.ruoyi.common.utils.ServletUtils;
-import com.ruoyi.common.utils.ip.IpUtils;
-import com.ruoyi.framework.web.service.TokenService;
-import com.ruoyi.system.domain.to.LoginResonseBody;
-import com.ruoyi.system.service.IYtAdminUserService;
-import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.SysMenu;
-import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.common.core.domain.entity.YtAdminUser;
 import com.ruoyi.common.core.domain.model.LoginBody;
+import com.ruoyi.common.core.domain.model.LoginUser;
+import com.ruoyi.common.core.domain.model.UpdateBody;
 import com.ruoyi.common.utils.SecurityUtils;
+import com.ruoyi.common.utils.ServletUtils;
+import com.ruoyi.common.utils.ip.IpUtils;
 import com.ruoyi.framework.web.service.SysLoginService;
 import com.ruoyi.framework.web.service.SysPermissionService;
+import com.ruoyi.framework.web.service.TokenService;
+import com.ruoyi.system.domain.to.LoginResonseBody;
 import com.ruoyi.system.service.ISysMenuService;
+import com.ruoyi.system.service.IYtAdminUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * 登录验证

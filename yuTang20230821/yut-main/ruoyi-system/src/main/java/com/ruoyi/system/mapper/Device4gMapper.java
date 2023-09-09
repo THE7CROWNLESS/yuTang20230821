@@ -78,4 +78,6 @@ public interface Device4gMapper
     Device4g selectByMachineCode(String machineCode);
 
     String selectMaxIdByFishPond(String 一号养殖场);
+
+    List<Device4g> selectNullFishPond();
 }
