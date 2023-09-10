@@ -37,10 +37,10 @@ public class WarningUtils {
                                String warningMsg,JSONObject message, Device4g device4g , YtMachineNew ytMachineNew){
 
         // 添加 回车符
-        String string = "\n" + message.toString() + "\n";
+        //  String string = "\n" + message.toString() + "\n";
 
         // 发布 mqtt
-        mqttPushClient.publish(0,true,topic,string);
+        mqttPushClient.publish(0,true,topic,message.toString());
 
         // 日志信息 存表
         log(type,warningMsg,device4g,ytMachineNew);
@@ -122,8 +122,8 @@ public class WarningUtils {
         DeviceThreshold deviceThreshold = deviceThresholdMapper.find_by_machine_code(machine_code);
         // 默认阈值
         if (deviceThreshold == null) {
-            deviceThreshold = new DeviceThreshold(null,machine_code,300,0,new BigDecimal(500),
-                    new BigDecimal(1000),new BigDecimal(0),new BigDecimal(1000),new BigDecimal(0));
+            deviceThreshold = new DeviceThreshold(null,machine_code,300,0,(float)500,
+                   (float)1000,(float)0,(float)1000,(float)0);
         }
 
         // 判断 current voltage_max min  temp_max min  oxygen_max min 不符合就设置报警
@@ -154,9 +154,9 @@ public class WarningUtils {
     }
 
     public String parseStatus(int constant){
-        if (constant == 0){
+        if (constant == 1){
             return "正常";
-        } else if (constant == 1) {
+        } else if (constant == 0) {
             return  "关机";
         }else {
             return "故障";

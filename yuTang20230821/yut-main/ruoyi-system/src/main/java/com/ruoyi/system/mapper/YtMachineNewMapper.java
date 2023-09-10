@@ -2,6 +2,7 @@ package com.ruoyi.system.mapper;
 
 import com.ruoyi.system.domain.Device4g;
 import com.ruoyi.system.domain.YtMachineNew;
+import com.ruoyi.system.domain.vo.OxygenAutoVo;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -80,4 +81,14 @@ public interface YtMachineNewMapper
 
     List<Integer> plotCurve(@Param("machineCode")String machineCode, @Param("day") Date day);
 
+    List<String> plotXCurve(@Param("machineCode")String machineCode, @Param("day") Date day);
+
+
+    List<Integer> plotPhCurve(@Param("machineCode")String machineCode, @Param("day") Date day);
+
+    List<Integer> plotTempetureCurve(@Param("machineCode")String machineCode, @Param("day") Date day);
+
+    void updateAuto(OxygenAutoVo oxygenAutoVo);
+
+    OxygenAutoVo selectAuto(String machineCode);
 }

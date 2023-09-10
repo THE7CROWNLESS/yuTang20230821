@@ -9,12 +9,14 @@ import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.YtMachineNew;
 import com.ruoyi.system.domain.to.AeratorSpeedTo;
 import com.ruoyi.system.domain.to.AeratorTo;
+import com.ruoyi.system.domain.vo.OxygenAutoVo;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
 import com.ruoyi.system.service.IYtMachineNewService;
 import com.ruoyi.system.utils.WarningUtils;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -110,7 +112,7 @@ public class YtMachineNewController extends BaseController {
     // 最新 设备详情
     @GetMapping("/machine/{code}")
     public AjaxResult findMachineByMachineCode(@PathVariable String code) {
-        logger.info(String.valueOf(ytMachineNewMapper.findMachineByMachineCode(code).getConnectTime()));
+        System.out.println(ytMachineNewMapper.findMachineByMachineCode(code));
         return success(ytMachineNewMapper.findMachineByMachineCode(code));
     }
 
@@ -143,14 +145,14 @@ public class YtMachineNewController extends BaseController {
             } else if (num == 4) {
                 machineData.setAerator4Status(change);
             }
-            return success(ytMachineNewService.updateMqttAerator(machineData,num.toString(), old, change));
+            return success(ytMachineNewService.updateMqttAerator(machineData, num.toString(), old, change));
         } else {
             return success();
         }
     }
 
     @PostMapping("/speed/switch")
-    public AjaxResult switchAerator(@RequestBody AeratorSpeedTo aeratorSpeedTo){
+    public AjaxResult switchAerator(@RequestBody AeratorSpeedTo aeratorSpeedTo) {
         YtMachineNew oldData = ytMachineNewMapper.findMachineByMachineCode(aeratorSpeedTo.getMachineCode());
         Integer speed = aeratorSpeedTo.getSpeed();
         int num = aeratorSpeedTo.getNum();
@@ -169,16 +171,22 @@ public class YtMachineNewController extends BaseController {
             oldData.setAerator4Speed(speed);
         }
 
-        if (oldSpeed == speed){
+        if (oldSpeed == speed) {
             return success("未改变,请输入不同值");
-        }else {
-            return toAjax(ytMachineNewService.updateMqttAeratorSpeed(oldData,num,oldSpeed,speed));
+        } else {
+            return toAjax(ytMachineNewService.updateMqttAeratorSpeed(oldData, num, oldSpeed, speed));
         }
     }
 
+    // 溶氧曲线
     @GetMapping("/curve")
-    public AjaxResult plotCurve(@RequestParam String machineCode, @RequestParam Date day){
+    public AjaxResult plotCurve(@RequestParam String machineCode, @RequestParam Date day) {
         return success(ytMachineNewService.plotCurve(machineCode, day));
     }
 
+    // 联动
+    @PostMapping("/oxygen/auto")
+    public AjaxResult setAuto(@RequestBody OxygenAutoVo oxygenAutoVo) {
+        return success(ytMachineNewService.insertOrUpdateAuto(oxygenAutoVo));
+    }
 }

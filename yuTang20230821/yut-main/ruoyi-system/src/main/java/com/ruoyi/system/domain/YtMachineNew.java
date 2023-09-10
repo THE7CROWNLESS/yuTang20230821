@@ -58,7 +58,7 @@ public class YtMachineNew extends BaseEntity
 
     /** 电网电流 */
     @Excel(name = "电网电流")
-    private BigDecimal current;
+    private Float current;
 
     /** 累计耗电Power Consumption， 单位千瓦时 KWh */
     @Excel(name = "累计耗电Power Consumption， 单位千瓦时 KWh")
@@ -67,22 +67,22 @@ public class YtMachineNew extends BaseEntity
     /** 第1路电机的模式 */
     @Excel(name = "第1路电机的模式")
     @JSONField(name = "x1_model")
-    private BigDecimal x1Model;
+    private Float x1Model;
 
     /** 第2路电机的模式 */
     @Excel(name = "第2路电机的模式")
     @JSONField(name = "x2_model")
-    private BigDecimal x2Model;
+    private Float x2Model;
 
     /** 第3路电机的模式 */
     @Excel(name = "第3路电机的模式")
     @JSONField(name = "x4_model")
-    private BigDecimal x4Model;
+    private Float x4Model;
 
     /** 第4路电机的模式 */
     @Excel(name = "第4路电机的模式")
     @JSONField(name = "x3_model")
-    private BigDecimal x3Model;
+    private Float x3Model;
 
     /** 控制柜1号增氧机转速 */
     @Excel(name = "控制柜1号增氧机转速")
@@ -137,16 +137,16 @@ public class YtMachineNew extends BaseEntity
 
     /** 溶氧值 */
     @Excel(name = "溶氧值")
-    private BigDecimal oxygen;
+    private Float oxygen;
 
     /** 警戒值 */
     @Excel(name = "警戒值")
     @JSONField(name = "oxy_critical")
-    private BigDecimal oxyCritical;
+    private Float oxyCritical;
 
     /** 温度 */
     @Excel(name = "温度")
-    private BigDecimal temperature;
+    private Float temperature;
 
     /** remark */
     @Excel(name = "remark")

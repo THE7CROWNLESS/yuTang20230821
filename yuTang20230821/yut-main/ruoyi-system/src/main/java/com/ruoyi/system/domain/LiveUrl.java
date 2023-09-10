@@ -1,11 +1,9 @@
-package com.yyy.spring.entity;
+package com.ruoyi.system.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +18,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("live_url")
-@ApiModel(value = "LiveUrl对象", description = "")
 public class LiveUrl implements Serializable {
 
     private static final long serialVersionUID = 1L;

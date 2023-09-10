@@ -42,118 +42,22 @@ public class DeviceThreshold extends BaseEntity
 
     /** 电网电流阈值 */
     @Excel(name = "电网电流阈值")
-    private BigDecimal current;
+    private Float current;
 
     /** 溶氧值上限 */
     @Excel(name = "溶氧值上限")
-    private BigDecimal oxygenMax;
+    private Float oxygenMax;
 
     /** 溶氧值下限 */
     @Excel(name = "溶氧值下限")
-    private BigDecimal oxygenMin;
+    private Float oxygenMin;
 
     /** 温度上限 */
     @Excel(name = "温度上限")
-    private BigDecimal temperatureMax;
+        private Float temperatureMax;
 
     /** 温度下限 */
     @Excel(name = "温度下限")
-    private BigDecimal temperatureMin;
+    private Float temperatureMin;
 
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
-
-    public Integer getId()
-    {
-        return id;
-    }
-    public void setMachineCode(String machineCode)
-    {
-        this.machineCode = machineCode;
-    }
-
-    public String getMachineCode()
-    {
-        return machineCode;
-    }
-    public void setVoltageMax(Integer voltageMax)
-    {
-        this.voltageMax = voltageMax;
-    }
-
-    public Integer getVoltageMax()
-    {
-        return voltageMax;
-    }
-    public void setVoltageMin(Integer voltageMin)
-    {
-        this.voltageMin = voltageMin;
-    }
-
-    public Integer getVoltageMin()
-    {
-        return voltageMin;
-    }
-    public void setCurrent(BigDecimal current)
-    {
-        this.current = current;
-    }
-
-    public BigDecimal getCurrent()
-    {
-        return current;
-    }
-    public void setOxygenMax(BigDecimal oxygenMax)
-    {
-        this.oxygenMax = oxygenMax;
-    }
-
-    public BigDecimal getOxygenMax()
-    {
-        return oxygenMax;
-    }
-    public void setOxygenMin(BigDecimal oxygenMin)
-    {
-        this.oxygenMin = oxygenMin;
-    }
-
-    public BigDecimal getOxygenMin()
-    {
-        return oxygenMin;
-    }
-    public void setTemperatureMax(BigDecimal temperatureMax)
-    {
-        this.temperatureMax = temperatureMax;
-    }
-
-    public BigDecimal getTemperatureMax()
-    {
-        return temperatureMax;
-    }
-    public void setTemperatureMin(BigDecimal temperatureMin)
-    {
-        this.temperatureMin = temperatureMin;
-    }
-
-    public BigDecimal getTemperatureMin()
-    {
-        return temperatureMin;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("machineCode", getMachineCode())
-            .append("voltageMax", getVoltageMax())
-            .append("voltageMin", getVoltageMin())
-            .append("current", getCurrent())
-            .append("oxygenMax", getOxygenMax())
-            .append("oxygenMin", getOxygenMin())
-            .append("temperatureMax", getTemperatureMax())
-            .append("temperatureMin", getTemperatureMin())
-            .toString();
-    }
 }

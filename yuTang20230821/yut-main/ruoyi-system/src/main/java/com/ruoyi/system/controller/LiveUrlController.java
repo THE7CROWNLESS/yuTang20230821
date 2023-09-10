@@ -1,10 +1,12 @@
-package com.yyy.spring.controller;
+package com.ruoyi.system.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yyy.spring.entity.LiveUrl;
-import com.yyy.spring.service.ILiveUrlService;
+import com.ruoyi.system.domain.LiveUrl;
+import com.ruoyi.system.mapper.LiveUrlMapper;
+import com.ruoyi.system.service.ILiveUrlService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,11 +21,13 @@ import java.util.List;
  * @since 2023-09-08
  */
 @RestController
-@RequestMapping("/live-url")
+@RequestMapping("/liveurl")
 public class LiveUrlController {
 
     @Resource
     private ILiveUrlService liveUrlService;
+    @Autowired
+    private LiveUrlMapper liveUrlMapper;
 
     @PostMapping
     public boolean save(@RequestBody LiveUrl liveUrl){
@@ -41,7 +45,7 @@ public class LiveUrlController {
 
     @GetMapping
     public List<LiveUrl> findAll() {
-        return liveUrlService.list();
+        return liveUrlMapper.selectAll();
     }
 
     @GetMapping("/{id}")

@@ -1,6 +1,5 @@
-package com.yyy.spring.service;
-
-import com.yyy.spring.entity.LiveUrl;
+package com.ruoyi.system.service;
+import com.ruoyi.system.domain.LiveUrl;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

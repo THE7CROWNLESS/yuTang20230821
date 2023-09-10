@@ -2,8 +2,11 @@ package com.ruoyi.system.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.system.domain.YtMachineNew;
+import com.ruoyi.system.domain.vo.OxygenAutoVo;
 
 /**
  * 设备Service接口
@@ -64,5 +67,9 @@ public interface IYtMachineNewService {
 
     int updateMqttAeratorSpeed(YtMachineNew ytMachineNew, Integer num, Integer old, Integer speed);
 
-    List<Integer> plotCurve(String machineCode, Date day);
+    Map<String, Object> plotCurve(String machineCode, Date day);
+
+    int insertOrUpdateAuto(OxygenAutoVo oxygenAutoVo);
+
+    int computeAutoAeratorSpeed(YtMachineNew ytMachineNew);
 }

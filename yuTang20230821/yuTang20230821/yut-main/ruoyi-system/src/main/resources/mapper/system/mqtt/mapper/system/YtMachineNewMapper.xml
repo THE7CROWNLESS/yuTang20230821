@@ -96,6 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM yt_machine_new
     </select>
 
+
     <insert id="insertYtMachineNew" parameterType="YtMachineNew" useGeneratedKeys="true" keyProperty="id">
         insert into yt_machine_new
         <trim prefix="(" suffix=")" suffixOverrides=",">

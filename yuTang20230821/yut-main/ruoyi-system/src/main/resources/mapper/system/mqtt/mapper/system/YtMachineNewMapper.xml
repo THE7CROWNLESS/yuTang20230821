@@ -37,6 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="locationX"    column="location_x"    />
         <result property="locationY"    column="location_y"    />
         <result property="ph"    column="ph"    />
+        <result property="atmosphere"    column="atmosphere"    />
     </resultMap>
 
     <sql id="selectYtMachineNewVo">
@@ -100,6 +101,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM yt_machine_new
         WHERE machine_code= #{machineCode}
           AND connect_time BETWEEN #{day} AND ADDDATE(#{day},1)
+    </select>
+
+    <select id="plotXCurve" resultType="String">
+        SELECT left(RIGHT(connect_time,8),5)
+        FROM yt_machine_new
+        WHERE machine_code= #{machineCode}
+          AND connect_time BETWEEN #{day} AND ADDDATE(#{day},1)
+    </select>
+    <select id="plotPhCurve" resultType="java.lang.Integer">
+        SELECT ph
+        FROM yt_machine_new
+        WHERE machine_code= #{machineCode}
+          AND connect_time BETWEEN #{day} AND ADDDATE(#{day},1)
+    </select>
+    <select id="plotTempetureCurve" resultType="java.lang.Integer">
+        SELECT temperature
+        FROM yt_machine_new
+        WHERE machine_code= #{machineCode}
+          AND connect_time BETWEEN #{day} AND ADDDATE(#{day},1)
+    </select>
+    <select id="selectAuto" resultType="com.ruoyi.system.domain.vo.OxygenAutoVo">
+        select *
+        from  oxygen_auto
+        where machine_code = #{machineCode}
     </select>
 
     <insert id="insertYtMachineNew" parameterType="YtMachineNew" useGeneratedKeys="true" keyProperty="id">
@@ -296,6 +321,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="atmosphere != null">atmosphere = #{atmosphere},</if>
         </trim>
         where id = #{id}
+    </update>
+    <update id="updateAuto" parameterType="OxygenAutoVo">
+        UPDATE oxygen_auto
+        SET flag = #{flag},oxygen_1=#{oxygen1},oxygen_2=#{oxygen2}
+        WHERE machine_code = #{machineCode}
     </update>
 
 

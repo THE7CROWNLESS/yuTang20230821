@@ -1,10 +1,13 @@
 package com.ruoyi.system.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.system.domain.Device4g;
+import com.ruoyi.system.domain.vo.OxygenAutoVo;
 import com.ruoyi.system.mapper.Device4gMapper;
 import com.ruoyi.system.mqtt.MqttPushClient;
 import com.ruoyi.system.utils.WarningUtils;
@@ -155,8 +158,33 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
     }
 
     @Override
-    public List<Integer> plotCurve(String machineCode, Date day) {
-        return ytMachineNewMapper.plotCurve(machineCode, day);
+    public Map<String, Object> plotCurve(String machineCode, Date day) {
+        Map<String, Object> res = new HashMap<>();
+        List<Integer> oxygen = ytMachineNewMapper.plotCurve(machineCode, day);
+        List<String> xData = ytMachineNewMapper.plotXCurve(machineCode, day);
+        List<Integer> ph = ytMachineNewMapper.plotPhCurve(machineCode,day);
+        List<Integer> temperature = ytMachineNewMapper.plotTempetureCurve(machineCode,day);
+        res.put("x",xData);
+        //
+        res.put("oxygen",oxygen);
+        res.put("ph",ph);
+        res.put("temperature",temperature);
+        return res;
     }
+
+    @Override
+    public int insertOrUpdateAuto(OxygenAutoVo oxygenAutoVo) {
+        // 进入时默认设值，故直接update
+        ytMachineNewMapper.updateAuto(oxygenAutoVo);
+        return 0;
+    }
+
+    @Override
+    @Transactional
+    public int computeAutoAeratorSpeed(YtMachineNew ytMachineNew) {
+        // point
+        return 1;
+    }
+
 
 }

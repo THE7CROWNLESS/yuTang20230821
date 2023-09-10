@@ -114,8 +114,8 @@ public class DeviceThresholdController extends BaseController
         DeviceThreshold byMachineCode = deviceThresholdMapper.find_by_machine_code(machine_code);
         // 如果没阈值信息 则插入默认值，并返回
         if (byMachineCode == null) {
-            DeviceThreshold deviceThreshold = new DeviceThreshold(null, machine_code, 300, 0, new BigDecimal(500),
-                    new BigDecimal(1000), new BigDecimal(0), new BigDecimal(1000), new BigDecimal(0));
+            DeviceThreshold deviceThreshold = new DeviceThreshold(null,machine_code,300,0,(float)500,
+                    (float)1000,(float)0,(float)1000,(float)0);
             deviceThresholdMapper.insertDeviceThreshold(deviceThreshold);
             return success(deviceThreshold);
         }else {
