@@ -113,15 +113,21 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
     public String updateMqttAerator(YtMachineNew machineData,String num, Integer old, Integer change) {
         // 改变 插入时间
         machineData.setConnectTime(new Date());
-        // 插入 状态改变 消息
+        // 插入 状态改变消息
         ytMachineNewMapper.insertAeratorChange(machineData);
         // 设备编码
         String machineCode = machineData.getMachineCode();
         // 取设备信息
         Device4g device4g = device4gMapper.selectByMachineCode(machineCode);
         // 拼接日志消息
-        String machineName = device4g.getMachineName();
-        String warningMsg = machineName + "第" + num +  "号电机状态由"  + warningUtils.parseStatus(old) +
+        String machineName;
+        try{
+            machineName = device4g.getMachineName();
+        }catch (Exception e) {
+            machineName = "编号" + machineData.getMachineCode() + device4g.getMachineType();
+        }
+
+        String warningMsg = machineName + "第" + num +  "号溶氧机状态由"  + warningUtils.parseStatus(old) +
                             "强制转变为" + warningUtils.parseStatus(change);
 
         // mqtt主题
@@ -185,6 +191,4 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         // point
         return 1;
     }
-
-
 }

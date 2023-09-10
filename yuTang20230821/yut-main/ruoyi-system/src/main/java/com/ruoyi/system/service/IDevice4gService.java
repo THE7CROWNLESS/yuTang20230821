@@ -76,4 +76,6 @@ public interface IDevice4gService
     List<String> pondList();
 
     List<Device4g> selectNullFishPond();
+
+    int updateDevice(Device4g device4g);
 }

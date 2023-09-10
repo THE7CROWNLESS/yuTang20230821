@@ -147,7 +147,7 @@ public class YtMachineNewController extends BaseController {
             }
             return success(ytMachineNewService.updateMqttAerator(machineData, num.toString(), old, change));
         } else {
-            return success();
+            return success("未改变，请输入不同值");
         }
     }
 

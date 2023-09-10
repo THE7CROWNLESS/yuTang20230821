@@ -147,4 +147,9 @@ public class Device4gServiceImpl implements IDevice4gService
     public List<Device4g> selectNullFishPond() {
         return  device4gMapper.selectNullFishPond();
     }
+
+    @Override
+    public int updateDevice(Device4g device4g) {
+        return device4gMapper.updateDevice4g(device4g);
+    }
 }

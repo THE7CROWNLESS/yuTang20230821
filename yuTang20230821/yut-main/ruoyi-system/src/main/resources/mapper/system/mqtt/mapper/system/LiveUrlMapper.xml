@@ -2,8 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.LiveUrlMapper">
 
+    <update id="updateNanme">
+        UPDATE live_url
+        SET name=#{name}
+        WHERE serial_number= #{serialNumber}
+    </update>
+
     <select id="selectAll" resultType="com.ruoyi.system.domain.LiveUrl">
         select *
         from live_url
+    </select>
+    <select id="getName" resultType="String">
+        select name
+        from live_url
+        where serial_number= #{serialNumber}
     </select>
 </mapper>

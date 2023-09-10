@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
@@ -31,17 +32,7 @@ public class Device4gController extends BaseController
     @Autowired
     private IDevice4gService device4gService;
 
-    /**
-     * 查询【4g模块】列表
-     */
-    //@PreAuthorize("@ss.hasPermi('system:4g:list')")
-    @GetMapping("/list")
-    public TableDataInfo list(Device4g device4g)
-    {
-        startPage();
-        List<Device4g> list = device4gService.selectDevice4gList(device4g);
-        return getDataTable(list);
-    }
+
 
     /**
      * 导出【请填写功能名称】列表
@@ -67,9 +58,9 @@ public class Device4gController extends BaseController
     }
 
     /**
-     * 新增【请填写功能名称】
+     * 新增【】
      */
-    @PreAuthorize("@ss.hasPermi('system:4g:add')")
+//    @PreAuthorize("@ss.hasPermi('system:4g:add')")
     @Log(title = "【请填写功能名称】", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Device4g device4g)
@@ -137,13 +128,32 @@ public class Device4gController extends BaseController
         return success(device4gService.pondList());
     }
 
-
+    // 更新为 整个update
     @PostMapping("/setPond")
     public AjaxResult setPond(@RequestBody FishPondTo fishPondTo){
         Device4g device4g = new Device4g();
         BeanUtils.copyProperties(fishPondTo,device4g);
         return toAjax(device4gService.updateOrInsertDevice4g(device4g));
     }
+
+    //
+    @PostMapping("/setDevice")
+    public AjaxResult updateDevice(@RequestParam Device4g device4g){
+        return toAjax(device4gService.updateDevice(device4g));
+    }
+
+    /**
+     * 查询【4g模块】列表
+     */
+    //@PreAuthorize("@ss.hasPermi('system:4g:list')")
+    @GetMapping("/list")
+    public TableDataInfo list(Device4g device4g)
+    {
+        startPage();
+        List<Device4g> list = device4gService.selectDevice4gList(device4g);
+        return getDataTable(list);
+    }
+
     @GetMapping("/nullFishPond")
     public AjaxResult selectNullFishPond(){
         return success(device4gService.selectNullFishPond());

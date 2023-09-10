@@ -2,7 +2,7 @@ package com.ruoyi.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.LiveUrl;
-import org.springframework.boot.context.properties.DeprecatedConfigurationProperty;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +19,8 @@ import java.util.List;
 public interface LiveUrlMapper extends BaseMapper<LiveUrl> {
 
     List<LiveUrl> selectAll();
+
+    int updateNanme(@Param("serialNumber")String serialNumber ,@Param("name") String name);
+
+    String getName(String serialNumber);
 }

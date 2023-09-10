@@ -3,7 +3,6 @@ import com.ruoyi.system.domain.YtMachineNew;
 import com.ruoyi.system.domain.vo.OxygenAutoVo;
 import com.ruoyi.system.mapper.YtMachineNewMapper;
 import com.ruoyi.system.service.IYtMachineNewService;
-import com.ruoyi.system.service.YtMachineNewService;
 
 public class OxygenAutoUtils {
 
