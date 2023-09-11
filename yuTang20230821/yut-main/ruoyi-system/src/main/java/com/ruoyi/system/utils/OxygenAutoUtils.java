@@ -5,7 +5,6 @@ import com.ruoyi.system.mapper.YtMachineNewMapper;
 import com.ruoyi.system.service.IYtMachineNewService;
 
 public class OxygenAutoUtils {
-
     private static IYtMachineNewService ytMachineNewService;
     private static YtMachineNewMapper ytMachineNewMapper;
     // 设置默认联动范围

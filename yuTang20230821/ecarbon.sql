@@ -11,7 +11,7 @@
  Target Server Version : 50734 (5.7.34)
  File Encoding         : 65001
 
- Date: 07/09/2023 14:44:56
+ Date: 11/09/2023 17:50:05
 */
 
 SET NAMES utf8mb4;
@@ -35,49 +35,11 @@ CREATE TABLE `day_log`  (
   `field2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '冗余2',
   `field3` int(11) NULL DEFAULT NULL COMMENT '冗余3',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of day_log
 -- ----------------------------
-INSERT INTO `day_log` VALUES (1, '一号养殖场', '24111111', '一号控制器', NULL, '一号控制机温度过高报警', 200.00, 1, '2023-09-05 10:11:15.173708', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (8, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:43:59.824785', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (9, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', 200.00, 1, '2023-09-06 16:44:04.514326', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (10, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.064070', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (11, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.417810', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (12, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机温度小于阈值警告', 200.00, 1, '2023-09-06 16:44:05.791030', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (13, '一号养殖场', '24123456', '1号塘1号机', NULL, '1号塘1号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:06.366038', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (18, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 200.00, 0, '2023-09-06 16:44:07.761668', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (19, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:08.747355', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (20, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:24.694335', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (21, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:26.756289', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (22, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.136834', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (23, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 200.00, 0, '2023-09-06 16:44:32.140625', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (24, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.144371', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (25, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.146773', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (26, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.149402', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (27, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.151722', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (28, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 200.00, 1, '2023-09-06 16:44:32.153568', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (29, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由1强制转变为1', 30.00, NULL, '2023-09-06 17:52:13.000000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (30, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:10:20.118000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (31, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:11:46.190000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (32, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:12:19.007000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (33, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 19:13:50.201000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (34, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机2状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 19:43:02.917000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (35, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机3状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 19:45:18.899000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (36, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机阈值信息更改', 30.00, NULL, '2023-09-06 20:09:05.988000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (37, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 30.00, 1, '2023-09-06 20:09:05.998000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (38, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.003000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (39, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电压小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.113000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (40, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机溶氧量小于阈值警告', 30.00, 1, '2023-09-06 20:09:06.172000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (41, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 21:12:11.831000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (42, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由正常强制转变为关机', 30.00, NULL, '2023-09-06 21:12:51.680000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (43, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机电机1状态由关机强制转变为正常', 30.00, NULL, '2023-09-06 22:23:07.542000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (44, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '小程序端将三号养殖场1号机的养殖场编号设置为三号养殖场', NULL, NULL, '2023-09-07 13:42:50.620953', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (45, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机速度由0强制转变为20', NULL, NULL, '2023-09-07 14:30:38.838000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (46, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机速度由0强制转变为20', NULL, NULL, '2023-09-07 14:34:31.449000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (47, '一号养殖场', '24518927', '一号养殖场4号机', NULL, '一号养殖场4号机第1号电机状态由正常强制转变为关机', 30.00, NULL, '2023-09-07 14:38:22.335000', NULL, NULL, NULL);
-INSERT INTO `day_log` VALUES (48, '三号养殖场', '14605563', '三号养殖场1号机', NULL, '三号养殖场1号机第1号电机状态由正常强制转变为关机', NULL, NULL, '2023-09-07 14:38:54.238000', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for day_records
@@ -112,19 +74,22 @@ CREATE TABLE `device4g`  (
   `machine_status` int(11) NULL DEFAULT NULL COMMENT '设备状态：0在线，1离线，2故障',
   `CSQ` int(11) NULL DEFAULT NULL COMMENT '信号强度',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device4g
 -- ----------------------------
-INSERT INTO `device4g` VALUES (1, '45310986', '868739055454011', '89860802142070418996', '1号塘1号机', '鱼塘控制器', '一号养殖场', 0, 20);
-INSERT INTO `device4g` VALUES (2, '24198115', '868739055454056', '89860802142070418997', '1号塘2号机', '鱼塘控制器', '一号养殖场', 1, 31);
-INSERT INTO `device4g` VALUES (3, '24255467', '868739057208302', '898604901920C1580174', '1号塘3号机', '鱼塘控制器', '一号养殖场', 2, 31);
+INSERT INTO `device4g` VALUES (1, '14310986', '868739055454011', '89860802142070418996', '1号塘1号机', 'DTU控制器', '一号养殖场', 0, 20);
+INSERT INTO `device4g` VALUES (2, '14198115', '868739055454056', '89860802142070418997', '1号塘2号机', 'DTU控制器', '一号养殖场', 1, 31);
+INSERT INTO `device4g` VALUES (3, '14255467', '868739057208302', '898604901920C1580174', '1号塘3号机', 'DTU控制器', '一号养殖场', 2, 31);
 INSERT INTO `device4g` VALUES (4, '24345463', '868739057141511', '89860802142070418996', '1号塘4号机', '浮漂式传感器', '二号养殖场', 0, 100);
 INSERT INTO `device4g` VALUES (5, '24345478', '868739055451234', '898604901920C1581234', '1号塘5号机', '浮漂式传感器', '二号养殖场', 0, 20);
 INSERT INTO `device4g` VALUES (6, '24518581', '863488051172347', '89860802142070419175', '1号塘6号机', '浮漂式传感器', '一号养殖场', 0, 31);
-INSERT INTO `device4g` VALUES (7, '24518927', '863488051169913', '89860802142070419176', '一号养殖场4号机', '4路控制器', '一号养殖场', 0, 31);
-INSERT INTO `device4g` VALUES (9, '14605563', '868739055454099', '1231823812', '三号养殖场1号机', '浮漂式传感器', '三号养殖场', 0, 123123199);
+INSERT INTO `device4g` VALUES (7, '14518927', '863488051169913', '89860802142070419176', '一号养殖场4号机', 'DTU控制器', '一号养殖场', 0, 31);
+INSERT INTO `device4g` VALUES (9, '24605563', '868739055454099', '1231823812', '三号养殖场1号机', '浮漂式传感器', '三号养殖场', 0, 123123199);
+INSERT INTO `device4g` VALUES (10, '14605564', '8687390554540233', '89860802142070418996', '无', 'DTU控制器', '无', 0, 31);
+INSERT INTO `device4g` VALUES (11, '14605565', '863569067855858', '898604D4222280245690', '无', 'DTU控制器', '无', 0, 22);
+INSERT INTO `device4g` VALUES (12, '24518582', '869298054643580', '898604D6102280177815', '无', '浮漂式传感器', '无', 0, 5);
 
 -- ----------------------------
 -- Table structure for device_4g
@@ -140,20 +105,11 @@ CREATE TABLE `device_4g`  (
   `IMEI` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'IMEI',
   `ICCID` char(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'ICCID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of device_4g
 -- ----------------------------
-INSERT INTO `device_4g` VALUES (1, '24123456', '1号塘1号机', '鱼塘控制器', '一号养殖场', 0, '868739055454011', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (2, '24123457', '1号塘2号机', '鱼塘控制器', '一号养殖场', 1, '868739055454056', '89860802142070418997');
-INSERT INTO `device_4g` VALUES (3, '24123458', '1号塘3号机', '鱼塘控制器', '一号养殖场', 2, '868739057208302', '898604901920C1580174');
-INSERT INTO `device_4g` VALUES (4, '14605563', '三号养殖场0号机', '1', '三号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (5, '14605563', '三号养殖场0号机', '1', '三号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (6, '14605564', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (7, '14605565', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (8, '14605566', '浮漂式传感器', '1', '1号养殖场', 0, '8687390554540112', '89860802142070418996');
-INSERT INTO `device_4g` VALUES (9, '14605567', '浮漂式传感器', '1', '1号养殖场', 0, '24111115', '1231823812');
 
 -- ----------------------------
 -- Table structure for device_threshold
@@ -666,7 +622,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status`) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 259 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 260 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -929,6 +885,7 @@ INSERT INTO `sys_logininfor` VALUES (255, 'admin', '211.20.8.131', 'XX XX', 'Mob
 INSERT INTO `sys_logininfor` VALUES (256, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 11:05:04');
 INSERT INTO `sys_logininfor` VALUES (257, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 13:42:37');
 INSERT INTO `sys_logininfor` VALUES (258, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-07 14:27:40');
+INSERT INTO `sys_logininfor` VALUES (259, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-11 13:49:36');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1505,7 +1462,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-07 14:27:41', 'admin', '2023-04-24 15:37:22', '', '2023-09-07 14:27:40', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-11 13:49:37', 'admin', '2023-04-24 15:37:22', '', '2023-09-11 13:49:36', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-04-24 15:37:22', 'admin', '2023-04-24 15:37:22', '', NULL, '测试员');
 
 -- ----------------------------
@@ -1637,7 +1594,7 @@ CREATE TABLE `yt_admin_user`  (
 -- ----------------------------
 -- Records of yt_admin_user
 -- ----------------------------
-INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-07 14:27:41', '127.0.0.1');
+INSERT INTO `yt_admin_user` VALUES (1, 'admin', '12791bff70f210943256551cb19a3fd7', '', 'admin@qq.com', 1, '2019-10-12 09:50:17', '2023-09-11 13:49:37', '127.0.0.1');
 INSERT INTO `yt_admin_user` VALUES (210, 'chuhuo001', '424913503b6fa1de5061472d31671ac3', '', '', 1, '2021-09-03 11:21:45', NULL, '113.110.152.118');
 INSERT INTO `yt_admin_user` VALUES (206, 'shengchan001', '07cb604fbcfa40ffb68e642317bb9a4f', '', '', 1, '2021-07-22 10:30:56', NULL, '113.110.147.142');
 INSERT INTO `yt_admin_user` VALUES (211, 'yuanrujun', '0b4e9eb6364c89be83134cb7c7f4f61c', '', '', 1, '2022-02-17 10:40:32', NULL, '113.116.228.226');
@@ -6614,10 +6571,10 @@ CREATE TABLE `yt_machine_new`  (
   `power` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '功率',
   `current` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '电网电流',
   `energy` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '累计耗电Power Consumption， 单位千瓦时 KWh',
-  `x1_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第1路电机的模式',
-  `x2_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第2路电机的模式',
-  `x4_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第3路电机的模式',
-  `x3_model` float(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '第4路电机的模式',
+  `x1_model` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '第1路电机的模式',
+  `x2_model` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '第2路电机的模式',
+  `x3_model` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '第4路电机的模式',
+  `x4_model` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '第3路电机的模式',
   `aerator_1_speed` tinyint(4) NULL DEFAULT 0 COMMENT '控制柜1号增氧机转速',
   `aerator_1_status` tinyint(3) UNSIGNED NULL DEFAULT NULL COMMENT '控制柜1号增氧机： 0关机 1开机 2故障',
   `aerator_2_speed` tinyint(3) UNSIGNED NULL DEFAULT 0 COMMENT '控制柜2号增氧机转速',
@@ -6640,34 +6597,19 @@ CREATE TABLE `yt_machine_new`  (
   `atmosphere` float(10, 2) NULL DEFAULT NULL COMMENT '大气压强',
   PRIMARY KEY (`id`, `ox_machine_id`) USING BTREE,
   INDEX `machine_id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '设备表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of yt_machine_new
 -- ----------------------------
-INSERT INTO `yt_machine_new` VALUES (1, '45310986', '868739055454011', '89860802142070418996', 20, 2, '10', 20.00, 100, 10.00, 10.00, 2.80, 0.00, 7, 0, 160, 0, 0, 0, 80, 0, '2000-08-08 00:00:00', 0, 20.00, 20.00, 20.00, NULL, NULL, '李凯', NULL, NULL, 7.00, NULL);
-INSERT INTO `yt_machine_new` VALUES (22, '24198115', '868739055454056', '89860802142070418997', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-01 15:29:47', 0, 3.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (23, '24255467', '868739057208302', '898604901920C1580174', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-02 00:29:56', 0, 2.20, 0.00, 25.50, NULL, NULL, '深圳转多多', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (25, '24345463', '868739057141511', '89860802142070418996', 0, 2, '20', 0.00, 0, 2.00, 7.00, 1.00, 160.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-06 05:30:00', 0, 1.78, 7.00, 33.30, NULL, NULL, '李凯', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (26, '24345478', '868739055451234', '898604901920C1581234', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-02 15:30:06', 0, 2.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (27, '24518581', '863488051172347', '89860802142070419175', 0, 3, '0', 0.00, 25627, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-01 15:30:20', 0, 5.00, 0.00, 20.00, NULL, NULL, '', NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (28, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:31:33', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (29, '24605562', '863488051327685', '89860802142070419150', 0, 2, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-06 15:29:42', 0, 6.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (48, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 17:52:13', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (49, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:10:20', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (50, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:11:46', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (51, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:12:19', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (52, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 0, 0, 0, 0, 0, '2023-09-06 19:14:10', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (53, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 0, 0, 0, '2023-09-06 19:43:03', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (54, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-06 19:45:19', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (55, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 1, 0, 1, 0, 0, '2023-09-06 21:12:12', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (56, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-06 21:12:52', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (57, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 1, 0, 1, 0, 0, '2023-09-06 22:23:07', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (59, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
-INSERT INTO `yt_machine_new` VALUES (60, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
-INSERT INTO `yt_machine_new` VALUES (61, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 20, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 00:10:37', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
-INSERT INTO `yt_machine_new` VALUES (63, '24518927', '863488051169913', '89860802142070419176', 0, 1, '30', 0.00, 11, 0.00, 0.00, 0.00, 0.00, 0, 1, 0, 1, 0, 1, 0, 0, '2023-09-07 14:38:22', 0, 5.00, 0.00, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `yt_machine_new` VALUES (64, '14605563', '868739055454099', '1231823812', 0, 0, '0', 0.00, 0, 0.00, 0.00, 0.00, 0.00, 20, 1, 0, NULL, 0, NULL, 0, NULL, '2023-09-07 14:38:54', 0, 76.80, 0.00, 51.20, NULL, NULL, NULL, '123123199', '31', 12.80, NULL);
+INSERT INTO `yt_machine_new` VALUES (1, '45310986', '868739055454011', '89860802142070418996', 0, 2, '10', 0.00, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2023-09-11 17:36:56', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (2, '24198115', '868739055454056', '89860802142070418997', 0, 2, NULL, 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:37:50', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (3, '24255467', '868739057208302', '898604901920C1580174', 0, 2, NULL, 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:38:02', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (4, '24345463', '868739057141511', '89860802142070418996', 0, 2, NULL, 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:38:16', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (5, '24345478', '868739055451234', '898604901920C1581234', 0, 2, NULL, 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:38:24', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (6, '24518581', '863488051172347', '89860802142070419175', 0, 2, NULL, 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:38:35', 0, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (7, '14605565', '863569067855858', '898604D4222280245690', 388, 0, '0', 0.70, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, '2023-09-11 17:41:58', 0, 0.00, 0.00, 263.00, NULL, NULL, NULL, '23', '113.9207811', NULL, NULL);
+INSERT INTO `yt_machine_new` VALUES (8, '24518582', '869298054643580', '898604D6102280177815', 0, 0, '0', 0.00, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 0, NULL, '2023-09-11 17:49:57', 0, 7.90, 0.00, 27.20, NULL, NULL, NULL, '5', '113.920784', 7.80, NULL);
 
 -- ----------------------------
 -- Table structure for yt_machine_oxygen_log

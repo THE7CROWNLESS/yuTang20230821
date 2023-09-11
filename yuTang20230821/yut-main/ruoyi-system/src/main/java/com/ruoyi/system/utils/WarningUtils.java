@@ -47,7 +47,6 @@ public class WarningUtils {
     }
 
     public void log( Integer type, String warningMsg, Device4g device4g , YtMachineNew ytMachineNew){
-
         // 日志信息 拼接
         DayLog dayLog = new DayLog();
         BeanUtils.copyProperties(device4g,dayLog);

@@ -34,6 +34,8 @@ public class PushCallback implements MqttCallback {
 
     @Autowired
     private Device4gMapper device4gMapper;
+    @Autowired
+    private MqttUtils mqttUtils;
 
     @Autowired
     private MqttConfig mqttConfig;
@@ -128,10 +130,10 @@ public class PushCallback implements MqttCallback {
             ytMachineNew.setAerator3Status(Integer.parseInt(states[2]));
             ytMachineNew.setAerator4Status(Integer.parseInt(states[3]));
 
-            ytMachineNew.setX1Model(Float.parseFloat(modes[0]));
-            ytMachineNew.setX2Model(Float.parseFloat(modes[1]));
-            ytMachineNew.setX3Model(Float.parseFloat(modes[2]));
-            ytMachineNew.setX4Model(Float.parseFloat(modes[3]));
+            ytMachineNew.setX1Model(Integer.parseInt(modes[0]));
+            ytMachineNew.setX2Model(Integer.parseInt(modes[1]));
+            ytMachineNew.setX3Model(Integer.parseInt(modes[2]));
+            ytMachineNew.setX4Model(Integer.parseInt(modes[3]));
         }
         //logger.info(ytMachineNew.toString());
 
@@ -142,9 +144,9 @@ public class PushCallback implements MqttCallback {
         ytMachineNew.setLocationY(topics[5]);
 
         // 机器码machine_code计算(查设备表imei，存在取出code，不存在则生成code
-        String machine_coe = device4gMapper.selectDevice4gByImei(topics[2]);
-        if (machine_coe != null) {
-            ytMachineNew.setMachineCode(machine_coe);
+        String machine_code = device4gMapper.selectDevice4gByImei(topics[2]);
+        if (machine_code != null) {
+            ytMachineNew.setMachineCode(machine_code);
         } else {
             // 第一次接入mqtt服务器，需新建设备，生成设备编码
             // 计算（自增
@@ -156,9 +158,10 @@ public class PushCallback implements MqttCallback {
                 ytMachineNew.setMachineCode("24" + machine_num_code);
                 machine_type = "浮漂式传感器";
             } else {
-                machine_type = "DTU路控制器";
+                machine_type = "DTU控制器";
                 ytMachineNew.setMachineCode("14" + machine_num_code);
             }
+            machine_code = ytMachineNew.getMachineCode();
             device4g.setMachineCode(ytMachineNew.getMachineCode());
             device4g.setMachineType(machine_type);
             // 养殖场、状态 默认值
@@ -186,21 +189,16 @@ public class PushCallback implements MqttCallback {
 
         // 溶氧联动判断
 
-        // 判断 设备状态 是否需要报警 存日志
-        if (ytMachineNew.getPhase() != 0) {
-            DayLog dayLog = new DayLog();
-            Device4g device4g = device4gMapper.selectByMachineCode(machine_coe);
-            BeanUtils.copyProperties(device4g, dayLog);
-            dayLog.setId(null);
-            dayLog.setCreateTime(new Date());
-            String machineName = device4g.getMachineName();
-            String warningMsg = machineName + warningUtils.parseType(ytMachineNew.getPhase());
-            dayLog.setMsg(warningMsg);
-            dayLog.setMsgType(1);
-            dayLog.setPower(Float.valueOf(ytMachineNew.getPower()));
-            logger.info((dayLog.toString()));
-            dayLogMapper.insert(dayLog);
+
+        Device4g device4g = device4gMapper.selectByMachineCode(machine_code);
+        if (topics[0].equals("control4")){
+            // 判断 设备状态 是否需要报警 存日志
+            mqttUtils.dealPhase(ytMachineNew,device4g);
+            // 判断mode状态，是否需要记录变化日志
+            mqttUtils.dealMode(ytMachineNew,device4g);
         }
+
+
         return ytMachineNew;
     }
 }

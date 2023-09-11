@@ -33,7 +33,7 @@ public class YtMachineNewTo extends BaseEntity
 
 
     /** 电网电流 */
-    private BigDecimal current;
+    private Float current;
 
     /** 功率 */
 
@@ -45,19 +45,19 @@ public class YtMachineNewTo extends BaseEntity
 
     /** 第1路电机的模式 */
     @JSONField(name = "x1_model")
-    private BigDecimal x1Model;
+    private Integer x1Model;
 
     /** 第2路电机的模式 */
     @JSONField(name = "x2_model")
-    private BigDecimal x2Model;
+    private Integer x2Model;
 
     /** 第3路电机的模式 */
     @JSONField(name = "x4_model")
-    private BigDecimal x4Model;
+    private Integer x4Model;
 
     /** 第4路电机的模式 */
     @JSONField(name = "x3_model")
-    private BigDecimal x3Model;
+    private Integer x3Model;
 
     /** 控制柜1号增氧机转速 */
     @Excel(name = "控制柜1号增氧机转速")

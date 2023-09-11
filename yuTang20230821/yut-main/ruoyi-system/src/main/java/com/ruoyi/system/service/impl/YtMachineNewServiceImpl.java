@@ -120,15 +120,10 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         // 取设备信息
         Device4g device4g = device4gMapper.selectByMachineCode(machineCode);
         // 拼接日志消息
-        String machineName;
-        try{
-            machineName = device4g.getMachineName();
-        }catch (Exception e) {
-            machineName = "编号" + machineData.getMachineCode() + device4g.getMachineType();
-        }
 
-        String warningMsg = machineName + "第" + num +  "号溶氧机状态由"  + warningUtils.parseStatus(old) +
-                            "强制转变为" + warningUtils.parseStatus(change);
+        String warningMsg = "编号" + machineData.getMachineCode() + device4g.getMachineType() +
+                            "第" + num +  "号溶氧机状态从小程序设置由"  + warningUtils.parseStatus(old) +
+                            "转为" + warningUtils.parseStatus(change);
 
         // mqtt主题
         String topic = "ecarbon/GET/" + device4g.getIMEI();
@@ -139,7 +134,7 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         // 发布 mqtt
         warningUtils.mqttLogPublish(new MqttPushClient(),0,topic,warningMsg,message,device4g,machineData);
 
-        return null;
+        return "ok";
     }
 
     @Override
@@ -147,8 +142,8 @@ public class YtMachineNewServiceImpl implements IYtMachineNewService
         // 取设备信息
         Device4g device4g = device4gMapper.selectByMachineCode(machineData.getMachineCode());
         // 拼接日志消息
-        String warningMsg = device4g.getMachineName() + "第" + num +  "号电机速度由"
-                            + old + "强制转变为" + speed;
+        String warningMsg = "编号" + machineData.getMachineCode() + device4g.getMachineType() +
+                            "第" + num +  "号溶氧机速度从小程序设置由" + old + "转为" + speed;
 
         // mqtt主题
         String topic = "ecarbon/GET/" + machineData.getIMEI();

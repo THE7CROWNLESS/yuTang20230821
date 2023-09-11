@@ -76,7 +76,7 @@ public class Device4gServiceImpl implements IDevice4gService
         // 养殖场 默认值
         // device4g.setFishPond("一号养殖场");
         // 设备命名
-        String machine_name = device4g.getFishPond() + device4gMapper.selectMaxIdByFishPond(device4g.getFishPond()) + "号机";
+        String machine_name = device4g.getFishPond() + device4gMapper.selectMaxIdByFishPond(device4g.getFishPond()) + "号" + device4g.getMachineType();
         device4g.setMachineName(machine_name);
         // 更新养殖场信息
         device4gMapper.updateDevice4g(device4g);

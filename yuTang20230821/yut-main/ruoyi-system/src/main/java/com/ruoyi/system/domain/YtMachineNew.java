@@ -67,22 +67,22 @@ public class YtMachineNew extends BaseEntity
     /** 第1路电机的模式 */
     @Excel(name = "第1路电机的模式")
     @JSONField(name = "x1_model")
-    private Float x1Model;
+    private Integer x1Model;
 
     /** 第2路电机的模式 */
     @Excel(name = "第2路电机的模式")
     @JSONField(name = "x2_model")
-    private Float x2Model;
+    private Integer x2Model;
 
     /** 第3路电机的模式 */
     @Excel(name = "第3路电机的模式")
     @JSONField(name = "x4_model")
-    private Float x4Model;
+    private Integer x4Model;
 
     /** 第4路电机的模式 */
     @Excel(name = "第4路电机的模式")
     @JSONField(name = "x3_model")
-    private Float x3Model;
+    private Integer x3Model;
 
     /** 控制柜1号增氧机转速 */
     @Excel(name = "控制柜1号增氧机转速")

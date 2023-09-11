@@ -189,4 +189,6 @@ public class YtMachineNewController extends BaseController {
     public AjaxResult setAuto(@RequestBody OxygenAutoVo oxygenAutoVo) {
         return success(ytMachineNewService.insertOrUpdateAuto(oxygenAutoVo));
     }
+
+
 }
