@@ -25,6 +25,8 @@ public class MqttUtils {
     private  DayLogMapper dayLogMapper;
     @Autowired
     private  WarningUtils warningUtils;
+//    @Autowired
+//    private YtMachineNew ytMachineNew;
 
     public static JSONObject parseSensorData(String sensorDataStr) {
         JSONObject data = new JSONObject();
@@ -116,4 +118,18 @@ public class MqttUtils {
         }
     }
 
+    public void dealOn(String IMEI){
+        Device4g device4g = device4gMapper.selectDevice4gByImei(IMEI);
+        device4g.setMachineStatus(0);
+        device4gMapper.updateDevice4g(device4g);
+    }
+
+    public void dealOff(String IMEI){
+        Device4g device4g = device4gMapper.selectDevice4gByImei(IMEI);
+        device4g.setMachineStatus(1);
+        device4gMapper.updateDevice4g(device4g);
+        String msg = "编号" + device4g.getMachineCode() + device4g.getMachineType() + "已离线！";
+        YtMachineNew yt = ytMachineNewMapper.findMachineByMachineCode(device4g.getMachineCode());
+        warningUtils.log(1,msg,device4g,yt);
+    }
 }

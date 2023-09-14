@@ -27,10 +27,9 @@ public interface Device4gMapper
     /**
      * 查询【请填写功能名称】列表
      *
-     * @param device4g 【请填写功能名称】
      * @return 【请填写功能名称】集合
      */
-    public List<Device4g> selectDevice4gList(Device4g device4g);
+    public List<Device4g> selectDevice4gList();
 
     /**
      * 新增【请填写功能名称】
@@ -65,7 +64,7 @@ public interface Device4gMapper
     public int deleteDevice4gByIds(Integer[] ids);
 
 
-    public String selectDevice4gByImei(String imei);
+    public Device4g selectDevice4gByImei(String imei);
 
     public Device4gVo countStatus(String fishPond);
 

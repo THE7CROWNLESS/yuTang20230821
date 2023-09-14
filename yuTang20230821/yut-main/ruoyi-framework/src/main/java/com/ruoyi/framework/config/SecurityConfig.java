@@ -118,6 +118,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .antMatchers("/package/*").permitAll()
                 .antMatchers("/service/*").permitAll()
                 .antMatchers("/order/*").permitAll()
+                .antMatchers("/mqtt/*").permitAll()
 
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()

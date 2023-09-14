@@ -23,11 +23,9 @@ public interface IDevice4gService
 
     /**
      * 查询【请填写功能名称】列表
-     *
-     * @param device4g 【请填写功能名称】
      * @return 【请填写功能名称】集合
      */
-    public List<Device4g> selectDevice4gList(Device4g device4g);
+    public List<Device4g> selectDevice4gList();
 
     /**
      * 新增【请填写功能名称】

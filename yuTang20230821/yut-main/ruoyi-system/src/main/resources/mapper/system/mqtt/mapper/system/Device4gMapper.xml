@@ -20,25 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select id, machine_code, machine_name, machine_type, fish_pond, machine_status, IMEI, ICCID,CSQ from device_4g
     </sql>
 
-    <select id="selectDevice4gList" parameterType="Device4g" resultMap="Device4gResult">
-        <include refid="selectDevice4gVo"/>
-        <where>
-            <if test="machineCode != null  and machineCode != ''"> and machine_code = #{machineCode}</if>
-            <if test="machineName != null  and machineName != ''"> and machine_name like concat('%', #{machineName}, '%')</if>
-            <if test="machineType != null  and machineType != ''"> and machine_type = #{machineType}</if>
-            <if test="fishPond != null  and fishPond != ''"> and fish_pond = #{fishPond}</if>
-            <if test="machineStatus != null "> and machine_status = #{machineStatus}</if>
-            <if test="IMEI != null  and IMEI != ''"> and IMEI = #{IMEI}</if>
-            <if test="ICCID != null  and ICCID != ''"> and ICCID = #{ICCID}</if>
-        </where>
+    <select id="selectDevice4gList"  resultMap="Device4gResult">
+        select * from device4g
     </select>
 
     <select id="selectDevice4gById" parameterType="Integer" resultMap="Device4gResult">
         <include refid="selectDevice4gVo"/>
         where id = #{id}
     </select>
-    <select id="selectDevice4gByImei" resultType="java.lang.String">
-        select machine_code
+    <select id="selectDevice4gByImei" resultType="Device4g">
+        select *
         from device4g
         <where>
             imei = #{imei}

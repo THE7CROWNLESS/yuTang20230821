@@ -42,14 +42,13 @@ public class Device4gServiceImpl implements IDevice4gService
 
     /**
      * 查询【请填写功能名称】列表
-     *
-     * @param device4g 【请填写功能名称】
+
      * @return 【请填写功能名称】
      */
     @Override
-    public List<Device4g> selectDevice4gList(Device4g device4g)
+    public List<Device4g> selectDevice4gList()
     {
-        return device4gMapper.selectDevice4gList(device4g);
+        return device4gMapper.selectDevice4gList();
     }
 
     /**

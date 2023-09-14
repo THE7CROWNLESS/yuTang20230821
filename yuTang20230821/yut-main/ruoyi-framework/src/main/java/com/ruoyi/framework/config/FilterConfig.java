@@ -20,7 +20,7 @@ import com.ruoyi.common.utils.StringUtils;
 @Configuration
 public class FilterConfig
 {
-    @Value("${xss.excludes}")
+    @Value("${xss.exclud")
     private String excludes;
 
     @Value("${xss.urlPatterns}")

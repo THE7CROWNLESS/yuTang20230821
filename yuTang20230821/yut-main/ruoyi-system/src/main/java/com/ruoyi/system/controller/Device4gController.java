@@ -37,15 +37,15 @@ public class Device4gController extends BaseController
     /**
      * 导出【请填写功能名称】列表
      */
-    @PreAuthorize("@ss.hasPermi('system:4g:export')")
-    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
-    @PostMapping("/export")
-    public void export(HttpServletResponse response, Device4g device4g)
-    {
-        List<Device4g> list = device4gService.selectDevice4gList(device4g);
-        ExcelUtil<Device4g> util = new ExcelUtil<Device4g>(Device4g.class);
-        util.exportExcel(response, list, "【请填写功能名称】数据");
-    }
+//    @PreAuthorize("@ss.hasPermi('system:4g:export')")
+//    @Log(title = "【请填写功能名称】", businessType = BusinessType.EXPORT)
+//    @PostMapping("/export")
+//    public void export(HttpServletResponse response, Device4g device4g)
+//    {
+//        List<Device4g> list = device4gService.selectDevice4gList(device4g);
+//        ExcelUtil<Device4g> util = new ExcelUtil<Device4g>(Device4g.class);
+//        util.exportExcel(response, list, "【请填写功能名称】数据");
+//    }
 
     /**
      * 获取【请填写功能名称】详细信息
@@ -147,11 +147,8 @@ public class Device4gController extends BaseController
      */
     //@PreAuthorize("@ss.hasPermi('system:4g:list')")
     @GetMapping("/list")
-    public TableDataInfo list(Device4g device4g)
-    {
-        startPage();
-        List<Device4g> list = device4gService.selectDevice4gList(device4g);
-        return getDataTable(list);
+    public AjaxResult list(Device4g device4g){
+        return success(device4gService.selectDevice4gList());
     }
 
     @GetMapping("/nullFishPond")

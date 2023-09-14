@@ -122,7 +122,7 @@ public class PushCallback implements MqttCallback {
             ytMachineNew.setPower(String.valueOf(Integer.parseInt(ytMachineNew.getPower()) / 10));
             ytMachineNew.setEnergy(ytMachineNew.getEnergy() / 10);
 
-            ytMachineNew.setTemperature(Float.parseFloat(msg.get("temp").toString()));
+            ytMachineNew.setTemperature(Float.parseFloat(msg.get("temp").toString()) / 10);
             ytMachineNew.setOxygen(Float.parseFloat(msg.get("oxy").toString()));
 
             ytMachineNew.setAerator1Status(Integer.parseInt(states[0]));
@@ -144,15 +144,17 @@ public class PushCallback implements MqttCallback {
         ytMachineNew.setLocationY(topics[5]);
 
         // 机器码machine_code计算(查设备表imei，存在取出code，不存在则生成code
-        String machine_code = device4gMapper.selectDevice4gByImei(topics[2]);
-        if (machine_code != null) {
+        Device4g device4g = device4gMapper.selectDevice4gByImei(topics[2]);
+        String machine_code;
+        if (device4g != null) {
+            machine_code = device4g.getMachineCode();
             ytMachineNew.setMachineCode(machine_code);
         } else {
             // 第一次接入mqtt服务器，需新建设备，生成设备编码
             // 计算（自增
             int machine_num_code = Integer.parseInt(ytMachineNewMapper.findMaxMachineCode()) + 1;
             // 新设备 需存 设备表
-            Device4g device4g = new Device4g();
+            device4g = new Device4g();
             // 根据 topic[0]判断类型
             if (topics[0].equals("sensor0")) {
                 ytMachineNew.setMachineCode("24" + machine_num_code);
@@ -162,7 +164,7 @@ public class PushCallback implements MqttCallback {
                 ytMachineNew.setMachineCode("14" + machine_num_code);
             }
             machine_code = ytMachineNew.getMachineCode();
-            device4g.setMachineCode(ytMachineNew.getMachineCode());
+            device4g.setMachineCode(machine_code);
             device4g.setMachineType(machine_type);
             // 养殖场、状态 默认值
             device4g.setFishPond("无");
@@ -171,6 +173,7 @@ public class PushCallback implements MqttCallback {
             device4g.setICCID(topics[3]);
             device4g.setIMEI(topics[2]);
             device4g.setMachineName(machine_name);
+            // webhook处也会做离线判断取值
             device4g.setMachineStatus(0);
             device4g.setCSQ(CSQ);
             device4gMapper.insertDevice4g(device4g);
@@ -190,7 +193,7 @@ public class PushCallback implements MqttCallback {
         // 溶氧联动判断
 
 
-        Device4g device4g = device4gMapper.selectByMachineCode(machine_code);
+//        Device4g device4g = device4gMapper.selectByMachineCode(machine_code);
         if (topics[0].equals("control4")){
             // 判断 设备状态 是否需要报警 存日志
             mqttUtils.dealPhase(ytMachineNew,device4g);

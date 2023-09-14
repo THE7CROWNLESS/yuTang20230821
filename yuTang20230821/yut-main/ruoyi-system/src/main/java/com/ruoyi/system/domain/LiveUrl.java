@@ -24,7 +24,7 @@ public class LiveUrl implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-
+    private String name;
     private String serialNumber;
 
     private Integer channelNumber;
